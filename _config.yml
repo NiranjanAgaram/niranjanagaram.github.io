@@ -12,7 +12,7 @@
 
 # theme                  : "minimal-mistakes-jekyll"
 # remote_theme           : "mmistakes/minimal-mistakes"
-minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
@@ -21,10 +21,10 @@ title                    : "Niranjan's Blog" # site title that appears in the ma
 title_separator          : "-"
 subtitle                 : "Blog on advanced data analytics, Data Engineering, ML, and Analyt" # site tagline that appears below site title in masthead
 name                     : "Niranjan"
-description              : "Personal blog ."
-url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+description              : "A data analytics's journey through the world of data, machine learning, and analytics. Join me as I explore the latest trends, tools, and techniques in the field of data engineering and share my insights on building scalable data pipelines, implementing machine learning models, and leveraging analytics for business intelligence.."
+url                      : "https://niranjanagaram.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
+repository               : "https://niranjanagaram.github.io/" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -113,7 +113,7 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Niranjan Agaram"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I am an **amazing** person."
   location         : "Somewhere"
