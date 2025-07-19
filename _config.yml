@@ -40,7 +40,7 @@ analytics:
 # Site Author
 author:
   name: "Niranjan"
-  avatar: "/assets/images/bio-photo.jpg"
+  avatar: "/assets/images/Niranjan.png"
   bio: "Data Engineer passionate about building scalable data pipelines and ML systems"
   location: "Your Location"
   email: "your.email@example.com"
