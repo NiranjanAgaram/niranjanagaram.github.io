@@ -1,11 +1,11 @@
-# Niranjan's AI Consulting & Data Engineering Blog
+# Niranjan's AI Insights
 
 [![Website](https://img.shields.io/website?url=https%3A%2F%2Fniranjanagaram.github.io)](https://niranjanagaram.github.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Jekyll](https://img.shields.io/badge/Jekyll-4.3.2-red.svg)](https://jekyllrb.com/)
 
-> **Enterprise AI Solutions & Data Engineering Expertise**  
-> Transforming businesses with cutting-edge Agentic AI systems, scalable data pipelines, and intelligent automation.
+> **Enterprise AI Solutions & Intelligent Automation Insights**  
+> Deep expertise in Agentic AI systems, enterprise architecture, and cutting-edge automation from a senior AI consultant.
 
 ## 🚀 What I Offer
 
