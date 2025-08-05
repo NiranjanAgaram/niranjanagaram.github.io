@@ -9,21 +9,26 @@ title: "About Me"
   <div class="profile-image">N</div>
   <div class="profile-content">
     <h2>Niranjan Agaram</h2>
-    <p>Passionate data engineer with experience in building scalable data infrastructure and analytics solutions. I love turning complex data challenges into elegant, efficient solutions.</p>
-    <p>Currently focused on modern data stack technologies, real-time processing, and MLOps practices.</p>
+    <p>Lead Data Engineer by day, AI innovator by passion. I bridge the gap between solid data engineering foundations and cutting-edge AI solutions, helping businesses build intelligent systems that actually work in production.</p>
+    <p>Currently specializing in freelance AI development - from RAG systems to agentic AI workflows, always built on robust data infrastructure.</p>
   </div>
 </div>
 
 <div class="about-section">
 
-## My Experience
+## My Expertise
 
-I specialize in:
-- **Data Pipeline Development**: Building robust ETL/ELT processes
-- **Cloud Architecture**: Designing data solutions on AWS, GCP, and Azure
-- **Real-time Processing**: Implementing streaming data solutions
-- **Data Warehousing**: Creating efficient data storage and retrieval systems
-- **Machine Learning Operations**: Deploying and maintaining ML models in production
+**AI Development & Consulting:**
+- **Agentic AI Systems**: Multi-agent workflows and intelligent automation
+- **RAG Applications**: Production-ready retrieval-augmented generation systems
+- **LLM Integration**: Custom AI solutions for enterprise needs
+- **AI Architecture**: Scalable, maintainable AI system design
+
+**Data Engineering Foundation:**
+- **Data Pipeline Development**: The backbone that makes AI systems reliable
+- **Real-time Processing**: Streaming data for responsive AI applications
+- **Cloud Architecture**: Scalable data infrastructure on AWS, GCP, and Azure
+- **MLOps**: Deploying and maintaining AI models in production
 
 </div>
 
@@ -32,22 +37,22 @@ I specialize in:
 <div class="skills-grid">
 
 <div class="skill-category">
-<h4>Programming Languages</h4>
+<h4>AI & LLM Technologies</h4>
 <ul>
-<li>Python</li>
-<li>SQL</li>
-<li>Scala</li>
-<li>Java</li>
+<li>LangChain & LlamaIndex</li>
+<li>OpenAI, Anthropic APIs</li>
+<li>Vector Databases</li>
+<li>RAG Systems</li>
 </ul>
 </div>
 
 <div class="skill-category">
-<h4>Big Data & Analytics</h4>
+<h4>Data Engineering</h4>
 <ul>
-<li>Apache Spark</li>
-<li>Apache Kafka</li>
+<li>Apache Spark & Kafka</li>
 <li>Apache Airflow</li>
-<li>Hadoop ecosystem</li>
+<li>Python & SQL</li>
+<li>Real-time Processing</li>
 </ul>
 </div>
 
@@ -76,19 +81,19 @@ I specialize in:
 
 ## Why I Blog
 
-I believe in sharing knowledge and helping others in the data engineering community. Through this blog, I aim to:
-- Share practical insights from real-world projects
-- Provide tutorials and best practices
-- Discuss emerging trends in data engineering
-- Help others advance their careers in data
+I believe AI's biggest challenge isn't the models - it's the data foundation. Through this blog, I share:
+- **Real-world AI implementations** that actually work in production
+- **Data engineering insights** that make AI systems reliable
+- **Practical tutorials** on RAG, agentic AI, and LLM integration
+- **Enterprise AI strategies** for sustainable, scalable solutions
 
 ## Let's Connect
 
-I'm always interested in connecting with fellow data professionals. Feel free to reach out if you'd like to:
-- Discuss data engineering challenges
-- Collaborate on projects
-- Share ideas and insights
-- Ask questions about the field
+Interested in AI solutions built on solid foundations? I'm available for freelance projects and consulting. Reach out if you need:
+- **AI Development**: RAG systems, agentic AI, LLM applications
+- **Data Infrastructure**: The foundation your AI systems need
+- **Consulting**: Strategic guidance on enterprise AI implementation
+- **Collaboration**: Joint projects bridging data engineering and AI
 
 ---
 
