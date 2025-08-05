@@ -1,0 +1,72 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="kafkaBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="kafkaGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#kafkaBg)"/>
+  
+  <!-- Kafka Cluster (center) -->
+  <circle cx="400" cy="200" r="80" fill="url(#kafkaGlow)"/>
+  <circle cx="400" cy="200" r="60" fill="#1e293b" stroke="#3b82f6" stroke-width="3"/>
+  <text x="400" y="190" text-anchor="middle" fill="#3b82f6" font-family="Inter" font-size="16" font-weight="bold">KAFKA</text>
+  <text x="400" y="210" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="12">CLUSTER</text>
+  
+  <!-- Producers (left side) -->
+  <g>
+    <rect x="50" y="120" width="80" height="40" rx="8" fill="#10b981" opacity="0.8"/>
+    <text x="90" y="145" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Producer 1</text>
+    
+    <rect x="50" y="180" width="80" height="40" rx="8" fill="#10b981" opacity="0.8"/>
+    <text x="90" y="205" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Producer 2</text>
+    
+    <rect x="50" y="240" width="80" height="40" rx="8" fill="#10b981" opacity="0.8"/>
+    <text x="90" y="265" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Producer 3</text>
+  </g>
+  
+  <!-- Consumers (right side) -->
+  <g>
+    <rect x="670" y="120" width="80" height="40" rx="8" fill="#ec4899" opacity="0.8"/>
+    <text x="710" y="145" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Consumer 1</text>
+    
+    <rect x="670" y="180" width="80" height="40" rx="8" fill="#ec4899" opacity="0.8"/>
+    <text x="710" y="205" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Consumer 2</text>
+    
+    <rect x="670" y="240" width="80" height="40" rx="8" fill="#ec4899" opacity="0.8"/>
+    <text x="710" y="265" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Consumer 3</text>
+  </g>
+  
+  <!-- Data streams -->
+  <g stroke="#8b5cf6" stroke-width="2" fill="none" opacity="0.8">
+    <!-- Producer to Kafka -->
+    <path d="M130 140 Q250 140 320 180" stroke-dasharray="5,3"/>
+    <path d="M130 200 Q250 200 320 200" stroke-dasharray="5,3"/>
+    <path d="M130 260 Q250 260 320 220" stroke-dasharray="5,3"/>
+    
+    <!-- Kafka to Consumer -->
+    <path d="M480 180 Q600 140 670 140" stroke-dasharray="5,3"/>
+    <path d="M480 200 Q600 200 670 200" stroke-dasharray="5,3"/>
+    <path d="M480 220 Q600 260 670 260" stroke-dasharray="5,3"/>
+  </g>
+  
+  <!-- Stream indicators -->
+  <g fill="#f59e0b">
+    <circle cx="200" cy="140" r="3" opacity="0.8">
+      <animate attributeName="cx" values="200;300;200" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="500" cy="200" r="3" opacity="0.8">
+      <animate attributeName="cx" values="500;600;500" dur="2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="24" font-weight="bold">Apache Kafka Streaming</text>
+  <text x="400" y="350" text-anchor="middle" fill="#94a3b8" font-family="Inter" font-size="14">Real-time • Scalable • Fault-tolerant</text>
+</svg>

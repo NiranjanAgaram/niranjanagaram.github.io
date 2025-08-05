@@ -1,0 +1,65 @@
+title: "Niranjan's Data Engineering Blog"
+description: "A data engineer's journey through data pipelines, machine learning, and analytics"
+url: "https://niranjanagaram.github.io"
+baseurl: ""
+author:
+  name: "Niranjan Agaram"
+  email: "niranjan@example.com"
+  bio: "Senior Data Engineer passionate about building scalable data systems"
+  avatar: "/assets/images/profile.jpg"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/niranjanagaram"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/niranjan-agaram"
+
+markdown: kramdown
+highlighter: rouge
+theme: minimal-mistakes-jekyll
+remote_theme: "mmistakes/minimal-mistakes@4.27.1"
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-include-cache
+  - jekyll-seo-tag
+
+permalink: /:year/:month/:day/:title/
+paginate: 5
+paginate_path: /page:num/
+
+search: true
+comments:
+  provider: "disqus"
+  disqus:
+    shortname: "niranjan-data-blog"
+
+analytics:
+  provider: "google-gtag"
+  google:
+    tracking_id: "G-XXXXXXXXXX"
+
+seo:
+  type: "Person"
+  name: "Niranjan Agaram"
+  links:
+    - "https://github.com/niranjanagaram"
+    - "https://linkedin.com/in/niranjan-agaram"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+      toc: true
+      toc_sticky: true
