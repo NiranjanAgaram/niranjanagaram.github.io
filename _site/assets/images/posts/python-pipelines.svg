@@ -1,0 +1,47 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pythonBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#pythonBg)"/>
+  
+  <!-- Python Logo Colors -->
+  <g>
+    <!-- Python snake-like pipeline -->
+    <path d="M100 200 Q200 150 300 200 T500 200 T700 200" stroke="#3776ab" stroke-width="8" fill="none" opacity="0.8"/>
+    <path d="M100 220 Q200 270 300 220 T500 220 T700 220" stroke="#ffd43b" stroke-width="8" fill="none" opacity="0.8"/>
+    
+    <!-- Code blocks -->
+    <rect x="150" y="120" width="120" height="80" rx="8" fill="#374151" stroke="#3b82f6" stroke-width="2"/>
+    <rect x="340" y="120" width="120" height="80" rx="8" fill="#374151" stroke="#10b981" stroke-width="2"/>
+    <rect x="530" y="120" width="120" height="80" rx="8" fill="#374151" stroke="#f59e0b" stroke-width="2"/>
+    
+    <!-- Code text -->
+    <text x="210" y="145" text-anchor="middle" fill="#3b82f6" font-family="JetBrains Mono" font-size="10">def extract():</text>
+    <text x="210" y="160" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="8">  return data</text>
+    <text x="210" y="175" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="8">  .from_source()</text>
+    
+    <text x="400" y="145" text-anchor="middle" fill="#10b981" font-family="JetBrains Mono" font-size="10">def transform():</text>
+    <text x="400" y="160" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="8">  return data</text>
+    <text x="400" y="175" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="8">  .clean().validate()</text>
+    
+    <text x="590" y="145" text-anchor="middle" fill="#f59e0b" font-family="JetBrains Mono" font-size="10">def load():</text>
+    <text x="590" y="160" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="8">  data.to_warehouse()</text>
+    <text x="590" y="175" text-anchor="middle" fill="#cbd5e1" font-family="JetBrains Mono" font-size="8">  .commit()</text>
+  </g>
+  
+  <!-- Data flow arrows -->
+  <g fill="#ec4899">
+    <polygon points="280,160 300,150 300,170" opacity="0.8"/>
+    <polygon points="470,160 490,150 490,170" opacity="0.8"/>
+    <polygon points="660,160 680,150 680,170" opacity="0.8"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="24" font-weight="bold">Python Data Pipelines</text>
+  <text x="400" y="350" text-anchor="middle" fill="#94a3b8" font-family="Inter" font-size="14">Scalable • Reliable • Maintainable</text>
+</svg>

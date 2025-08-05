@@ -5,22 +5,65 @@ title: "Contact Me"
 
 # Get In Touch
 
-I'd love to hear from you! Whether you have questions about data engineering, want to collaborate on a project, or just want to connect, feel free to reach out.
+Ready to build AI solutions with solid data foundations? Let's discuss your project and how I can help transform your business with intelligent automation.
+
+## Quick Contact Form
+
+<div class="contact-form-section">
+  <form class="contact-form" name="contact" method="POST" data-netlify="true" action="/thank-you">
+    <div class="form-group">
+      <label for="name">Name *</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="company">Company</label>
+      <input type="text" id="company" name="company">
+    </div>
+    
+    <div class="form-group">
+      <label for="project-type">Project Type</label>
+      <select id="project-type" name="project-type">
+        <option value="">Select project type</option>
+        <option value="ai-consultation">AI Consultation</option>
+        <option value="rag-system">RAG System Development</option>
+        <option value="data-pipeline">Data Pipeline Setup</option>
+        <option value="agentic-ai">Agentic AI System</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label for="message">Project Details *</label>
+      <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, timeline, and how I can help..." required></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn">Send Message</button>
+    <p class="form-note">Having issues with the form? <a href="mailto:niranjanagaram@gmail.com?subject=Project Inquiry&body=Hi Niranjan,%0D%0A%0D%0AI'm interested in discussing a project with you.%0D%0A%0D%0AProject Type: %0D%0ACompany: %0D%0ADetails: %0D%0A%0D%0ABest regards,">Email me directly</a></p>
+  </form>
+</div>
+
+## Other Ways to Connect
 
 <div class="contact-section">
   <div class="contact-methods">
     <div class="contact-card">
       <div class="contact-icon">📧</div>
       <h3>Email</h3>
-      <p>Drop me a line anytime</p>
-      <a href="mailto:niranjan@example.com" class="contact-link">niranjan@example.com</a>
+      <p>Direct communication</p>
+      <a href="mailto:niranjanagaram@gmail.com" class="contact-link">niranjanagaram@gmail.com</a>
     </div>
 
     <div class="contact-card">
       <div class="contact-icon">💼</div>
       <h3>LinkedIn</h3>
-      <p>Let's connect professionally</p>
-      <a href="https://linkedin.com/in/niranjan-agaram" class="contact-link">LinkedIn Profile</a>
+      <p>Professional networking</p>
+      <a href="https://www.linkedin.com/in/niranjanagaram/" class="contact-link">LinkedIn Profile</a>
     </div>
 
     <div class="contact-card">
@@ -29,23 +72,16 @@ I'd love to hear from you! Whether you have questions about data engineering, wa
       <p>Check out my code</p>
       <a href="https://github.com/niranjanagaram" class="contact-link">GitHub Profile</a>
     </div>
-
-    <div class="contact-card">
-      <div class="contact-icon">🐦</div>
-      <h3>Twitter</h3>
-      <p>Follow for tech updates</p>
-      <a href="https://twitter.com/niranjan_data" class="contact-link">@niranjan_data</a>
-    </div>
   </div>
 </div>
 
 ## What I'd Love to Discuss
 
-- **Data Engineering Challenges**: Share your toughest data problems
-- **Career Advice**: Questions about breaking into data engineering
-- **Collaboration**: Open source projects or consulting opportunities
-- **Speaking**: Conference talks or podcast appearances
-- **Mentoring**: Guidance for aspiring data engineers
+- **AI Development Projects**: RAG systems, agentic AI, LLM integration
+- **Data Infrastructure**: Building foundations for AI systems
+- **Consulting Opportunities**: Strategic guidance on enterprise AI
+- **Collaboration**: Joint projects bridging data engineering and AI
+- **Speaking**: Conference talks on AI and data engineering
 
 ## Response Time
 

@@ -14,23 +14,19 @@ title: "About Me"
   </div>
 </div>
 
-<div class="about-section">
-
 ## My Expertise
 
-**AI Development & Consulting:**
+### AI Development & Consulting
 - **Agentic AI Systems**: Multi-agent workflows and intelligent automation
 - **RAG Applications**: Production-ready retrieval-augmented generation systems
 - **LLM Integration**: Custom AI solutions for enterprise needs
 - **AI Architecture**: Scalable, maintainable AI system design
 
-**Data Engineering Foundation:**
+### Data Engineering Foundation
 - **Data Pipeline Development**: The backbone that makes AI systems reliable
 - **Real-time Processing**: Streaming data for responsive AI applications
 - **Cloud Architecture**: Scalable data infrastructure on AWS, GCP, and Azure
 - **MLOps**: Deploying and maintaining AI models in production
-
-</div>
 
 ## Technologies I Work With
 
@@ -89,7 +85,13 @@ I believe AI's biggest challenge isn't the models - it's the data foundation. Th
 
 ## Let's Connect
 
-Interested in AI solutions built on solid foundations? I'm available for freelance projects and consulting. Reach out if you need:
+Interested in AI solutions built on solid foundations? I'm available for freelance projects and consulting.
+
+**📧 Email**: [niranjanagaram@gmail.com](mailto:niranjanagaram@gmail.com)  
+**💼 LinkedIn**: [linkedin.com/in/niranjanagaram](https://www.linkedin.com/in/niranjanagaram/)  
+**📝 Contact Form**: [Get in touch here](/contact)
+
+**Services I offer:**
 - **AI Development**: RAG systems, agentic AI, LLM applications
 - **Data Infrastructure**: The foundation your AI systems need
 - **Consulting**: Strategic guidance on enterprise AI implementation

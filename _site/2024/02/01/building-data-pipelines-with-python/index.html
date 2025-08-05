@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using Python.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4001/2024/02/01/building-data-pipelines-with-python/">
+    <meta property="og:title" content="Building Scalable Data Pipelines with Python">
+    <meta property="og:description" content="Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using Python.">
+    <meta property="og:image" content="http://localhost:4001/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4001/2024/02/01/building-data-pipelines-with-python/">
+    <meta property="twitter:title" content="Building Scalable Data Pipelines with Python">
+    <meta property="twitter:description" content="Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using Python.">
+    <meta property="twitter:image" content="http://localhost:4001/assets/images/og-image.svg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Niranjan's AI Insights",
+      "description": "Lead Data Engineer specializing in AI development - from RAG systems to agentic AI workflows built on solid data foundations",
+      "url": "http://localhost:4001",
+      "author": {
+        "@type": "Person",
+        "name": "Niranjan Agaram"
+      }
+    }
+    </script>
+    
+    <title>Building Scalable Data Pipelines with Python</title>
+    <link rel="canonical" href="http://localhost:4001/2024/02/01/building-data-pipelines-with-python/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Lead Data Engineer specializing in AI development - from RAG systems to agentic AI workflows built on solid data foundations</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">Building Scalable Data Pipelines with Python</h1>
+    <div class="post-meta">
+      <time datetime="2024-02-01T00:00:00+05:30" itemprop="datePublished">
+        February 01, 2024
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 2 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">python</span>
+      
+        <span class="tag" itemprop="keywords">data-pipelines</span>
+      
+        <span class="tag" itemprop="keywords">etl</span>
+      
+        <span class="tag" itemprop="keywords">best-practices</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="building-scalable-data-pipelines-with-python">Building Scalable Data Pipelines with Python</h1>
+
+<p>Data pipelines are the backbone of any data-driven organization. In this post, I’ll share some best practices for building robust and scalable data pipelines using Python.</p>
+
+<h2 id="key-principles">Key Principles</h2>
+
+<h3 id="1-modularity-and-reusability">1. Modularity and Reusability</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DataProcessor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+    
+    <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="c1"># Extract logic here
+</span>        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1"># Transform logic here
+</span>        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">destination</span><span class="p">):</span>
+        <span class="c1"># Load logic here
+</span>        <span class="k">pass</span>
+</code></pre></div></div>
+
+<h3 id="2-error-handling-and-monitoring">2. Error Handling and Monitoring</h3>
+<p>Always implement comprehensive error handling:</p>
+<ul>
+  <li>Use try-catch blocks appropriately</li>
+  <li>Log errors with context</li>
+  <li>Implement retry mechanisms</li>
+  <li>Set up alerting for critical failures</li>
+</ul>
+
+<h3 id="3-configuration-management">3. Configuration Management</h3>
+<p>Keep your pipelines configurable:</p>
+<ul>
+  <li>Use environment variables</li>
+  <li>Implement configuration files</li>
+  <li>Separate dev/staging/prod configs</li>
+</ul>
+
+<h2 id="tools-and-libraries">Tools and Libraries</h2>
+
+<p>Some essential Python libraries for data pipelines:</p>
+<ul>
+  <li><strong>Pandas</strong>: Data manipulation and analysis</li>
+  <li><strong>Apache Airflow</strong>: Workflow orchestration</li>
+  <li><strong>SQLAlchemy</strong>: Database abstraction</li>
+  <li><strong>Requests</strong>: HTTP library for API calls</li>
+  <li><strong>Boto3</strong>: AWS SDK for Python</li>
+</ul>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>In upcoming posts, I’ll dive deeper into:</p>
+<ul>
+  <li>Implementing data quality checks</li>
+  <li>Setting up monitoring and alerting</li>
+  <li>Deploying pipelines to production</li>
+</ul>
+
+<p>Stay tuned!</p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=Building%20Scalable%20Data%20Pipelines%20with%20Python&url=http://localhost:4001/2024/02/01/building-data-pipelines-with-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4001/2024/02/01/building-data-pipelines-with-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4001/2024/02/01/building-data-pipelines-with-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4001/2024/02/01/building-data-pipelines-with-python/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/25/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 25, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/20/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">December 20, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/04/15/mlops-deployment-strategies/">MLOps: Machine Learning Deployment Strategies</a></h4>
+          <div class="post-meta">April 15, 2024</div>
+          <div class="post-excerpt">MLOps: Machine Learning Deployment Strategies
+
+</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/04/01/data-quality-monitoring-strategies/">Data Quality and Monitoring Strategies</a></h4>
+          <div class="post-meta">April 01, 2024</div>
+          <div class="post-excerpt">Data Quality and Monitoring Strategies
+
+</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/real-time-data-processing-kafka/">Real-time Data Processing with Apache Kafka</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">Real-time Data Processing with Apache Kafka
+
+</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/01/building-modern-data-lakes/">Building Data Lakes with Modern Tools</a></h4>
+          <div class="post-meta">March 01, 2024</div>
+          <div class="post-excerpt">Learn how to design and implement modern data lake architectures using cloud technologies for scalable, cost-effective data storage and analytics....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/02/15/apache-airflow-workflow-orchestration/">Setting up Apache Airflow for Workflow Orchestration</a></h4>
+          <div class="post-meta">February 15, 2024</div>
+          <div class="post-excerpt">Master Apache Airflow for building robust, scalable workflow orchestration systems with DAGs, scheduling, and monitoring capabilities.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/01/15/welcome-to-my-blog/">Welcome to My Data Engineering Blog</a></h4>
+          <div class="post-meta">January 15, 2024</div>
+          <div class="post-excerpt">Hello and welcome to my blog! I'm excited to share my experiences and insights in the world of data engineering,...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://www.linkedin.com/in/niranjanagaram/" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjanagaram@gmail.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+        // Search Functionality
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+        
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                if (query.length > 2) {
+                    // Simple search implementation
+                    fetch('/search.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            const results = data.filter(post => 
+                                post.title.toLowerCase().includes(query) ||
+                                post.content.toLowerCase().includes(query)
+                            ).slice(0, 5);
+                            
+                            searchResults.innerHTML = results.map(post => 
+                                `<a href="${post.url}" class="search-result">
+                                    <h4>${post.title}</h4>
+                                    <p>${post.excerpt}</p>
+                                </a>`
+                            ).join('');
+                            searchResults.style.display = results.length ? 'block' : 'none';
+                        });
+                } else {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

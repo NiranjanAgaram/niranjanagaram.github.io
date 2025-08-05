@@ -1,0 +1,45 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pipeline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Data Pipeline Flow -->
+  <g stroke="url(#pipeline)" stroke-width="3" fill="none">
+    <!-- Main pipeline -->
+    <path d="M50 200 L750 200" stroke-dasharray="10,5"/>
+    
+    <!-- Data sources -->
+    <circle cx="80" cy="150" r="25" fill="#3b82f6" opacity="0.8"/>
+    <circle cx="80" cy="200" r="25" fill="#8b5cf6" opacity="0.8"/>
+    <circle cx="80" cy="250" r="25" fill="#06b6d4" opacity="0.8"/>
+    
+    <!-- Processing nodes -->
+    <rect x="250" y="175" width="50" height="50" rx="10" fill="#10b981" opacity="0.8"/>
+    <rect x="400" y="175" width="50" height="50" rx="10" fill="#f59e0b" opacity="0.8"/>
+    <rect x="550" y="175" width="50" height="50" rx="10" fill="#ef4444" opacity="0.8"/>
+    
+    <!-- Output -->
+    <circle cx="720" cy="200" r="30" fill="#ec4899" opacity="0.8"/>
+  </g>
+  
+  <!-- Labels -->
+  <text x="80" y="120" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Sources</text>
+  <text x="275" y="260" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Extract</text>
+  <text x="425" y="260" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Transform</text>
+  <text x="575" y="260" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Load</text>
+  <text x="720" y="280" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12">Analytics</text>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="24" font-weight="bold">Data Engineering Pipeline</text>
+</svg>
