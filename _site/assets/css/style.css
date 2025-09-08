@@ -239,6 +239,34 @@ code { background: var(--glass-bg); border: 1px solid var(--glass-border); paddi
   to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); } }
+/* The Agaram Framework */
+.framework-section { margin: 6rem 0; background: var(--glass-bg); border-radius: 24px; padding: 4rem 2rem; backdrop-filter: blur(20px); border: 1px solid var(--glass-border); text-align: center; }
+
+.framework-intro { font-size: 1.3rem; color: var(--text-primary); margin-bottom: 1rem; line-height: 1.5; }
+
+.framework-intro strong { background: linear-gradient(135deg, var(--accent-orange), var(--neon-green)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.framework-subtitle { font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 3rem; }
+
+.framework-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem 0; }
+
+.framework-step { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; background: var(--bg-card); border-radius: 16px; transition: all 0.3s ease; }
+
+.framework-step:hover { transform: translateY(-4px); box-shadow: 0 8px 25px var(--shadow-primary); }
+
+.step-number { width: 3rem; height: 3rem; background: linear-gradient(135deg, var(--accent-orange), var(--accent-red)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: white; flex-shrink: 0; }
+
+.step-content { text-align: left; }
+
+.step-content h3 { color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.2rem; }
+
+.step-content p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.4; }
+
+.framework-cta { margin-top: 3rem; }
+
+@media (max-width: 768px) { .framework-steps { grid-template-columns: 1fr; }
+  .framework-step { flex-direction: column; text-align: center; }
+  .step-content { text-align: center; } }
 .ai-demo { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); width: 100%; max-width: 400px; }
 
 .demo-header { font-weight: 600; color: var(--primary); margin-bottom: 1rem; text-align: center; }
