@@ -1,0 +1,59 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ogBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#ogBg)"/>
+  
+  <!-- Background pattern -->
+  <g opacity="0.1">
+    <circle cx="200" cy="150" r="100" fill="#3b82f6"/>
+    <circle cx="1000" cy="480" r="120" fill="#8b5cf6"/>
+    <circle cx="600" cy="100" r="80" fill="#06b6d4"/>
+  </g>
+  
+  <!-- Main content -->
+  <g>
+    <!-- Title -->
+    <text x="600" y="200" text-anchor="middle" fill="url(#titleGrad)" font-family="Inter" font-size="64" font-weight="bold">
+      Niranjan's Data Engineering Blog
+    </text>
+    
+    <!-- Subtitle -->
+    <text x="600" y="280" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="28">
+      A data engineer's journey through pipelines, ML, and analytics
+    </text>
+    
+    <!-- Tech icons -->
+    <g transform="translate(300, 350)">
+      <rect x="0" y="0" width="80" height="80" rx="12" fill="#3b82f6" opacity="0.8"/>
+      <text x="40" y="50" text-anchor="middle" fill="white" font-family="Inter" font-size="24">🐍</text>
+      
+      <rect x="120" y="0" width="80" height="80" rx="12" fill="#10b981" opacity="0.8"/>
+      <text x="160" y="50" text-anchor="middle" fill="white" font-family="Inter" font-size="24">⚡</text>
+      
+      <rect x="240" y="0" width="80" height="80" rx="12" fill="#f59e0b" opacity="0.8"/>
+      <text x="280" y="50" text-anchor="middle" fill="white" font-family="Inter" font-size="24">🚀</text>
+      
+      <rect x="360" y="0" width="80" height="80" rx="12" fill="#ec4899" opacity="0.8"/>
+      <text x="400" y="50" text-anchor="middle" fill="white" font-family="Inter" font-size="24">🧠</text>
+      
+      <rect x="480" y="0" width="80" height="80" rx="12" fill="#8b5cf6" opacity="0.8"/>
+      <text x="520" y="50" text-anchor="middle" fill="white" font-family="Inter" font-size="24">📊</text>
+    </g>
+    
+    <!-- Bottom text -->
+    <text x="600" y="520" text-anchor="middle" fill="#94a3b8" font-family="Inter" font-size="20">
+      Modern Data Engineering • Machine Learning • Analytics
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,93 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="agentBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="aiGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#agentBg)"/>
+  
+  <!-- Central AI Orchestrator -->
+  <circle cx="400" cy="200" r="60" fill="url(#aiGlow)"/>
+  <circle cx="400" cy="200" r="40" fill="#1e293b" stroke="#8b5cf6" stroke-width="3"/>
+  <text x="400" y="195" text-anchor="middle" fill="#8b5cf6" font-family="Inter" font-size="12" font-weight="bold">AI</text>
+  <text x="400" y="210" text-anchor="middle" fill="#8b5cf6" font-family="Inter" font-size="12" font-weight="bold">ORCHESTRATOR</text>
+  
+  <!-- Customer Input -->
+  <rect x="50" y="175" width="100" height="50" rx="25" fill="#10b981" opacity="0.8"/>
+  <text x="100" y="205" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12" font-weight="bold">Customer Query</text>
+  
+  <!-- Specialist Agents -->
+  <g>
+    <!-- Technical Agent -->
+    <rect x="600" y="100" width="120" height="60" rx="12" fill="#3b82f6" opacity="0.8"/>
+    <text x="660" y="125" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">TECHNICAL</text>
+    <text x="660" y="140" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">AGENT</text>
+    <text x="660" y="150" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">🔧 Troubleshooting</text>
+    
+    <!-- Billing Agent -->
+    <rect x="600" y="180" width="120" height="60" rx="12" fill="#f59e0b" opacity="0.8"/>
+    <text x="660" y="205" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">BILLING</text>
+    <text x="660" y="220" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">AGENT</text>
+    <text x="660" y="230" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">💳 Payments</text>
+    
+    <!-- Escalation Agent -->
+    <rect x="600" y="260" width="120" height="60" rx="12" fill="#ef4444" opacity="0.8"/>
+    <text x="660" y="285" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">ESCALATION</text>
+    <text x="660" y="300" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">AGENT</text>
+    <text x="660" y="310" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">👨‍💼 Human Handoff</text>
+  </g>
+  
+  <!-- Knowledge Base -->
+  <rect x="250" y="80" width="100" height="60" rx="12" fill="#06b6d4" opacity="0.8"/>
+  <text x="300" y="105" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">KNOWLEDGE</text>
+  <text x="300" y="120" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">BASE (RAG)</text>
+  <text x="300" y="130" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">📚 Vector Search</text>
+  
+  <!-- APIs -->
+  <rect x="250" y="280" width="100" height="60" rx="12" fill="#ec4899" opacity="0.8"/>
+  <text x="300" y="305" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">EXTERNAL</text>
+  <text x="300" y="320" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">APIs</text>
+  <text x="300" y="330" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">🔌 Integrations</text>
+  
+  <!-- Data Flow -->
+  <g stroke="#94a3b8" stroke-width="2" fill="none" opacity="0.8">
+    <!-- Customer to Orchestrator -->
+    <path d="M150 200 L340 200"/>
+    
+    <!-- Orchestrator to Knowledge Base -->
+    <path d="M370 170 Q320 150 300 140"/>
+    
+    <!-- Orchestrator to APIs -->
+    <path d="M370 230 Q320 250 300 280"/>
+    
+    <!-- Orchestrator to Agents -->
+    <path d="M460 180 Q550 130 600 130"/>
+    <path d="M460 200 L600 210"/>
+    <path d="M460 220 Q550 270 600 290"/>
+  </g>
+  
+  <!-- Flow arrows -->
+  <g fill="#10b981">
+    <polygon points="330,200 350,195 350,205" opacity="0.8"/>
+    <polygon points="590,130 610,125 610,135" opacity="0.8"/>
+    <polygon points="590,210 610,205 610,215" opacity="0.8"/>
+    <polygon points="590,290 610,285 610,295" opacity="0.8"/>
+  </g>
+  
+  <!-- Performance metrics -->
+  <g transform="translate(50, 320)">
+    <text x="0" y="0" fill="#10b981" font-family="Inter" font-size="12" font-weight="bold">85% Faster Response</text>
+    <text x="200" y="0" fill="#3b82f6" font-family="Inter" font-size="12" font-weight="bold">78% First Contact Resolution</text>
+    <text x="450" y="0" fill="#f59e0b" font-family="Inter" font-size="12" font-weight="bold">4.5/5 Satisfaction</text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="24" font-weight="bold">Agentic AI Customer Service</text>
+</svg>

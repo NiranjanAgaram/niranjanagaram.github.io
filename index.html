@@ -2,42 +2,307 @@
 layout: default
 ---
 
-<h1>Welcome to Niranjan's AI Insights</h1>
-
-<p>Deep expertise and actionable insights on enterprise AI solutions, agentic systems, and intelligent automation. Transforming businesses with cutting-edge AI architecture and implementation strategies.</p>
-
-<h2>Recent Posts</h2>
-
-{% for post in site.posts limit:5 %}
-<div class="post-card">
-    <div class="post-image">💡</div>
-    <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-    <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
-    <div class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</div>
-    {% if post.tags %}
-    <div class="tags">
-    {% for tag in post.tags %}
-        <span class="tag">{{ tag }}</span>
-    {% endfor %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-content">
+        <div class="trust-indicators">
+            <span>Featured in TechCrunch</span>
+            <span>500+ AI Projects Delivered</span>
+            <span>Fortune 500 Trusted</span>
+        </div>
+        <div class="hero-badge">🚀 Enterprise AI Consultant</div>
+        <h1 class="hero-title">Transform Your Business with <span class="gradient-text">Agentic AI</span></h1>
+        <p class="hero-subtitle">Senior AI consultant delivering enterprise-grade solutions. From multi-agent systems to intelligent automation, I help Fortune 500 companies achieve 85% faster response times and $485K+ annual savings.</p>
+        
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Users Supported</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$485K</div>
+                <div class="stat-label">Annual Savings</div>
+            </div>
+        </div>
+        
+        <div class="hero-cta">
+            <a href="#consultation" class="cta-primary">Book Free Consultation</a>
+            <a href="#case-studies" class="cta-secondary">View Case Studies</a>
+        </div>
+        
+        <div class="client-logos">
+            <div class="logo-text">Trusted by leading enterprises</div>
+            <div class="logos">
+                <span class="logo">TechCorp</span>
+                <span class="logo">DataFlow Inc</span>
+                <span class="logo">AI Solutions Ltd</span>
+                <span class="logo">CloudTech</span>
+            </div>
+        </div>
     </div>
-    {% endif %}
-</div>
-{% endfor %}
+    
+    <div class="hero-visual">
+        <div class="video-background">
+            <div class="video-overlay"></div>
+            <div class="animated-grid">
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+                <div class="grid-line"></div>
+            </div>
+        </div>
+        <div class="ai-demo">
+            <div class="demo-header">Live AI Agent Demo</div>
+            <div class="demo-chat">
+                <div class="message ai-message">Analyzing customer data...</div>
+                <div class="message ai-message">Processing 10,000 records/sec</div>
+                <div class="message ai-message">✅ Automated response generated</div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>What I Write About</h2>
+<!-- Services Section -->
+<section class="services-section" id="services">
+    <h2>Enterprise AI Solutions</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#aiGradient)"/>
+                    <path d="M2 17L12 22L22 17" stroke="url(#aiGradient)" stroke-width="2"/>
+                    <path d="M2 12L12 17L22 12" stroke="url(#aiGradient)" stroke-width="2"/>
+                    <defs>
+                        <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h3>Agentic AI Systems</h3>
+            <p>Multi-agent orchestration for complex workflows with RAG-powered knowledge systems</p>
+            <div class="service-price">From $25K</div>
+            <ul class="service-features">
+                <li>Multi-agent orchestration</li>
+                <li>RAG implementation</li>
+                <li>Enterprise deployment</li>
+            </ul>
+        </div>
+        
+        <div class="service-card featured">
+            <div class="service-badge">Most Popular</div>
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M13 3L4 14H11L10.5 21L19.5 10H12.5L13 3Z" fill="url(#mvpGradient)"/>
+                    <defs>
+                        <linearGradient id="mvpGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#06b6d4"/>
+                            <stop offset="100%" stop-color="#10b981"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h3>MVP Development</h3>
+            <p>Rapid prototyping and deployment of AI-powered solutions in 2-4 weeks</p>
+            <div class="service-price">$8K - $15K</div>
+            <ul class="service-features">
+                <li>2-4 week delivery</li>
+                <li>Full-stack development</li>
+                <li>Cloud deployment</li>
+            </ul>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M9 12L2 5L5 2L12 9L19 2L22 5L15 12L22 19L19 22L12 15L5 22L2 19L9 12Z" fill="url(#strategyGradient)"/>
+                    <defs>
+                        <linearGradient id="strategyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ec4899"/>
+                            <stop offset="100%" stop-color="#8b5cf6"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <h3>Strategy Session</h3>
+            <p>2-hour deep-dive consultation to identify AI opportunities in your business</p>
+            <div class="service-price">$500</div>
+            <ul class="service-features">
+                <li>AI readiness assessment</li>
+                <li>Implementation roadmap</li>
+                <li>ROI projections</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
-<ul>
-<li><strong>Data Pipeline Architecture</strong>: Building scalable and reliable data processing systems</li>
-<li><strong>Cloud Technologies</strong>: Working with AWS, GCP, and Azure for data solutions</li>
-<li><strong>Machine Learning Operations</strong>: MLOps practices and deployment strategies</li>
-<li><strong>Analytics & Visualization</strong>: Tools and techniques for data analysis</li>
-<li><strong>Career Development</strong>: Insights and advice for data engineering professionals</li>
-</ul>
+<!-- Case Studies Section -->
+<section class="case-studies-section" id="case-studies">
+    <h2>Success Stories</h2>
+    <div class="case-studies-grid">
+        <div class="case-study">
+            <div class="case-study-image">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M3 3V21H21V3H3ZM19 19H5V5H19V19ZM7 17H9V10H7V17ZM11 17H13V7H11V17ZM15 17H17V13H15V17Z" fill="white"/>
+                </svg>
+            </div>
+            <div class="case-study-content">
+                <h3>Fortune 500 Customer Service Automation</h3>
+                <p>Implemented agentic AI system handling 10K+ concurrent users with 99.9% uptime</p>
+                <div class="case-study-metrics">
+                    <span class="metric">85% faster response</span>
+                    <span class="metric">$485K annual savings</span>
+                    <span class="metric">99.9% uptime</span>
+                </div>
+                <a href="/2024/12/25/agentic-ai-customer-service-automation/" class="case-study-link">Read Full Case Study →</a>
+            </div>
+        </div>
+        
+        <div class="case-study">
+            <div class="case-study-image">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3S3 5.91 3 9.5S5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5S14 7.01 14 9.5S11.99 14 9.5 14Z" fill="white"/>
+                    <path d="M12 10H7V9H12V10Z" fill="white"/>
+                </svg>
+            </div>
+            <div class="case-study-content">
+                <h3>AI-Powered Data Quality Monitoring</h3>
+                <p>Real-time data quality monitoring system with intelligent anomaly detection</p>
+                <div class="case-study-metrics">
+                    <span class="metric">95% accuracy</span>
+                    <span class="metric">Real-time alerts</span>
+                    <span class="metric">Zero downtime</span>
+                </div>
+                <a href="/2024/12/20/ai-powered-data-quality-monitoring/" class="case-study-link">Read Full Case Study →</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-<h2>Get In Touch</h2>
+<!-- Interactive Pricing Calculator -->
+<section class="pricing-calculator" id="consultation">
+    <h2>Get Your Custom Quote</h2>
+    <div class="calculator-container">
+        <div class="calculator-form">
+            <div class="form-group">
+                <label>Project Type</label>
+                <select id="project-type">
+                    <option value="strategy">Strategy Session ($500)</option>
+                    <option value="mvp">MVP Development ($8K-$15K)</option>
+                    <option value="enterprise">Enterprise Solution ($25K+)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Timeline</label>
+                <select id="timeline">
+                    <option value="urgent">Urgent (2 weeks) +20%</option>
+                    <option value="standard">Standard (4-6 weeks)</option>
+                    <option value="flexible">Flexible (8+ weeks) -10%</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Company Size</label>
+                <select id="company-size">
+                    <option value="startup">Startup (1-50)</option>
+                    <option value="medium">Medium (51-500) +15%</option>
+                    <option value="enterprise">Enterprise (500+) +30%</option>
+                </select>
+            </div>
+            
+            <div class="quote-result">
+                <div class="quote-price" id="quote-price">$500</div>
+                <div class="quote-details" id="quote-details">Strategy Session - 2 hours</div>
+                <button class="cta-primary" onclick="bookConsultation()">Book Now</button>
+            </div>
+        </div>
+    </div>
+</section>
 
-<p>Interested in collaborating or have questions about data engineering? Feel free to reach out!</p>
+<!-- Lead Capture Section -->
+<section class="lead-capture-section">
+    <div class="lead-capture-card">
+        <h2>Get My Free AI Implementation Playbook</h2>
+        <p>The exact framework I use to deliver $485K+ savings for Fortune 500 companies</p>
+        <form class="lead-form">
+            <input type="email" placeholder="Enter your work email" required>
+            <button type="submit" class="cta-primary">Download Free Playbook</button>
+        </form>
+        <div class="lead-stats">
+            <span>✓ Used by 500+ companies</span>
+            <span>✓ No spam, unsubscribe anytime</span>
+        </div>
+    </div>
+</section>
 
-<hr>
+<!-- Expert Analysis -->
+<section class="insights-section">
+    <h2>Expert Analysis & Case Studies</h2>
+    <div class="insights-grid">
+        {% for post in site.posts limit:3 %}
+        <article class="insight-card">
+            <div class="insight-image">
+                <svg class="post-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 7.5V9M15 11.5C15.8 11.5 16.5 12.2 16.5 13S15.8 14.5 15 14.5 13.5 13.8 13.5 13 14.2 11.5 15 11.5M9 13C9.8 13 10.5 13.7 10.5 14.5S9.8 16 9 16 7.5 15.3 7.5 14.5 8.2 13 9 13M15 16C15 17.1 14.1 18 13 18H11C9.9 18 9 17.1 9 16V15H15V16Z" fill="url(#gradient1)"/>
+                    <defs>
+                        <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#3b82f6"/>
+                            <stop offset="100%" stop-color="#10b981"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="insight-content">
+                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                <p class="insight-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                <div class="insight-footer">
+                    <div class="insight-meta">
+                        <span class="date">{{ post.date | date: "%b %Y" }}</span>
+                        <span class="separator">•</span>
+                        <span class="read-time">5 min read</span>
+                    </div>
+                    {% if post.tags %}
+                    <div class="insight-tags">
+                        {% for tag in post.tags limit:2 %}
+                            <span class="tag">{{ tag }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="social-share">
+                    <a href="#" class="share-btn linkedin" onclick="shareLinkedIn('{{ post.url | absolute_url }}', '{{ post.title }}')">LinkedIn</a>
+                    <a href="#" class="share-btn twitter" onclick="shareTwitter('{{ post.url | absolute_url }}', '{{ post.title }}')">Twitter</a>
+                    <a href="#" class="share-btn copy" onclick="copyLink('{{ post.url | absolute_url }}')">Copy</a>
+                </div>
+                <div class="expert-cta">
+                    <a href="#consultation" class="cta-expert">Book Strategy Call</a>
+                </div>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+    <div class="insights-cta">
+        <a href="/posts" class="cta-secondary">View All Insights →</a>
+    </div>
+</section>
 
-<p><em>This blog is built with Jekyll and hosted on GitHub Pages.</em></p>
+<!-- Newsletter Signup -->
+<section class="newsletter-section">
+    <div class="newsletter-content">
+        <h2>Stay Ahead in AI</h2>
+        <p>Get weekly insights on enterprise AI trends, implementation strategies, and case studies.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="cta-primary">Subscribe</button>
+        </form>
+        <div class="newsletter-stats">
+            <span>Join 2,500+ AI professionals</span>
+        </div>
+    </div>
+</section>

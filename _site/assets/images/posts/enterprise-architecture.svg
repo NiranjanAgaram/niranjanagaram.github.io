@@ -1,0 +1,142 @@
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="enterpriseBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="k8sGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#326ce5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4285f4;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="600" fill="url(#enterpriseBg)"/>
+  
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="20" font-weight="bold">Enterprise Agentic AI Architecture</text>
+  
+  <!-- Load Balancer Layer -->
+  <rect x="50" y="60" width="900" height="40" rx="8" fill="#10b981" opacity="0.8"/>
+  <text x="500" y="85" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="14" font-weight="bold">🌐 NGINX Load Balancer + SSL Termination</text>
+  
+  <!-- API Gateway -->
+  <rect x="100" y="120" width="800" height="35" rx="6" fill="#3b82f6" opacity="0.8"/>
+  <text x="500" y="142" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12" font-weight="bold">🚪 Kong API Gateway + Rate Limiting + Auth</text>
+  
+  <!-- Kubernetes Cluster -->
+  <rect x="50" y="180" width="900" height="280" rx="12" fill="url(#k8sGrad)" opacity="0.1" stroke="#326ce5" stroke-width="2"/>
+  <text x="70" y="200" fill="#326ce5" font-family="Inter" font-size="14" font-weight="bold">☸️ Kubernetes Cluster (Auto-scaling)</text>
+  
+  <!-- Agent Services -->
+  <g transform="translate(80, 220)">
+    <!-- Classifier Service -->
+    <rect x="0" y="0" width="120" height="80" rx="8" fill="#8b5cf6" opacity="0.8"/>
+    <text x="60" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">Classifier Agent</text>
+    <text x="60" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Replicas: 3</text>
+    <text x="60" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">CPU: 500m</text>
+    <text x="60" y="65" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Memory: 1Gi</text>
+    
+    <!-- Technical Agent -->
+    <rect x="140" y="0" width="120" height="80" rx="8" fill="#3b82f6" opacity="0.8"/>
+    <text x="200" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">Technical Agent</text>
+    <text x="200" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Replicas: 5</text>
+    <text x="200" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">CPU: 1000m</text>
+    <text x="200" y="65" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Memory: 2Gi</text>
+    
+    <!-- Billing Agent -->
+    <rect x="280" y="0" width="120" height="80" rx="8" fill="#f59e0b" opacity="0.8"/>
+    <text x="340" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">Billing Agent</text>
+    <text x="340" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Replicas: 2</text>
+    <text x="340" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">CPU: 500m</text>
+    <text x="340" y="65" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Memory: 1Gi</text>
+    
+    <!-- Escalation Agent -->
+    <rect x="420" y="0" width="120" height="80" rx="8" fill="#ef4444" opacity="0.8"/>
+    <text x="480" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">Escalation Agent</text>
+    <text x="480" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Replicas: 2</text>
+    <text x="480" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">CPU: 500m</text>
+    <text x="480" y="65" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Memory: 1Gi</text>
+  </g>
+  
+  <!-- Data Layer -->
+  <g transform="translate(80, 320)">
+    <!-- Redis Cache -->
+    <rect x="0" y="0" width="100" height="60" rx="8" fill="#dc2626" opacity="0.8"/>
+    <text x="50" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">Redis Cache</text>
+    <text x="50" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Cluster Mode</text>
+    <text x="50" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">6 Nodes</text>
+    
+    <!-- PostgreSQL -->
+    <rect x="120" y="0" width="100" height="60" rx="8" fill="#336791" opacity="0.8"/>
+    <text x="170" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">PostgreSQL</text>
+    <text x="170" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Primary + 2 Replicas</text>
+    <text x="170" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Auto-failover</text>
+    
+    <!-- Pinecone -->
+    <rect x="240" y="0" width="100" height="60" rx="8" fill="#06b6d4" opacity="0.8"/>
+    <text x="290" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">Pinecone</text>
+    <text x="290" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Vector DB</text>
+    <text x="290" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">1M+ vectors</text>
+    
+    <!-- Elasticsearch -->
+    <rect x="360" y="0" width="100" height="60" rx="8" fill="#005571" opacity="0.8"/>
+    <text x="410" y="20" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="10" font-weight="bold">Elasticsearch</text>
+    <text x="410" y="35" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">Search & Logs</text>
+    <text x="410" y="50" text-anchor="middle" fill="#cbd5e1" font-family="Inter" font-size="8">3 Node Cluster</text>
+  </g>
+  
+  <!-- Monitoring Stack -->
+  <rect x="600" y="220" width="320" height="160" rx="8" fill="#ff6b35" opacity="0.1" stroke="#ff6b35" stroke-width="1"/>
+  <text x="610" y="240" fill="#ff6b35" font-family="Inter" font-size="12" font-weight="bold">📊 Observability Stack</text>
+  
+  <g transform="translate(620, 250)">
+    <!-- Prometheus -->
+    <rect x="0" y="0" width="90" height="40" rx="6" fill="#e6522c" opacity="0.8"/>
+    <text x="45" y="25" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="9" font-weight="bold">Prometheus</text>
+    
+    <!-- Grafana -->
+    <rect x="100" y="0" width="90" height="40" rx="6" fill="#f46800" opacity="0.8"/>
+    <text x="145" y="25" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="9" font-weight="bold">Grafana</text>
+    
+    <!-- Jaeger -->
+    <rect x="200" y="0" width="90" height="40" rx="6" fill="#60d394" opacity="0.8"/>
+    <text x="245" y="25" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="9" font-weight="bold">Jaeger</text>
+    
+    <!-- AlertManager -->
+    <rect x="0" y="50" width="90" height="40" rx="6" fill="#9b59b6" opacity="0.8"/>
+    <text x="45" y="75" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="9" font-weight="bold">AlertManager</text>
+    
+    <!-- ELK Stack -->
+    <rect x="100" y="50" width="90" height="40" rx="6" fill="#005571" opacity="0.8"/>
+    <text x="145" y="75" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="9" font-weight="bold">ELK Stack</text>
+    
+    <!-- PagerDuty -->
+    <rect x="200" y="50" width="90" height="40" rx="6" fill="#06ac38" opacity="0.8"/>
+    <text x="245" y="75" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="9" font-weight="bold">PagerDuty</text>
+  </g>
+  
+  <!-- Security Layer -->
+  <rect x="50" y="480" width="900" height="35" rx="6" fill="#dc2626" opacity="0.8"/>
+  <text x="500" y="502" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12" font-weight="bold">🔒 Security: OAuth2 + JWT + RBAC + Network Policies + Vault Secrets</text>
+  
+  <!-- Backup & DR -->
+  <rect x="50" y="530" width="900" height="35" rx="6" fill="#059669" opacity="0.8"/>
+  <text x="500" y="552" text-anchor="middle" fill="#f8fafc" font-family="Inter" font-size="12" font-weight="bold">💾 Backup: Velero + S3 Cross-Region + RTO: 15min | RPO: 5min</text>
+  
+  <!-- Data Flow Arrows -->
+  <g stroke="#94a3b8" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M500 100 L500 120" stroke-dasharray="5,3"/>
+    <path d="M500 155 L500 180" stroke-dasharray="5,3"/>
+    <path d="M500 300 L500 320" stroke-dasharray="5,3"/>
+  </g>
+  
+  <!-- Performance Metrics -->
+  <g transform="translate(50, 580)">
+    <text x="0" y="0" fill="#10b981" font-family="Inter" font-size="10" font-weight="bold">🚀 99.9% Uptime</text>
+    <text x="150" y="0" fill="#3b82f6" font-family="Inter" font-size="10" font-weight="bold">⚡ <50ms Response</text>
+    <text x="300" y="0" fill="#f59e0b" font-family="Inter" font-size="10" font-weight="bold">📈 10K+ Concurrent Users</text>
+    <text x="500" y="0" fill="#8b5cf6" font-family="Inter" font-size="10" font-weight="bold">🔄 Auto-scaling 1-50 pods</text>
+    <text x="700" y="0" fill="#ec4899" font-family="Inter" font-size="10" font-weight="bold">💰 $0.02/request</text>
+  </g>
+</svg>

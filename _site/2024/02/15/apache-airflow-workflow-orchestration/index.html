@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master Apache Airflow for building robust, scalable workflow orchestration systems with DAGs, scheduling, and monitoring capabilities.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://0.0.0.0:4000/2024/02/15/apache-airflow-workflow-orchestration/">
+    <meta property="og:title" content="Setting up Apache Airflow for Workflow Orchestration">
+    <meta property="og:description" content="Master Apache Airflow for building robust, scalable workflow orchestration systems with DAGs, scheduling, and monitoring capabilities.">
+    <meta property="og:image" content="http://0.0.0.0:4000/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://0.0.0.0:4000/2024/02/15/apache-airflow-workflow-orchestration/">
+    <meta property="twitter:title" content="Setting up Apache Airflow for Workflow Orchestration">
+    <meta property="twitter:description" content="Master Apache Airflow for building robust, scalable workflow orchestration systems with DAGs, scheduling, and monitoring capabilities.">
+    <meta property="twitter:image" content="http://0.0.0.0:4000/assets/images/og-image.svg">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Niranjan's AI Insights",
+      "description": "Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer",
+      "url": "http://0.0.0.0:4000",
+      "author": {
+        "@type": "Person",
+        "name": "Niranjan Agaram"
+      }
+    }
+    </script>
+    
+    <title>Setting up Apache Airflow for Workflow Orchestration</title>
+    <link rel="canonical" href="http://0.0.0.0:4000/2024/02/15/apache-airflow-workflow-orchestration/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+    <a href="#main-content" class="skip-link" aria-label="Skip to main content">Skip to main content</a>
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">Setting up Apache Airflow for Workflow Orchestration</h1>
+    <div class="post-meta">
+      <time datetime="2024-02-15T00:00:00+05:30" itemprop="datePublished">
+        February 15, 2024
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 4 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">apache-airflow</span>
+      
+        <span class="tag" itemprop="keywords">workflow-orchestration</span>
+      
+        <span class="tag" itemprop="keywords">data-pipelines</span>
+      
+        <span class="tag" itemprop="keywords">automation</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="setting-up-apache-airflow-for-workflow-orchestration">Setting up Apache Airflow for Workflow Orchestration</h1>
+
+<p>Apache Airflow has become the gold standard for orchestrating complex data workflows. In this post, I’ll walk you through setting up Airflow and creating your first DAG.</p>
+
+<h2 id="why-apache-airflow">Why Apache Airflow?</h2>
+
+<p>Airflow provides:</p>
+<ul>
+  <li><strong>Visual workflow management</strong> with a web-based UI</li>
+  <li><strong>Scalable task execution</strong> across multiple workers</li>
+  <li><strong>Rich scheduling capabilities</strong> with cron-like expressions</li>
+  <li><strong>Extensive integrations</strong> with cloud services and databases</li>
+  <li><strong>Robust error handling</strong> and retry mechanisms</li>
+</ul>
+
+<h2 id="installation-and-setup">Installation and Setup</h2>
+
+<h3 id="using-docker-compose">Using Docker Compose</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">version</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3.8'</span>
+<span class="na">services</span><span class="pi">:</span>
+  <span class="na">postgres</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">postgres:13</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">POSTGRES_USER</span><span class="pi">:</span> <span class="s">airflow</span>
+      <span class="na">POSTGRES_PASSWORD</span><span class="pi">:</span> <span class="s">airflow</span>
+      <span class="na">POSTGRES_DB</span><span class="pi">:</span> <span class="s">airflow</span>
+    <span class="na">volumes</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">postgres_db_volume:/var/lib/postgresql/data</span>
+
+  <span class="na">airflow-webserver</span><span class="pi">:</span>
+    <span class="na">image</span><span class="pi">:</span> <span class="s">apache/airflow:2.7.0</span>
+    <span class="na">depends_on</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">postgres</span>
+    <span class="na">environment</span><span class="pi">:</span>
+      <span class="na">AIRFLOW__CORE__EXECUTOR</span><span class="pi">:</span> <span class="s">LocalExecutor</span>
+      <span class="na">AIRFLOW__DATABASE__SQL_ALCHEMY_CONN</span><span class="pi">:</span> <span class="s">postgresql+psycopg2://airflow:airflow@postgres/airflow</span>
+    <span class="na">ports</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">8080:8080"</span>
+    <span class="na">command</span><span class="pi">:</span> <span class="s">webserver</span>
+</code></pre></div></div>
+
+<h3 id="creating-your-first-dag">Creating Your First DAG</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'owner'</span><span class="p">:</span> <span class="s">'data-team'</span><span class="p">,</span>
+    <span class="s">'depends_on_past'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">'start_date'</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s">'email_on_failure'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'email_on_retry'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">'retries'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">'retry_delay'</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s">'data_pipeline_example'</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s">'A simple data pipeline DAG'</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">'@daily'</span><span class="p">,</span>
+    <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">extract_data</span><span class="p">():</span>
+    <span class="c1"># Your data extraction logic
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"Extracting data from source..."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s">"data_extracted"</span>
+
+<span class="k">def</span> <span class="nf">transform_data</span><span class="p">():</span>
+    <span class="c1"># Your data transformation logic
+</span>    <span class="k">print</span><span class="p">(</span><span class="s">"Transforming data..."</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s">"data_transformed"</span>
+
+<span class="n">extract_task</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'extract_data'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">extract_data</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">transform_task</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'transform_data'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">transform_data</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">load_task</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'load_data'</span><span class="p">,</span>
+    <span class="n">bash_command</span><span class="o">=</span><span class="s">'echo "Loading data to warehouse..."'</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="c1"># Define task dependencies
+</span><span class="n">extract_task</span> <span class="o">&gt;&gt;</span> <span class="n">transform_task</span> <span class="o">&gt;&gt;</span> <span class="n">load_task</span>
+</code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="1-dag-design-principles">1. DAG Design Principles</h3>
+<ul>
+  <li>Keep DAGs simple and focused</li>
+  <li>Use meaningful task and DAG names</li>
+  <li>Implement proper error handling</li>
+  <li>Set appropriate timeouts and retries</li>
+</ul>
+
+<h3 id="2-resource-management">2. Resource Management</h3>
+<ul>
+  <li>Configure worker pools for different workloads</li>
+  <li>Use task concurrency limits</li>
+  <li>Monitor resource usage</li>
+</ul>
+
+<h3 id="3-testing-and-monitoring">3. Testing and Monitoring</h3>
+<ul>
+  <li>Test DAGs locally before deployment</li>
+  <li>Set up alerting for failed tasks</li>
+  <li>Use Airflow’s built-in logging</li>
+</ul>
+
+<h2 id="advanced-features">Advanced Features</h2>
+
+<h3 id="dynamic-dag-generation">Dynamic DAG Generation</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">Variable</span>
+
+<span class="c1"># Get configuration from Airflow Variables
+</span><span class="n">tables</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"tables_to_process"</span><span class="p">,</span> <span class="n">deserialize_json</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">table</span> <span class="ow">in</span> <span class="n">tables</span><span class="p">:</span>
+    <span class="n">task</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="sa">f</span><span class="s">'process_</span><span class="si">{</span><span class="n">table</span><span class="si">}</span><span class="s">'</span><span class="p">,</span>
+        <span class="n">python_callable</span><span class="o">=</span><span class="n">process_table</span><span class="p">,</span>
+        <span class="n">op_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s">'table_name'</span><span class="p">:</span> <span class="n">table</span><span class="p">},</span>
+        <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+    <span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="custom-operators">Custom Operators</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">airflow.models</span> <span class="kn">import</span> <span class="n">BaseOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.utils.decorators</span> <span class="kn">import</span> <span class="n">apply_defaults</span>
+
+<span class="k">class</span> <span class="nc">DataQualityOperator</span><span class="p">(</span><span class="n">BaseOperator</span><span class="p">):</span>
+    <span class="o">@</span><span class="n">apply_defaults</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">table_name</span> <span class="o">=</span> <span class="n">table_name</span>
+    
+    <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="c1"># Custom data quality checks
+</span>        <span class="k">pass</span>
+</code></pre></div></div>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>In upcoming posts, I’ll cover:</p>
+<ul>
+  <li>Advanced Airflow patterns and best practices</li>
+  <li>Integrating Airflow with cloud services</li>
+  <li>Monitoring and troubleshooting Airflow deployments</li>
+  <li>Building reusable Airflow components</li>
+</ul>
+
+<p>Airflow transforms how we think about data workflow orchestration, making complex pipelines manageable and reliable.</p>
+
+<hr />
+
+<p><em>Questions about Airflow setup or DAG design? Let me know in the comments!</em></p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=Setting%20up%20Apache%20Airflow%20for%20Workflow%20Orchestration&url=http://0.0.0.0:4000/2024/02/15/apache-airflow-workflow-orchestration/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://0.0.0.0:4000/2024/02/15/apache-airflow-workflow-orchestration/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://0.0.0.0:4000/2024/02/15/apache-airflow-workflow-orchestration/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://0.0.0.0:4000/2024/02/15/apache-airflow-workflow-orchestration/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/25/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 25, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/20/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">December 20, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/04/15/mlops-deployment-strategies/">MLOps: Machine Learning Deployment Strategies</a></h4>
+          <div class="post-meta">April 15, 2024</div>
+          <div class="post-excerpt">MLOps: Machine Learning Deployment Strategies
+
+</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/04/01/data-quality-monitoring-strategies/">Data Quality and Monitoring Strategies</a></h4>
+          <div class="post-meta">April 01, 2024</div>
+          <div class="post-excerpt">Data Quality and Monitoring Strategies
+
+</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/real-time-data-processing-kafka/">Real-time Data Processing with Apache Kafka</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">Real-time Data Processing with Apache Kafka
+
+</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/01/building-modern-data-lakes/">Building Data Lakes with Modern Tools</a></h4>
+          <div class="post-meta">March 01, 2024</div>
+          <div class="post-excerpt">Learn how to design and implement modern data lake architectures using cloud technologies for scalable, cost-effective data storage and analytics....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/02/01/building-data-pipelines-with-python/">Building Scalable Data Pipelines with Python</a></h4>
+          <div class="post-meta">February 01, 2024</div>
+          <div class="post-excerpt">Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/01/15/welcome-to-my-blog/">Welcome to My Data Engineering Blog</a></h4>
+          <div class="post-meta">January 15, 2024</div>
+          <div class="post-excerpt">Hello and welcome to my blog! I'm excited to share my experiences and insights in the world of data engineering,...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>

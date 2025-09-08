@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://niranjanagaram.github.io/sitemap.xml

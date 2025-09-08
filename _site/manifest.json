@@ -1,0 +1,21 @@
+{
+  "name": "Niranjan's Data Engineering Blog",
+  "short_name": "Data Blog",
+  "description": "A data engineer's journey through data pipelines, machine learning, and analytics",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/assets/images/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/assets/images/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}
