@@ -6,21 +6,21 @@ title: "Contact - Niranjan Agaram"
 <!-- Contact Hero -->
 <section class="contact-hero">
     <div class="hero-content">
-        <h1>Ready to Transform Your Business with AI?</h1>
-        <p class="hero-subtitle">Let's discuss how I can help you achieve 85% faster response times and $485K+ annual savings with enterprise AI solutions.</p>
+        <h1>Ready to Build AI Agents for Your Industry?</h1>
+        <p class="hero-subtitle">10+ years evolving from data engineering to agentic AI across healthcare, retail, marketing, and real estate domains.</p>
         
         <div class="contact-stats">
             <div class="stat">
-                <div class="stat-number">24hr</div>
-                <div class="stat-label">Response Time</div>
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years Experience</div>
             </div>
             <div class="stat">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Projects Delivered</div>
+                <div class="stat-number">4</div>
+                <div class="stat-label">Industry Domains</div>
             </div>
             <div class="stat">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Client Satisfaction</div>
+                <div class="stat-number">SAS→AI</div>
+                <div class="stat-label">Tech Evolution</div>
             </div>
         </div>
     </div>
@@ -127,23 +127,23 @@ title: "Contact - Niranjan Agaram"
     
     <div class="faq-grid">
         <div class="faq-item">
-            <h3>What's your typical response time?</h3>
-            <p>Email: 2-4 hours | WhatsApp: Instant | LinkedIn: 4-8 hours</p>
+            <h3>What's your background?</h3>
+            <p>10+ years: Web dev → SAS/R → Python → LangChain/CrewAI evolution</p>
         </div>
         
         <div class="faq-item">
-            <h3>Do you work with startups?</h3>
-            <p>Yes! I offer strategy sessions starting at $500 and MVP development from $8K.</p>
+            <h3>Which industries do you specialize in?</h3>
+            <p>Healthcare, Retail, Marketing, and Real Estate with deep data pipeline experience.</p>
         </div>
         
         <div class="faq-item">
-            <h3>What industries do you serve?</h3>
-            <p>FinTech, Healthcare, E-commerce, SaaS, and Fortune 500 enterprises.</p>
+            <h3>What makes your AI agents different?</h3>
+            <p>10+ years of data engineering experience integrated with modern agentic AI frameworks.</p>
         </div>
         
         <div class="faq-item">
-            <h3>Do you offer ongoing support?</h3>
-            <p>Yes, I provide 3-6 months of post-deployment support and optimization.</p>
+            <h3>Do you work with existing data systems?</h3>
+            <p>Yes, I specialize in integrating AI agents with legacy SAS, R, and Python systems.</p>
         </div>
     </div>
 </section>

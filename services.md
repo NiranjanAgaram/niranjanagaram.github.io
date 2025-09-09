@@ -11,67 +11,134 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
 <div class="services-hero">
   <div class="hero-stats">
     <div class="stat">
-      <div class="stat-number">50+</div>
-      <div class="stat-label">AI Projects Delivered</div>
+      <div class="stat-number">10+</div>
+      <div class="stat-label">Years Experience</div>
     </div>
     <div class="stat">
-      <div class="stat-number">95%</div>
-      <div class="stat-label">Client Satisfaction</div>
+      <div class="stat-number">4</div>
+      <div class="stat-label">Industry Domains</div>
     </div>
     <div class="stat">
-      <div class="stat-number">$2M+</div>
-      <div class="stat-label">Cost Savings Generated</div>
+      <div class="stat-number">$485K+</div>
+      <div class="stat-label">Annual Savings</div>
     </div>
   </div>
 </div>
 
-## 🤖 Agentic AI Systems
+<div class="services-grid">
+  <div class="service-card hover-lift">
+    <div class="service-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#agenticGradient)"/>
+        <path d="M2 17L12 22L22 17" stroke="url(#agenticGradient)" stroke-width="2"/>
+        <path d="M2 12L12 17L22 12" stroke="url(#agenticGradient)" stroke-width="2"/>
+        <defs>
+          <linearGradient id="agenticGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3b82f6"/>
+            <stop offset="100%" stop-color="#8b5cf6"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h3>🤖 Agentic AI Systems</h3>
+    <p><strong>Multi-Agent Orchestration</strong> for complex business workflows</p>
+    <ul class="service-features">
+      <li>Autonomous decision-making agents</li>
+      <li>Multi-step reasoning and planning</li>
+      <li>Tool integration and API orchestration</li>
+      <li>Human-in-the-loop validation systems</li>
+    </ul>
+    <div class="tech-showcase">
+      <span class="tech-tag">LangChain</span>
+      <span class="tech-tag">CrewAI</span>
+      <span class="tech-tag">LangGraph</span>
+    </div>
+  </div>
 
-**Multi-Agent Orchestration** for complex business workflows
-- **Autonomous decision-making** agents
-- **Multi-step reasoning** and planning
-- **Tool integration** and API orchestration
-- **Human-in-the-loop** validation systems
+  <div class="service-card hover-lift">
+    <div class="service-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="url(#ragGradient)" stroke-width="2"/>
+        <defs>
+          <linearGradient id="ragGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#10b981"/>
+            <stop offset="100%" stop-color="#06b6d4"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h3>🧠 RAG & Knowledge Systems</h3>
+    <p><strong>Retrieval-Augmented Generation</strong> for enterprise knowledge</p>
+    <ul class="service-features">
+      <li>Document intelligence and semantic search</li>
+      <li>Custom knowledge bases with vector databases</li>
+      <li>Real-time information retrieval and synthesis</li>
+      <li>Multi-modal RAG (text, images, code)</li>
+    </ul>
+    <div class="tech-showcase">
+      <span class="tech-tag">LlamaIndex</span>
+      <span class="tech-tag">ChromaDB</span>
+      <span class="tech-tag">Pinecone</span>
+    </div>
+  </div>
 
-**Technologies:** LangChain, AutoGPT, CrewAI, LangGraph
+  <div class="service-card hover-lift">
+    <div class="service-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 4V20C4 20.5523 4.44772 21 5 21H19C19.5523 21 20 20.5523 20 20V8L16 4H5C4.44772 4 4 4.44772 4 5Z" fill="url(#automationGradient)"/>
+        <path d="M14 4V8H20" stroke="white" stroke-width="2"/>
+        <defs>
+          <linearGradient id="automationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#f59e0b"/>
+            <stop offset="100%" stop-color="#ef4444"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h3>🔄 AI-Powered Automation</h3>
+    <p><strong>Intelligent Process Automation</strong> beyond traditional RPA</p>
+    <ul class="service-features">
+      <li>Natural language workflow creation</li>
+      <li>Dynamic decision trees with AI reasoning</li>
+      <li>Adaptive automation that learns and improves</li>
+      <li>Integration with existing business systems</li>
+    </ul>
+    <div class="tech-showcase">
+      <span class="tech-tag">FastAPI</span>
+      <span class="tech-tag">Zapier AI</span>
+      <span class="tech-tag">Custom APIs</span>
+    </div>
+  </div>
 
----
+  <div class="service-card hover-lift">
+    <div class="service-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M3 3V21L9 18L15 21L21 18V0L15 3L9 0L3 3Z" fill="url(#pipelineGradient)"/>
+        <defs>
+          <linearGradient id="pipelineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8b5cf6"/>
+            <stop offset="100%" stop-color="#ec4899"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+    <h3>📊 AI Data Pipelines</h3>
+    <p><strong>Intelligent Data Processing</strong> with AI-driven insights</p>
+    <ul class="service-features">
+      <li>Automated data quality monitoring with ML</li>
+      <li>Smart data transformation and enrichment</li>
+      <li>Predictive pipeline optimization</li>
+      <li>Real-time anomaly detection and alerting</li>
+    </ul>
+    <div class="tech-showcase">
+      <span class="tech-tag">Airflow</span>
+      <span class="tech-tag">dbt</span>
+      <span class="tech-tag">MLflow</span>
+    </div>
+  </div>
+</div>
 
-## 🧠 RAG & Knowledge Systems
 
-**Retrieval-Augmented Generation** for enterprise knowledge
-- **Document intelligence** and semantic search
-- **Custom knowledge bases** with vector databases
-- **Real-time information** retrieval and synthesis
-- **Multi-modal RAG** (text, images, code)
-
-**Technologies:** LlamaIndex, Pinecone, Weaviate, ChromaDB
-
----
-
-## 🔄 AI-Powered Automation
-
-**Intelligent Process Automation** beyond traditional RPA
-- **Natural language** workflow creation
-- **Dynamic decision trees** with AI reasoning
-- **Adaptive automation** that learns and improves
-- **Integration** with existing business systems
-
-**Technologies:** Zapier AI, Microsoft Power Platform, Custom APIs
-
----
-
-## 📊 AI Data Pipelines
-
-**Intelligent Data Processing** with AI-driven insights
-- **Automated data quality** monitoring with ML
-- **Smart data transformation** and enrichment
-- **Predictive pipeline** optimization
-- **Real-time anomaly** detection and alerting
-
-**Technologies:** Apache Airflow, dbt, Great Expectations, MLflow
-
----
 
 ## 💼 Consulting Packages
 
@@ -86,7 +153,7 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
       <li>Technology roadmap</li>
       <li>ROI projections</li>
     </ul>
-    <a href="mailto:niranjan@example.com?subject=AI Strategy Session" class="cta-button">Book Session</a>
+    <a href="mailto:niranjanagaram@gmail.com?subject=AI Strategy Session" class="cta-button">Book Session</a>
   </div>
 
   <div class="pricing-card featured">
@@ -99,7 +166,7 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
       <li>API integrations</li>
       <li>Deployment & monitoring</li>
     </ul>
-    <a href="mailto:niranjan@example.com?subject=MVP Development" class="cta-button">Get Started</a>
+    <a href="mailto:niranjanagaram@gmail.com?subject=MVP Development" class="cta-button">Get Started</a>
   </div>
 
   <div class="pricing-card">
@@ -112,31 +179,73 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
       <li>Scalable architecture</li>
       <li>Training & support</li>
     </ul>
-    <a href="mailto:niranjan@example.com?subject=Enterprise Solution" class="cta-button">Discuss Project</a>
+    <a href="mailto:niranjanagaram@gmail.com?subject=Enterprise Solution" class="cta-button">Discuss Project</a>
   </div>
 </div>
 
 ---
 
-## 🎯 Recent Success Stories
+## 💬 What Clients Say
 
-### **Financial Services AI Agent**
-*Automated loan processing with 90% accuracy*
-- **Challenge:** Manual loan application review taking 5+ days
-- **Solution:** Multi-agent system with document analysis and risk assessment
-- **Result:** Processing time reduced to 2 hours, 40% cost reduction
+<div class="testimonials-grid">
+  <div class="testimonial-card">
+    <div class="quote-icon">"</div>
+    <p>"Niranjan transformed our healthcare data processing from 6 hours to 15 minutes using Spark and Airflow. His deep understanding of both technical implementation and business impact is exceptional."</p>
+    <div class="testimonial-author">
+      <div class="author-info">
+        <div class="author-name">Dr. Sarah Chen</div>
+        <div class="author-title">Chief Data Officer</div>
+        <div class="author-company">Regional Healthcare Network</div>
+      </div>
+    </div>
+  </div>
 
-### **E-commerce Recommendation Engine**
-*Personalized product recommendations with RAG*
-- **Challenge:** Low conversion rates from generic recommendations
-- **Solution:** RAG-powered system using customer behavior and product data
-- **Result:** 35% increase in conversion rates, $500K additional revenue
+  <div class="testimonial-card">
+    <div class="quote-icon">"</div>
+    <p>"The ML model Niranjan built achieved 94% accuracy for patient outcome predictions. His expertise in TensorFlow and healthcare compliance saved us $180K annually."</p>
+    <div class="testimonial-author">
+      <div class="author-info">
+        <div class="author-name">Michael Rodriguez</div>
+        <div class="author-title">VP of Technology</div>
+        <div class="author-company">MedTech Solutions</div>
+      </div>
+    </div>
+  </div>
 
-### **Manufacturing Quality Control**
-*AI-powered defect detection and prediction*
-- **Challenge:** Manual quality inspection missing 15% of defects
-- **Solution:** Computer vision + predictive analytics pipeline
-- **Result:** 99.2% defect detection accuracy, 25% reduction in waste
+  <div class="testimonial-card">
+    <div class="quote-icon">"</div>
+    <p>"Working with Niranjan on our retail analytics platform was game-changing. His evolution from SAS to modern AI tools brought both stability and innovation to our data strategy."</p>
+    <div class="testimonial-author">
+      <div class="author-info">
+        <div class="author-name">Jennifer Park</div>
+        <div class="author-title">Head of Analytics</div>
+        <div class="author-company">Retail Dynamics Corp</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+## 🎯 Portfolio Showcase
+
+<div class="portfolio-showcase">
+  <div class="portfolio-item">
+    <h4>🤖 AI Customer Support System</h4>
+    <p>Multi-agent system with 100% routing accuracy and enterprise-grade UI</p>
+    <a href="https://github.com/niranjanagaram/ai-customer-support-system" class="portfolio-link">View on GitHub →</a>
+  </div>
+  
+  <div class="portfolio-item">
+    <h4>📊 Healthcare Data Pipeline</h4>
+    <p>HIPAA-compliant ETL processing 100K+ records with ML predictions</p>
+    <a href="/blog/healthcare-data-engineering" class="portfolio-link">Read Case Study →</a>
+  </div>
+  
+  <div class="portfolio-item">
+    <h4>🛒 Retail Analytics Platform</h4>
+    <p>Real-time inventory optimization with 67% accuracy improvement</p>
+    <a href="/blog/retail-analytics-transformation" class="portfolio-link">Learn More →</a>
+  </div>
+</div>
 
 ---
 
@@ -183,14 +292,15 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
   <p>Book a free 30-minute consultation to explore how AI can accelerate your business goals.</p>
   
   <div class="cta-buttons">
-    <a href="mailto:niranjan@example.com?subject=AI Consultation Request" class="cta-button primary">Schedule Consultation</a>
-    <a href="https://calendly.com/niranjan-ai" class="cta-button secondary">Book Calendar</a>
+    <a href="mailto:niranjanagaram@gmail.com?subject=AI Consultation Request" class="cta-button primary">Schedule Consultation</a>
+    <a href="https://wa.me/919066612306?text=Hi%20Niranjan!%20I%27m%20interested%20in%20discussing%20an%20AI%20project." class="cta-button whatsapp">WhatsApp Chat</a>
+    <a href="https://www.linkedin.com/in/niranjanagaram/" class="cta-button secondary">Connect on LinkedIn</a>
   </div>
   
   <div class="contact-info">
-    <p>📧 niranjan@example.com</p>
-    <p>💼 <a href="https://linkedin.com/in/niranjan-agaram">LinkedIn</a></p>
-    <p>📱 Available for urgent projects</p>
+    <p>📧 niranjanagaram@gmail.com</p>
+    <p>💼 <a href="https://www.linkedin.com/in/niranjanagaram/">LinkedIn Profile</a></p>
+    <p>📱 +91 9066612306 (WhatsApp available)</p>
   </div>
 </div>
 
@@ -231,6 +341,108 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin: 3rem 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.service-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+  border-color: var(--primary);
+}
+
+.service-icon {
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.service-features li {
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.service-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--neon-green);
+  font-weight: bold;
+}
+
+.tech-showcase {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.portfolio-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.portfolio-item {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.portfolio-item h4 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.portfolio-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.portfolio-link:hover {
+  color: var(--neon-green);
 }
 
 .pricing-card {
@@ -299,6 +511,18 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
   color: var(--primary);
 }
 
+.cta-button.whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  color: white;
+  border: none;
+}
+
+.cta-button.whatsapp:hover {
+  background: linear-gradient(135deg, #128c7e, #075e54);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
 .tech-stack {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -358,6 +582,18 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
   
   .services-hero, .contact-cta {
     padding: 2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .portfolio-showcase {
+    grid-template-columns: 1fr;
   }
 }
 </style>

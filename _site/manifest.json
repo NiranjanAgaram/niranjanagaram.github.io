@@ -1,21 +1,39 @@
 {
-  "name": "Niranjan's Data Engineering Blog",
-  "short_name": "Data Blog",
-  "description": "A data engineer's journey through data pipelines, machine learning, and analytics",
+  "name": "Niranjan Agaram - AI & Data Engineering Consultant",
+  "short_name": "Niranjan AI",
+  "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/assets/images/icon-192.svg",
+      "src": "/assets/images/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/png"
     },
     {
-      "src": "/assets/images/icon-512.svg",
+      "src": "/assets/images/icon-512.png", 
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity", "technology"],
+  "lang": "en-US",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/assets/images/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/assets/images/screenshot-mobile.png", 
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ]
 }

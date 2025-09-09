@@ -21,17 +21,37 @@
     <meta property="twitter:description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
     <meta property="twitter:image" content="{{ '/assets/images/og-image.svg' | absolute_url }}">
     
-    <!-- Structured Data -->
+    <!-- Enhanced Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Blog",
-      "name": "{{ site.title }}",
-      "description": "{{ site.description }}",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
       "url": "{{ site.url }}",
-      "author": {
-        "@type": "Person",
-        "name": "{{ site.author.name }}"
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
       }
     }
     </script>
@@ -45,8 +65,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="manifest" href="{{ '/manifest.json' | relative_url }}">
     <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
     <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
     <script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/performance.js' | relative_url }}" defer></script>
     
     <!-- Analytics -->
     {% if site.analytics.google.tracking_id %}
