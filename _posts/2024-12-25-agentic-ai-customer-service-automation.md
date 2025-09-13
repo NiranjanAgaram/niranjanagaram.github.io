@@ -10,10 +10,10 @@ author: "Niranjan Agaram"
 
 # Building an Agentic AI Customer Service System: A Complete Case Study
 
-**Client:** Mid-size SaaS company (500+ customers)  
-**Challenge:** 24/7 customer support with limited staff  
-**Solution:** Multi-agent AI system with human handoff  
-**Results:** 85% faster response time, 40% higher satisfaction  
+**Project:** Customer Service Automation System  
+**Challenge:** Scaling customer support operations efficiently  
+**Solution:** Multi-agent AI system with intelligent routing  
+**Outcome:** Significant improvements in response time and customer satisfaction  
 
 ## The Problem
 
@@ -28,7 +28,7 @@ My client was struggling with:
 
 I designed a **multi-agent system** with specialized AI agents:
 
-### 🤖 Agent Hierarchy
+### Agent Hierarchy
 
 ```python
 from langchain.agents import AgentExecutor
@@ -78,7 +78,7 @@ class CustomerServiceOrchestrator:
         return response.content.strip()
 ```
 
-### 🧠 RAG-Powered Knowledge Base
+### RAG-Powered Knowledge Base
 
 ```python
 from langchain.vectorstores import Pinecone
@@ -118,7 +118,7 @@ class KnowledgeBase:
         return self.vectorstore.similarity_search(query, k=k)
 ```
 
-### ⚡ Technical Support Agent
+### Technical Support Agent
 
 ```python
 class TechnicalSupportAgent:
@@ -166,7 +166,7 @@ class TechnicalSupportAgent:
         }
 ```
 
-### 💳 Billing Agent with API Integration
+### Billing Agent with API Integration
 
 ```python
 class BillingAgent:

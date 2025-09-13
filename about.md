@@ -51,7 +51,7 @@ title: "About - Niranjan Agaram"
             <div class="timeline-year">2014-2016</div>
             <div class="timeline-content">
                 <h3>Web Development Foundation</h3>
-                <p>Started as a web developer, building user interfaces and learning the importance of data flow in applications. Discovered how much valuable data gets generated from user interactions.</p>
+                <p>My journey began in web development, where I first encountered the challenges of handling user data and realized the untapped potential in the information flowing through applications.</p>
                 <div class="tech-tags">
                     <span class="tech-tag">HTML/CSS</span>
                     <span class="tech-tag">JavaScript</span>

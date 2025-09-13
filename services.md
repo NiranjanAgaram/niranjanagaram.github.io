@@ -193,9 +193,9 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
     <p>"Niranjan transformed our healthcare data processing from 6 hours to 15 minutes using Spark and Airflow. His deep understanding of both technical implementation and business impact is exceptional."</p>
     <div class="testimonial-author">
       <div class="author-info">
-        <div class="author-name">Dr. Sarah Chen</div>
-        <div class="author-title">Chief Data Officer</div>
-        <div class="author-company">Regional Healthcare Network</div>
+        <div class="author-name">Healthcare Client</div>
+        <div class="author-title">Data Engineering Team</div>
+        <div class="author-company">Confidential - Healthcare Sector</div>
       </div>
     </div>
   </div>
@@ -205,9 +205,9 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
     <p>"The ML model Niranjan built achieved 94% accuracy for patient outcome predictions. His expertise in TensorFlow and healthcare compliance saved us $180K annually."</p>
     <div class="testimonial-author">
       <div class="author-info">
-        <div class="author-name">Michael Rodriguez</div>
+        <div class="author-name">Technology Executive</div>
         <div class="author-title">VP of Technology</div>
-        <div class="author-company">MedTech Solutions</div>
+        <div class="author-company">Confidential - MedTech Company</div>
       </div>
     </div>
   </div>
@@ -217,9 +217,9 @@ Transform your business with cutting-edge **Agentic AI** and **Intelligent Autom
     <p>"Working with Niranjan on our retail analytics platform was game-changing. His evolution from SAS to modern AI tools brought both stability and innovation to our data strategy."</p>
     <div class="testimonial-author">
       <div class="author-info">
-        <div class="author-name">Jennifer Park</div>
+        <div class="author-name">Analytics Leader</div>
         <div class="author-title">Head of Analytics</div>
-        <div class="author-company">Retail Dynamics Corp</div>
+        <div class="author-company">Confidential - Retail Company</div>
       </div>
     </div>
   </div>
