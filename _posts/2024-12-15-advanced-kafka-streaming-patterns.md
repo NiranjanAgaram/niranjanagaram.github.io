@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Advanced Kafka Streaming Patterns for Real-Time Analytics"
-date: 2024-12-15
+date: 2024-06-20
 tags: [kafka, streaming, real-time, analytics, patterns]
 excerpt: "Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics systems."
 image: "/assets/images/posts/kafka-streaming.svg"

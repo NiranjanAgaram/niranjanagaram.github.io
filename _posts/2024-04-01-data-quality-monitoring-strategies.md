@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Data Quality and Monitoring Strategies"
-date: 2024-04-01
+date: 2022-10-15
 tags: [data-quality, monitoring, data-governance, great-expectations, observability]
 ---
 

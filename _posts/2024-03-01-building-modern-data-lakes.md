@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building Data Lakes with Modern Tools"
-date: 2024-03-01
+date: 2022-04-10
 tags: [data-lakes, cloud-storage, data-architecture, aws, gcp, azure]
 excerpt: "Learn how to design and implement modern data lake architectures using cloud technologies for scalable, cost-effective data storage and analytics."
 image: "/assets/images/posts/data-lakes.svg"

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "MLOps: Machine Learning Deployment Strategies"
-date: 2024-04-15
+date: 2023-04-20
 tags: [mlops, machine-learning, deployment, model-serving, kubernetes, docker]
 ---
 

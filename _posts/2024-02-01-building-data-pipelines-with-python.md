@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building Scalable Data Pipelines with Python"
-date: 2024-02-01
+date: 2021-05-15
 tags: [python, data-pipelines, etl, best-practices]
 excerpt: "Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using Python."
 image: "/assets/images/posts/python-pipelines.svg"

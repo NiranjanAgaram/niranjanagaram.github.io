@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I tested SAS and Python on our actual healthcare dataset. The results surprised me, and not always in a good way.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4009/2020/06/18/sas-vs-python-performance-comparison/">
+    <meta property="og:title" content="SAS vs Python: Performance Comparison on Real Healthcare Data">
+    <meta property="og:description" content="I tested SAS and Python on our actual healthcare dataset. The results surprised me, and not always in a good way.">
+    <meta property="og:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4009/2020/06/18/sas-vs-python-performance-comparison/">
+    <meta property="twitter:title" content="SAS vs Python: Performance Comparison on Real Healthcare Data">
+    <meta property="twitter:description" content="I tested SAS and Python on our actual healthcare dataset. The results surprised me, and not always in a good way.">
+    <meta property="twitter:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Enhanced Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
+      "url": "http://localhost:4009",
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
+      }
+    }
+    </script>
+    
+    <title>SAS vs Python: Performance Comparison on Real Healthcare Data</title>
+    <link rel="canonical" href="http://localhost:4009/2020/06/18/sas-vs-python-performance-comparison/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/performance.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">SAS vs Python: Performance Comparison on Real Healthcare Data</h1>
+    <div class="post-meta">
+      <time datetime="2020-06-18T00:00:00+05:30" itemprop="datePublished">
+        June 18, 2020
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 7 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">sas</span>
+      
+        <span class="tag" itemprop="keywords">python</span>
+      
+        <span class="tag" itemprop="keywords">performance</span>
+      
+        <span class="tag" itemprop="keywords">healthcare-data</span>
+      
+        <span class="tag" itemprop="keywords">benchmarking</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="sas-vs-python-performance-comparison-on-real-healthcare-data">SAS vs Python: Performance Comparison on Real Healthcare Data</h1>
+
+<p>After 4 months of using both SAS and Python, my manager finally asked the question I was dreading: “Which one should we standardize on?”</p>
+
+<p>So I did what any data person would do - I ran some tests. Here’s what I found when I compared SAS and Python on our actual healthcare data.</p>
+
+<h2 id="the-dataset">The Dataset</h2>
+
+<p>Our main patient table:</p>
+<ul>
+  <li><strong>Size</strong>: 1.8 million rows, 47 columns</li>
+  <li><strong>File size</strong>: 2.3 GB CSV</li>
+  <li><strong>Data types</strong>: Mix of numeric, dates, and text</li>
+  <li><strong>Messiness level</strong>: High (real-world healthcare data is… special)</li>
+</ul>
+
+<h2 id="test-environment">Test Environment</h2>
+
+<ul>
+  <li><strong>Machine</strong>: Dell workstation, 16GB RAM, SSD</li>
+  <li><strong>SAS</strong>: SAS 9.4 (company license)</li>
+  <li><strong>Python</strong>: 3.7 with pandas 1.0.3</li>
+  <li><strong>Tests run</strong>: 5 times each, averaged results</li>
+</ul>
+
+<h2 id="the-tests">The Tests</h2>
+
+<p>I picked 5 common operations we do regularly:</p>
+
+<h3 id="test-1-reading-the-data">Test 1: Reading the Data</h3>
+
+<p><strong>SAS</strong>:</p>
+<div class="language-sas highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">data</span> <span class="nv">patients</span><span class="p">;</span>
+    <span class="k">infile</span> <span class="s1">'patient_data.csv'</span> <span class="n">dlm</span><span class="o">=</span><span class="s1">','</span> <span class="n">firstobs</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+    <span class="k">input</span> <span class="n">patient_id</span> <span class="kt">$</span> <span class="n">name</span> <span class="kt">$</span> <span class="n">age</span> <span class="n">dob</span> <span class="p">:</span><span class="n">date9</span><span class="p">.</span> <span class="n">department</span> <span class="kt">$</span> <span class="p">...;</span>
+<span class="k">run</span><span class="p">;</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 47 seconds</p>
+
+<p><strong>Python</strong>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'patient_data.csv'</span><span class="p">,</span> 
+                 <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s">'dob'</span><span class="p">],</span>
+                 <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s">'patient_id'</span><span class="p">:</span> <span class="s">'str'</span><span class="p">,</span> <span class="s">'department'</span><span class="p">:</span> <span class="s">'category'</span><span class="p">})</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 1 minute 23 seconds</p>
+
+<p><strong>Winner</strong>: SAS (and it’s not close)</p>
+
+<h3 id="test-2-basic-summary-statistics">Test 2: Basic Summary Statistics</h3>
+
+<p><strong>SAS</strong>:</p>
+<div class="language-sas highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">proc</span> <span class="k">means</span> <span class="k">data</span><span class="o">=</span><span class="n">patients</span><span class="p">;</span>
+    <span class="k">var</span> <span class="n">age</span> <span class="n">length_of_stay</span><span class="p">;</span>
+    <span class="k">class</span> <span class="n">department</span><span class="p">;</span>
+<span class="k">run</span><span class="p">;</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 12 seconds</p>
+
+<p><strong>Python</strong>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">summary</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'department'</span><span class="p">)[</span><span class="s">'age'</span><span class="p">,</span> <span class="s">'length_of_stay'</span><span class="p">].</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 8 seconds</p>
+
+<p><strong>Winner</strong>: Python (barely)</p>
+
+<h3 id="test-3-complex-filtering-and-aggregation">Test 3: Complex Filtering and Aggregation</h3>
+
+<p>This is where it gets interesting. I needed to:</p>
+<ul>
+  <li>Filter patients admitted in last 6 months</li>
+  <li>Group by department and age group</li>
+  <li>Calculate multiple statistics</li>
+</ul>
+
+<p><strong>SAS</strong>:</p>
+<div class="language-sas highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">proc</span> <span class="k">sql</span><span class="p">;</span>
+    <span class="k">create</span> <span class="k">table</span> <span class="n">summary</span> <span class="k">as</span>
+    <span class="k">select</span> <span class="n">department</span><span class="p">,</span>
+           <span class="n">case</span> <span class="n">when</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="m">18</span> <span class="k">then</span> <span class="s1">'Child'</span>
+                <span class="n">when</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="m">65</span> <span class="k">then</span> <span class="s1">'Adult'</span>
+                <span class="k">else</span> <span class="s1">'Senior'</span> <span class="k">end</span> <span class="k">as</span> <span class="n">age_group</span><span class="p">,</span>
+           <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="n">patient_count</span><span class="p">,</span>
+           <span class="k">mean</span><span class="p">(</span><span class="n">length_of_stay</span><span class="p">)</span> <span class="k">as</span> <span class="n">avg_los</span><span class="p">,</span>
+           <span class="k">std</span><span class="p">(</span><span class="n">length_of_stay</span><span class="p">)</span> <span class="k">as</span> <span class="n">std_los</span>
+    <span class="k">from</span> <span class="n">patients</span>
+    <span class="k">where</span> <span class="n">admit_date</span> <span class="o">&gt;=</span> <span class="ld">'01JAN2020'd</span>
+    <span class="k">group</span> <span class="k">by</span> <span class="n">department</span><span class="p">,</span> <span class="n">calculated</span> <span class="n">age_group</span><span class="p">;</span>
+<span class="k">quit</span><span class="p">;</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 28 seconds</p>
+
+<p><strong>Python</strong>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Filter recent admissions
+</span><span class="n">recent</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'admit_date'</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s">'2020-01-01'</span><span class="p">]</span>
+
+<span class="c1"># Create age groups
+</span><span class="n">recent</span><span class="p">[</span><span class="s">'age_group'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">cut</span><span class="p">(</span><span class="n">recent</span><span class="p">[</span><span class="s">'age'</span><span class="p">],</span> 
+                            <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> 
+                            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s">'Child'</span><span class="p">,</span> <span class="s">'Adult'</span><span class="p">,</span> <span class="s">'Senior'</span><span class="p">])</span>
+
+<span class="c1"># Group and aggregate
+</span><span class="n">summary</span> <span class="o">=</span> <span class="p">(</span><span class="n">recent</span><span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'department'</span><span class="p">,</span> <span class="s">'age_group'</span><span class="p">])[</span><span class="s">'length_of_stay'</span><span class="p">]</span>
+           <span class="p">.</span><span class="n">agg</span><span class="p">([</span><span class="s">'count'</span><span class="p">,</span> <span class="s">'mean'</span><span class="p">,</span> <span class="s">'std'</span><span class="p">])</span>
+           <span class="p">.</span><span class="n">reset_index</span><span class="p">())</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 15 seconds</p>
+
+<p><strong>Winner</strong>: Python (significantly faster)</p>
+
+<h3 id="test-4-data-cleaning">Test 4: Data Cleaning</h3>
+
+<p>Cleaning messy diagnosis codes (removing spaces, standardizing format):</p>
+
+<p><strong>SAS</strong>:</p>
+<div class="language-sas highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">data</span> <span class="nv">clean_patients</span><span class="p">;</span>
+    <span class="k">set</span> <span class="n">patients</span><span class="p">;</span>
+    <span class="n">diagnosis_clean</span> <span class="o">=</span> <span class="k">compress</span><span class="p">(</span><span class="k">upcase</span><span class="p">(</span><span class="n">diagnosis</span><span class="p">),</span> <span class="s1">' .-'</span><span class="p">);</span>
+    <span class="k">if</span> <span class="k">length</span><span class="p">(</span><span class="n">diagnosis_clean</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="k">then</span> <span class="n">diagnosis_clean</span> <span class="o">=</span> <span class="s1">'UNKNOWN'</span><span class="p">;</span>
+<span class="k">run</span><span class="p">;</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 1 minute 45 seconds</p>
+
+<p><strong>Python</strong>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'diagnosis_clean'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'diagnosis'</span><span class="p">]</span>
+                        <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">upper</span><span class="p">()</span>
+                        <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s">'[ .-]'</span><span class="p">,</span> <span class="s">''</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                        <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">r</span><span class="s">'^.{0,2}$'</span><span class="p">,</span> <span class="s">'UNKNOWN'</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 22 seconds</p>
+
+<p><strong>Winner</strong>: Python (by a lot)</p>
+
+<h3 id="test-5-joining-with-reference-data">Test 5: Joining with Reference Data</h3>
+
+<p>Joining with a smaller lookup table (500 rows):</p>
+
+<p><strong>SAS</strong>:</p>
+<div class="language-sas highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">proc</span> <span class="k">sql</span><span class="p">;</span>
+    <span class="k">create</span> <span class="k">table</span> <span class="n">joined</span> <span class="k">as</span>
+    <span class="k">select</span> <span class="n">p</span><span class="p">.</span><span class="o">*</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">department_name</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">cost_center</span>
+    <span class="k">from</span> <span class="n">patients</span> <span class="n">p</span>
+    <span class="k">left</span> <span class="k">join</span> <span class="n">reference</span> <span class="n">r</span>
+    <span class="k">on</span> <span class="n">p</span><span class="p">.</span><span class="n">department</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">dept_code</span><span class="p">;</span>
+<span class="k">quit</span><span class="p">;</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 35 seconds</p>
+
+<p><strong>Python</strong>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">reference_df</span><span class="p">,</span> 
+                  <span class="n">left_on</span><span class="o">=</span><span class="s">'department'</span><span class="p">,</span> 
+                  <span class="n">right_on</span><span class="o">=</span><span class="s">'dept_code'</span><span class="p">,</span> 
+                  <span class="n">how</span><span class="o">=</span><span class="s">'left'</span><span class="p">)</span>
+</code></pre></div></div>
+<p><strong>Time</strong>: 18 seconds</p>
+
+<p><strong>Winner</strong>: Python</p>
+
+<h2 id="the-results-summary">The Results Summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>SAS Time</th>
+      <th>Python Time</th>
+      <th>Winner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reading Data</td>
+      <td>47s</td>
+      <td>83s</td>
+      <td>SAS</td>
+    </tr>
+    <tr>
+      <td>Summary Stats</td>
+      <td>12s</td>
+      <td>8s</td>
+      <td>Python</td>
+    </tr>
+    <tr>
+      <td>Complex Aggregation</td>
+      <td>28s</td>
+      <td>15s</td>
+      <td>Python</td>
+    </tr>
+    <tr>
+      <td>Data Cleaning</td>
+      <td>105s</td>
+      <td>22s</td>
+      <td>Python</td>
+    </tr>
+    <tr>
+      <td>Joining</td>
+      <td>35s</td>
+      <td>18s</td>
+      <td>Python</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="what-i-learned">What I Learned</h2>
+
+<h3 id="sas-strengths">SAS Strengths:</h3>
+<ol>
+  <li><strong>File I/O</strong>: SAS is incredibly efficient at reading large files</li>
+  <li><strong>Memory management</strong>: Handles big datasets without breaking a sweat</li>
+  <li><strong>Consistency</strong>: Performance is predictable</li>
+  <li><strong>Built for this</strong>: 40+ years of optimization for data processing</li>
+</ol>
+
+<h3 id="python-strengths">Python Strengths:</h3>
+<ol>
+  <li><strong>String operations</strong>: Regex and text processing are much faster</li>
+  <li><strong>Flexibility</strong>: Can optimize for specific use cases</li>
+  <li><strong>Modern algorithms</strong>: Benefits from newer computational approaches</li>
+  <li><strong>Memory efficiency</strong>: When configured properly</li>
+</ol>
+
+<h2 id="the-surprises">The Surprises</h2>
+
+<p><strong>Biggest surprise</strong>: Python’s string processing speed. Operations that took minutes in SAS completed in seconds with pandas.</p>
+
+<p><strong>Biggest disappointment</strong>: Reading large CSV files in Python is still painful. I tried different approaches:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Standard approach - slow
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'file.csv'</span><span class="p">)</span>
+
+<span class="c1"># Optimized dtypes - better but still slow
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'file.csv'</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s">'col1'</span><span class="p">:</span> <span class="s">'category'</span><span class="p">,</span> <span class="s">'col2'</span><span class="p">:</span> <span class="s">'int32'</span><span class="p">})</span>
+
+<span class="c1"># Chunking - faster but more complex
+</span><span class="n">chunks</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'file.csv'</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">chunks</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Even the optimized version was slower than SAS.</p>
+
+<h2 id="real-world-implications">Real-World Implications</h2>
+
+<p>For our team, the choice isn’t clear-cut:</p>
+
+<p><strong>Use SAS when</strong>:</p>
+<ul>
+  <li>Working with very large datasets (&gt; 2GB)</li>
+  <li>Need rock-solid reliability</li>
+  <li>Doing standard statistical analysis</li>
+  <li>Working with SAS-native formats</li>
+</ul>
+
+<p><strong>Use Python when</strong>:</p>
+<ul>
+  <li>Heavy text processing/cleaning</li>
+  <li>Need custom logic or algorithms</li>
+  <li>Want to integrate with web APIs</li>
+  <li>Building automated workflows</li>
+</ul>
+
+<h2 id="the-memory-story">The Memory Story</h2>
+
+<p>One thing the timing tests don’t show: memory usage.</p>
+
+<p>SAS consistently used about 4-6GB RAM for these operations. Python varied wildly - from 2GB (when optimized) to 12GB (when I was careless with data types).</p>
+
+<p>This matters on our shared server where memory is limited.</p>
+
+<h2 id="my-recommendation">My Recommendation</h2>
+
+<p>After all this testing, my recommendation to management was: <strong>Keep both, for now.</strong></p>
+
+<ul>
+  <li>Use SAS for the heavy-duty data processing</li>
+  <li>Use Python for the creative/custom work</li>
+  <li>Gradually shift new projects to Python</li>
+  <li>Train the team on both</li>
+</ul>
+
+<p>Not the clean answer they wanted, but the honest one.</p>
+
+<h2 id="whats-next">What’s Next</h2>
+
+<p>I’m planning to test:</p>
+<ol>
+  <li><strong>Dask</strong>: For larger-than-memory datasets in Python</li>
+  <li><strong>SAS/Python integration</strong>: Can we get the best of both?</li>
+  <li><strong>Cloud performance</strong>: How do these compare on AWS/Azure?</li>
+</ol>
+
+<h2 id="for-other-teams-facing-this-decision">For Other Teams Facing This Decision</h2>
+
+<p><strong>Don’t just benchmark toy datasets.</strong> Use your actual data with your actual workflows. The results might surprise you.</p>
+
+<p><strong>Consider the total cost</strong>: SAS licensing vs. Python development time vs. training costs.</p>
+
+<p><strong>Think long-term</strong>: Where is your team going? What skills do you want to build?</p>
+
+<hr />
+
+<p><em>Next post: I’m going to try building my first real ETL pipeline in Python. Spoiler alert: it’s going to be messy.</em></p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=SAS%20vs%20Python:%20Performance%20Comparison%20on%20Real%20Healthcare%20Data&url=http://localhost:4009/2020/06/18/sas-vs-python-performance-comparison/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4009/2020/06/18/sas-vs-python-performance-comparison/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4009/2020/06/18/sas-vs-python-performance-comparison/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4009/2020/06/18/sas-vs-python-performance-comparison/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/08/20/ai-model-selection-strategies/">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</a></h4>
+          <div class="post-meta">August 20, 2025</div>
+          <div class="post-excerpt">After using different AI models for 8 months, I've learned when each one shines. Here's my practical guide to choosing...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/06/15/voice-ai-integration-streamlit/">Voice AI Integration: Adding Speech to My AI Applications with Streamlit</a></h4>
+          <div class="post-meta">June 15, 2025</div>
+          <div class="post-excerpt">I added voice capabilities to my AI applications. Here's how I integrated speech-to-text and text-to-speech with Streamlit for hands-free AI...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/04/10/building-multi-agent-systems-crewai/">Building Multi-Agent Systems with CrewAI: Beyond Single AI Assistants</a></h4>
+          <div class="post-meta">April 10, 2025</div>
+          <div class="post-excerpt">I built my first multi-agent system using CrewAI. Here's what I learned about orchestrating multiple AI agents to solve complex...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/02/20/chain-of-thought-prompting-business-logic/">Chain-of-Thought Prompting: Improving AI Reasoning in Business Applications</a></h4>
+          <div class="post-meta">February 20, 2025</div>
+          <div class="post-excerpt">Can we get LLMs to reason through complex business rules reliably? My experiments with chain-of-thought prompting for healthcare protocols.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/01/15/advanced-prompt-engineering-techniques/">Advanced Prompt Engineering: Techniques I've Learned from 6 Months with LLMs</a></h4>
+          <div class="post-meta">January 15, 2025</div>
+          <div class="post-excerpt">After 6 months of working with LLMs daily, I've discovered prompt engineering is both an art and a science. Here...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/10/20/getting-started-langchain-rag/">Building RAG Systems: My Journey with LangChain</a></h4>
+          <div class="post-meta">October 20, 2024</div>
+          <div class="post-excerpt">After months of hearing about RAG and LangChain, I finally built my first retrieval-augmented generation system. Here's what I learned....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/09/10/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">September 10, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/06/20/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">June 20, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/building-enterprise-ai-customer-support-system/">Building an Enterprise AI Customer Support System: From Concept to $485K Annual Savings</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">How I built a Fortune 500-grade multi-agent customer support system using 100% free technologies, achieving 85% faster response times and...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>

@@ -1,19 +1,19 @@
 ---
 layout: post
 title: "Building an Agentic AI Customer Service System: A Complete Case Study"
-date: 2024-12-25
+date: 2024-12-15
 tags: [agentic-ai, automation, customer-service, langchain, case-study]
 excerpt: "How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40% using LangChain and RAG."
 image: "/assets/images/posts/enterprise-architecture.svg"
 author: "Niranjan Agaram"
 ---
 
-# Building an Agentic AI Customer Service System: A Complete Case Study
+# My First Experience with OpenAI APIs: Building a Data Assistant
 
-**Project:** Customer Service Automation System  
-**Challenge:** Scaling customer support operations efficiently  
-**Solution:** Multi-agent AI system with intelligent routing  
-**Outcome:** Significant improvements in response time and customer satisfaction  
+**Project:** Internal Data Query Assistant  
+**Challenge:** Non-technical staff struggling with database queries  
+**Solution:** Natural language to SQL using OpenAI GPT-3.5  
+**Outcome:** Reduced data request turnaround from days to minutes  
 
 ## The Problem
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Setting up Apache Airflow for Workflow Orchestration"
-date: 2024-02-15
+date: 2021-08-20
 tags: [apache-airflow, workflow-orchestration, data-pipelines, automation]
 excerpt: "Master Apache Airflow for building robust, scalable workflow orchestration systems with DAGs, scheduling, and monitoring capabilities."
 image: "/assets/images/posts/airflow-orchestration.svg"

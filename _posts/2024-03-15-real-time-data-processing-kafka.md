@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Real-time Data Processing with Apache Kafka"
-date: 2024-03-15
+date: 2022-07-25
 tags: [apache-kafka, real-time-processing, streaming, event-driven-architecture]
 ---
 

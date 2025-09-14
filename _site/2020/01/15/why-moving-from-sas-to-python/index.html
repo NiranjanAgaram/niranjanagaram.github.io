@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="After 3 years with SAS, I&#39;m making the switch to Python. Here&#39;s why, and what I&#39;m learning along the way.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4009/2020/01/15/why-moving-from-sas-to-python/">
+    <meta property="og:title" content="Why I'm Moving from SAS to Python: A Data Analyst's Journey">
+    <meta property="og:description" content="After 3 years with SAS, I&#39;m making the switch to Python. Here&#39;s why, and what I&#39;m learning along the way.">
+    <meta property="og:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4009/2020/01/15/why-moving-from-sas-to-python/">
+    <meta property="twitter:title" content="Why I'm Moving from SAS to Python: A Data Analyst's Journey">
+    <meta property="twitter:description" content="After 3 years with SAS, I&#39;m making the switch to Python. Here&#39;s why, and what I&#39;m learning along the way.">
+    <meta property="twitter:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Enhanced Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
+      "url": "http://localhost:4009",
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
+      }
+    }
+    </script>
+    
+    <title>Why I'm Moving from SAS to Python: A Data Analyst's Journey</title>
+    <link rel="canonical" href="http://localhost:4009/2020/01/15/why-moving-from-sas-to-python/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/performance.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">Why I'm Moving from SAS to Python: A Data Analyst's Journey</h1>
+    <div class="post-meta">
+      <time datetime="2020-01-15T00:00:00+05:30" itemprop="datePublished">
+        January 15, 2020
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 4 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">sas</span>
+      
+        <span class="tag" itemprop="keywords">python</span>
+      
+        <span class="tag" itemprop="keywords">data-analysis</span>
+      
+        <span class="tag" itemprop="keywords">career-transition</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="why-im-moving-from-sas-to-python-a-data-analysts-journey">Why I’m Moving from SAS to Python: A Data Analyst’s Journey</h1>
+
+<p>So I’ve been working with SAS for about 3 years now, mostly doing healthcare analytics. It’s been good - SAS is powerful, reliable, and my manager loves those clean reports. But lately, I’ve been feeling… stuck.</p>
+
+<h2 id="the-wake-up-call">The Wake-Up Call</h2>
+
+<p>Last month, I was at a data meetup in Bangalore (yes, we had those before COVID hit), and this guy was showing off some Python visualization with matplotlib. In 10 lines of code, he created something that would take me 50+ lines in SAS. That hurt.</p>
+
+<p>But what really got me was when he mentioned the cost. Our company pays lakhs for SAS licenses, and here’s this open-source tool doing the same thing. Maybe better.</p>
+
+<h2 id="why-sas-isnt-cutting-it-anymore">Why SAS Isn’t Cutting It Anymore</h2>
+
+<p>Don’t get me wrong - SAS has its place. PROC SQL is solid, and the statistical procedures are rock-solid. But:</p>
+
+<ol>
+  <li><strong>Cost</strong>: Our renewal is coming up, and finance is asking questions</li>
+  <li><strong>Flexibility</strong>: Want to scrape some web data? Good luck with SAS</li>
+  <li><strong>Community</strong>: Stack Overflow has like 10x more Python answers than SAS</li>
+  <li><strong>Job Market</strong>: Every job posting mentions Python. SAS? Not so much.</li>
+</ol>
+
+<h2 id="my-learning-plan-probably-too-ambitious">My Learning Plan (Probably Too Ambitious)</h2>
+
+<p>I’ve given myself 6 months to get comfortable with Python for data analysis. Here’s what I’m planning:</p>
+
+<p><strong>Month 1-2</strong>: Basic Python + Pandas</p>
+<ul>
+  <li>Codecademy Python course (already started)</li>
+  <li>“Python for Data Analysis” book (ordered from Amazon)</li>
+  <li>Recreate my current SAS reports in pandas</li>
+</ul>
+
+<p><strong>Month 3-4</strong>: Visualization + Statistics</p>
+<ul>
+  <li>matplotlib and seaborn</li>
+  <li>scipy for statistical tests</li>
+  <li>Maybe try plotly if I’m feeling fancy</li>
+</ul>
+
+<p><strong>Month 5-6</strong>: Real Projects</p>
+<ul>
+  <li>Migrate one of our monthly reports completely</li>
+  <li>Learn some basic machine learning (scikit-learn)</li>
+</ul>
+
+<h2 id="the-challenges-im-expecting">The Challenges I’m Expecting</h2>
+
+<p><strong>Learning Curve</strong>: After years of PROC this and PROC that, thinking in functions and objects is… different.</p>
+
+<p><strong>Performance</strong>: SAS handles big datasets really well. Will Python keep up? (I know about Dask, but one thing at a time)</p>
+
+<p><strong>Convincing My Team</strong>: My manager still thinks “real analytics” means SAS. This might be the hardest part.</p>
+
+<h2 id="first-week-with-python">First Week with Python</h2>
+
+<p>I installed Anaconda last weekend and started playing around. Here’s my first pandas code that actually worked:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># Reading a CSV (took me 20 minutes to figure out encoding issues)
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'patient_data.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin-1'</span><span class="p">)</span>
+
+<span class="c1"># This felt familiar - like PROC MEANS
+</span><span class="k">print</span><span class="p">(</span><span class="n">df</span><span class="p">.</span><span class="n">describe</span><span class="p">())</span>
+
+<span class="c1"># Group by - similar to SAS but syntax is weird
+</span><span class="n">summary</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'department'</span><span class="p">)[</span><span class="s">'age'</span><span class="p">].</span><span class="n">mean</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It’s not pretty, but it works! The encoding thing was annoying - SAS never gave me those headaches.</p>
+
+<h2 id="what-im-worried-about">What I’m Worried About</h2>
+
+<ol>
+  <li><strong>Am I too late?</strong> Everyone seems to already know Python</li>
+  <li><strong>Will I miss SAS?</strong> Those error messages are actually helpful</li>
+  <li><strong>Performance on large datasets</strong> - our main table has 2M+ rows</li>
+  <li><strong>Explaining this to stakeholders</strong> who are used to SAS output formats</li>
+</ol>
+
+<h2 id="the-plan-forward">The Plan Forward</h2>
+
+<p>I’m going to document this journey here. Partly for accountability, partly because I couldn’t find many “SAS to Python” stories online. Maybe this helps someone else making the same transition.</p>
+
+<p>Next post: I’ll share how my first attempt at recreating a SAS report in pandas went. Spoiler: it didn’t go smoothly.</p>
+
+<p>If you’ve made a similar transition, I’d love to hear your experience. What worked? What didn’t? Any resources you’d recommend?</p>
+
+<hr />
+
+<p><em>Update: It’s been a week since I wrote this, and I’m already second-guessing myself. Python’s indentation thing is driving me crazy. Why can’t it just use BEGIN/END like normal languages?</em></p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=Why%20I'm%20Moving%20from%20SAS%20to%20Python:%20A%20Data%20Analyst's%20Journey&url=http://localhost:4009/2020/01/15/why-moving-from-sas-to-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4009/2020/01/15/why-moving-from-sas-to-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4009/2020/01/15/why-moving-from-sas-to-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4009/2020/01/15/why-moving-from-sas-to-python/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/08/20/ai-model-selection-strategies/">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</a></h4>
+          <div class="post-meta">August 20, 2025</div>
+          <div class="post-excerpt">After using different AI models for 8 months, I've learned when each one shines. Here's my practical guide to choosing...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/06/15/voice-ai-integration-streamlit/">Voice AI Integration: Adding Speech to My AI Applications with Streamlit</a></h4>
+          <div class="post-meta">June 15, 2025</div>
+          <div class="post-excerpt">I added voice capabilities to my AI applications. Here's how I integrated speech-to-text and text-to-speech with Streamlit for hands-free AI...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/04/10/building-multi-agent-systems-crewai/">Building Multi-Agent Systems with CrewAI: Beyond Single AI Assistants</a></h4>
+          <div class="post-meta">April 10, 2025</div>
+          <div class="post-excerpt">I built my first multi-agent system using CrewAI. Here's what I learned about orchestrating multiple AI agents to solve complex...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/02/20/chain-of-thought-prompting-business-logic/">Chain-of-Thought Prompting: Improving AI Reasoning in Business Applications</a></h4>
+          <div class="post-meta">February 20, 2025</div>
+          <div class="post-excerpt">Can we get LLMs to reason through complex business rules reliably? My experiments with chain-of-thought prompting for healthcare protocols.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/01/15/advanced-prompt-engineering-techniques/">Advanced Prompt Engineering: Techniques I've Learned from 6 Months with LLMs</a></h4>
+          <div class="post-meta">January 15, 2025</div>
+          <div class="post-excerpt">After 6 months of working with LLMs daily, I've discovered prompt engineering is both an art and a science. Here...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/10/20/getting-started-langchain-rag/">Building RAG Systems: My Journey with LangChain</a></h4>
+          <div class="post-meta">October 20, 2024</div>
+          <div class="post-excerpt">After months of hearing about RAG and LangChain, I finally built my first retrieval-augmented generation system. Here's what I learned....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/09/10/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">September 10, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/06/20/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">June 20, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/building-enterprise-ai-customer-support-system/">Building an Enterprise AI Customer Support System: From Concept to $485K Annual Savings</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">How I built a Fortune 500-grade multi-agent customer support system using 100% free technologies, achieving 85% faster response times and...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>

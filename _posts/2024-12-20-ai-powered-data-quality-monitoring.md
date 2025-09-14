@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI-Powered Data Quality Monitoring: The Future of Data Reliability"
-date: 2024-12-20
+date: 2024-09-10
 tags: [ai, data-quality, monitoring, machine-learning, automation]
 excerpt: "Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights."
 image: "/assets/images/posts/ai-data-quality.svg"

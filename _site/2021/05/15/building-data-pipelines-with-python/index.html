@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using Python.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4009/2021/05/15/building-data-pipelines-with-python/">
+    <meta property="og:title" content="Building Scalable Data Pipelines with Python">
+    <meta property="og:description" content="Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using Python.">
+    <meta property="og:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4009/2021/05/15/building-data-pipelines-with-python/">
+    <meta property="twitter:title" content="Building Scalable Data Pipelines with Python">
+    <meta property="twitter:description" content="Data pipelines are the backbone of any data-driven organization. Learn best practices for building robust and scalable data pipelines using Python.">
+    <meta property="twitter:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Enhanced Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
+      "url": "http://localhost:4009",
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
+      }
+    }
+    </script>
+    
+    <title>Building Scalable Data Pipelines with Python</title>
+    <link rel="canonical" href="http://localhost:4009/2021/05/15/building-data-pipelines-with-python/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/performance.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">Building Scalable Data Pipelines with Python</h1>
+    <div class="post-meta">
+      <time datetime="2021-05-15T00:00:00+05:30" itemprop="datePublished">
+        May 15, 2021
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 2 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">python</span>
+      
+        <span class="tag" itemprop="keywords">data-pipelines</span>
+      
+        <span class="tag" itemprop="keywords">etl</span>
+      
+        <span class="tag" itemprop="keywords">best-practices</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="building-scalable-data-pipelines-with-python">Building Scalable Data Pipelines with Python</h1>
+
+<p>Data pipelines are the backbone of any data-driven organization. In this post, I’ll share some best practices for building robust and scalable data pipelines using Python.</p>
+
+<h2 id="key-principles">Key Principles</h2>
+
+<h3 id="1-modularity-and-reusability">1. Modularity and Reusability</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DataProcessor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+    
+    <span class="k">def</span> <span class="nf">extract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+        <span class="c1"># Extract logic here
+</span>        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="c1"># Transform logic here
+</span>        <span class="k">pass</span>
+    
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">destination</span><span class="p">):</span>
+        <span class="c1"># Load logic here
+</span>        <span class="k">pass</span>
+</code></pre></div></div>
+
+<h3 id="2-error-handling-and-monitoring">2. Error Handling and Monitoring</h3>
+<p>Always implement comprehensive error handling:</p>
+<ul>
+  <li>Use try-catch blocks appropriately</li>
+  <li>Log errors with context</li>
+  <li>Implement retry mechanisms</li>
+  <li>Set up alerting for critical failures</li>
+</ul>
+
+<h3 id="3-configuration-management">3. Configuration Management</h3>
+<p>Keep your pipelines configurable:</p>
+<ul>
+  <li>Use environment variables</li>
+  <li>Implement configuration files</li>
+  <li>Separate dev/staging/prod configs</li>
+</ul>
+
+<h2 id="tools-and-libraries">Tools and Libraries</h2>
+
+<p>Some essential Python libraries for data pipelines:</p>
+<ul>
+  <li><strong>Pandas</strong>: Data manipulation and analysis</li>
+  <li><strong>Apache Airflow</strong>: Workflow orchestration</li>
+  <li><strong>SQLAlchemy</strong>: Database abstraction</li>
+  <li><strong>Requests</strong>: HTTP library for API calls</li>
+  <li><strong>Boto3</strong>: AWS SDK for Python</li>
+</ul>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>In upcoming posts, I’ll dive deeper into:</p>
+<ul>
+  <li>Implementing data quality checks</li>
+  <li>Setting up monitoring and alerting</li>
+  <li>Deploying pipelines to production</li>
+</ul>
+
+<p>Stay tuned!</p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=Building%20Scalable%20Data%20Pipelines%20with%20Python&url=http://localhost:4009/2021/05/15/building-data-pipelines-with-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4009/2021/05/15/building-data-pipelines-with-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4009/2021/05/15/building-data-pipelines-with-python/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4009/2021/05/15/building-data-pipelines-with-python/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/08/20/ai-model-selection-strategies/">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</a></h4>
+          <div class="post-meta">August 20, 2025</div>
+          <div class="post-excerpt">After using different AI models for 8 months, I've learned when each one shines. Here's my practical guide to choosing...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/06/15/voice-ai-integration-streamlit/">Voice AI Integration: Adding Speech to My AI Applications with Streamlit</a></h4>
+          <div class="post-meta">June 15, 2025</div>
+          <div class="post-excerpt">I added voice capabilities to my AI applications. Here's how I integrated speech-to-text and text-to-speech with Streamlit for hands-free AI...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/04/10/building-multi-agent-systems-crewai/">Building Multi-Agent Systems with CrewAI: Beyond Single AI Assistants</a></h4>
+          <div class="post-meta">April 10, 2025</div>
+          <div class="post-excerpt">I built my first multi-agent system using CrewAI. Here's what I learned about orchestrating multiple AI agents to solve complex...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/02/20/chain-of-thought-prompting-business-logic/">Chain-of-Thought Prompting: Improving AI Reasoning in Business Applications</a></h4>
+          <div class="post-meta">February 20, 2025</div>
+          <div class="post-excerpt">Can we get LLMs to reason through complex business rules reliably? My experiments with chain-of-thought prompting for healthcare protocols.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/01/15/advanced-prompt-engineering-techniques/">Advanced Prompt Engineering: Techniques I've Learned from 6 Months with LLMs</a></h4>
+          <div class="post-meta">January 15, 2025</div>
+          <div class="post-excerpt">After 6 months of working with LLMs daily, I've discovered prompt engineering is both an art and a science. Here...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/10/20/getting-started-langchain-rag/">Building RAG Systems: My Journey with LangChain</a></h4>
+          <div class="post-meta">October 20, 2024</div>
+          <div class="post-excerpt">After months of hearing about RAG and LangChain, I finally built my first retrieval-augmented generation system. Here's what I learned....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/09/10/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">September 10, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/06/20/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">June 20, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/building-enterprise-ai-customer-support-system/">Building an Enterprise AI Customer Support System: From Concept to $485K Annual Savings</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">How I built a Fortune 500-grade multi-agent customer support system using 100% free technologies, achieving 85% faster response times and...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>

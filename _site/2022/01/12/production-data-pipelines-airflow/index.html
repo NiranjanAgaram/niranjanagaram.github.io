@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="After a year of cron jobs and manual scripts, I finally implemented Apache Airflow. Here&#39;s what I learned about workflow orchestration in production.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4009/2022/01/12/production-data-pipelines-airflow/">
+    <meta property="og:title" content="Building Production Data Pipelines with Apache Airflow">
+    <meta property="og:description" content="After a year of cron jobs and manual scripts, I finally implemented Apache Airflow. Here&#39;s what I learned about workflow orchestration in production.">
+    <meta property="og:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4009/2022/01/12/production-data-pipelines-airflow/">
+    <meta property="twitter:title" content="Building Production Data Pipelines with Apache Airflow">
+    <meta property="twitter:description" content="After a year of cron jobs and manual scripts, I finally implemented Apache Airflow. Here&#39;s what I learned about workflow orchestration in production.">
+    <meta property="twitter:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Enhanced Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
+      "url": "http://localhost:4009",
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
+      }
+    }
+    </script>
+    
+    <title>Building Production Data Pipelines with Apache Airflow</title>
+    <link rel="canonical" href="http://localhost:4009/2022/01/12/production-data-pipelines-airflow/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/performance.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">Building Production Data Pipelines with Apache Airflow</h1>
+    <div class="post-meta">
+      <time datetime="2022-01-12T00:00:00+05:30" itemprop="datePublished">
+        January 12, 2022
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 12 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">airflow</span>
+      
+        <span class="tag" itemprop="keywords">data-engineering</span>
+      
+        <span class="tag" itemprop="keywords">etl</span>
+      
+        <span class="tag" itemprop="keywords">production</span>
+      
+        <span class="tag" itemprop="keywords">workflow-orchestration</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="building-production-data-pipelines-with-apache-airflow">Building Production Data Pipelines with Apache Airflow</h1>
+
+<p>My data pipelines were getting out of hand. What started as a simple Python script had grown into 15+ different scripts running on various schedules, with dependencies I tracked in a spreadsheet. When our CFO asked for a “simple” monthly report that required data from 8 different sources, I knew it was time for proper workflow orchestration.</p>
+
+<p>Enter Apache Airflow.</p>
+
+<h2 id="the-problem-with-my-current-setup">The Problem with My Current Setup</h2>
+
+<p>By late 2021, my data infrastructure looked like this:</p>
+<ul>
+  <li><strong>12 Python scripts</strong> running via cron</li>
+  <li><strong>Dependencies managed manually</strong> (run script A, wait, then run script B)</li>
+  <li><strong>No visibility</strong> into what was running or failing</li>
+  <li><strong>Error handling</strong> via email alerts (when I remembered to add them)</li>
+  <li><strong>Retry logic</strong> was “run it again tomorrow”</li>
+</ul>
+
+<p>When the monthly financial report failed because the billing data wasn’t ready yet, and I had to manually restart 6 downstream jobs, I finally admitted I needed help.</p>
+
+<h2 id="why-airflow">Why Airflow?</h2>
+
+<p>I looked at several options:</p>
+<ul>
+  <li><strong>Luigi</strong>: Seemed dead (last update was months ago)</li>
+  <li><strong>Prefect</strong>: Looked promising but was still pretty new</li>
+  <li><strong>Airflow</strong>: Mature, lots of community support, used by big companies</li>
+</ul>
+
+<p>Airflow won mostly because of the community and documentation. Plus, it was free.</p>
+
+<h2 id="installation-and-setup-the-easy-part">Installation and Setup (The Easy Part)</h2>
+
+<p>Setting up Airflow locally was surprisingly straightforward:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Install Airflow</span>
+pip <span class="nb">install </span>apache-airflow
+
+<span class="c"># Initialize database</span>
+airflow db init
+
+<span class="c"># Create admin user</span>
+airflow <span class="nb">users </span>create <span class="se">\</span>
+    <span class="nt">--username</span> admin <span class="se">\</span>
+    <span class="nt">--firstname</span> Niranjan <span class="se">\</span>
+    <span class="nt">--lastname</span> Agaram <span class="se">\</span>
+    <span class="nt">--role</span> Admin <span class="se">\</span>
+    <span class="nt">--email</span> niranjan@company.com
+</code></pre></div></div>
+
+<p>The web UI looked professional, and I was feeling confident. That lasted about 2 hours.</p>
+
+<h2 id="my-first-dag-disaster">My First DAG (Disaster)</h2>
+
+<p>Here’s my first attempt at converting my patient data pipeline:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span> <span class="nf">extract_patient_data</span><span class="p">():</span>
+    <span class="c1"># My existing extraction code
+</span>    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'/data/patients.csv'</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s">'/tmp/patients.pkl'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">transform_patient_data</span><span class="p">():</span>
+    <span class="c1"># My existing transformation code
+</span>    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s">'/tmp/patients.pkl'</span><span class="p">)</span>
+    <span class="c1"># ... transformation logic ...
+</span>    <span class="n">df</span><span class="p">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s">'/tmp/patients_clean.pkl'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">load_patient_data</span><span class="p">():</span>
+    <span class="c1"># My existing loading code
+</span>    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+    <span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s">'/tmp/patients_clean.pkl'</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s">'postgresql://...'</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s">'patients'</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s">'replace'</span><span class="p">)</span>
+
+<span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'owner'</span><span class="p">:</span> <span class="s">'niranjan'</span><span class="p">,</span>
+    <span class="s">'depends_on_past'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">'start_date'</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="s">'email_on_failure'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s">'email_on_retry'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+    <span class="s">'retries'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">'retry_delay'</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s">'patient_data_pipeline'</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s">'Daily patient data processing'</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">'0 6 * * *'</span><span class="p">,</span>  <span class="c1"># 6 AM daily
+</span>    <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span>
+
+<span class="n">extract_task</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'extract_patient_data'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">extract_patient_data</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">transform_task</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'transform_patient_data'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">transform_patient_data</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">load_task</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'load_patient_data'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">load_patient_data</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">extract_task</span> <span class="o">&gt;&gt;</span> <span class="n">transform_task</span> <span class="o">&gt;&gt;</span> <span class="n">load_task</span>
+</code></pre></div></div>
+
+<p>This looked clean and worked… once. Then it failed spectacularly in production.</p>
+
+<h2 id="the-problems-i-discovered">The Problems I Discovered</h2>
+
+<h3 id="1-task-isolation-issues">1. Task Isolation Issues</h3>
+
+<p>My functions were sharing state through pickle files in <code class="language-plaintext highlighter-rouge">/tmp/</code>. When multiple DAG runs happened (due to retries), they overwrote each other’s files.</p>
+
+<p><strong>Solution</strong>: Use XCom for small data, proper data storage for large datasets:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">extract_patient_data</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'/data/patients.csv'</span><span class="p">)</span>
+    
+    <span class="c1"># Store in proper location with run_id
+</span>    <span class="n">run_id</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">'run_id'</span><span class="p">]</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'/data/staging/patients_</span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s">.pkl'</span>
+    <span class="n">df</span><span class="p">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    
+    <span class="c1"># Return path via XCom
+</span>    <span class="k">return</span> <span class="n">file_path</span>
+
+<span class="k">def</span> <span class="nf">transform_patient_data</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Get file path from previous task
+</span>    <span class="n">file_path</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">'task_instance'</span><span class="p">].</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s">'extract_patient_data'</span><span class="p">)</span>
+    
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    <span class="c1"># ... transformation logic ...
+</span>    
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">file_path</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'patients_'</span><span class="p">,</span> <span class="s">'patients_clean_'</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">output_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output_path</span>
+</code></pre></div></div>
+
+<h3 id="2-database-connection-management">2. Database Connection Management</h3>
+
+<p>My functions were creating new database connections every time, leading to connection pool exhaustion.</p>
+
+<p><strong>Solution</strong>: Use Airflow’s connection management:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">airflow.hooks.postgres_hook</span> <span class="kn">import</span> <span class="n">PostgresHook</span>
+
+<span class="k">def</span> <span class="nf">load_patient_data</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">file_path</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">'task_instance'</span><span class="p">].</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s">'transform_patient_data'</span><span class="p">)</span>
+    
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+    
+    <span class="c1"># Use Airflow's connection management
+</span>    <span class="n">postgres_hook</span> <span class="o">=</span> <span class="n">PostgresHook</span><span class="p">(</span><span class="n">postgres_conn_id</span><span class="o">=</span><span class="s">'hospital_db'</span><span class="p">)</span>
+    <span class="n">engine</span> <span class="o">=</span> <span class="n">postgres_hook</span><span class="p">.</span><span class="n">get_sqlalchemy_engine</span><span class="p">()</span>
+    
+    <span class="n">df</span><span class="p">.</span><span class="n">to_sql</span><span class="p">(</span><span class="s">'patients'</span><span class="p">,</span> <span class="n">engine</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s">'replace'</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="3-error-handling-and-monitoring">3. Error Handling and Monitoring</h3>
+
+<p>My original scripts had basic error handling. In Airflow, I needed to think about:</p>
+<ul>
+  <li>What happens when a task fails?</li>
+  <li>How do I clean up partial data?</li>
+  <li>How do I know what went wrong?</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">extract_patient_data</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'/data/patients.csv'</span><span class="p">)</span>
+        
+        <span class="c1"># Basic data validation
+</span>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"No patient data found"</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s">'patient_id'</span><span class="p">].</span><span class="n">isnull</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"Found null patient IDs"</span><span class="p">)</span>
+        
+        <span class="n">run_id</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">'run_id'</span><span class="p">]</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s">'/data/staging/patients_</span><span class="si">{</span><span class="n">run_id</span><span class="si">}</span><span class="s">.pkl'</span>
+        <span class="n">df</span><span class="p">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        
+        <span class="c1"># Log success metrics
+</span>        <span class="n">logging</span><span class="p">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s">"Extracted </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s"> patient records"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">file_path</span>
+        
+    <span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="c1"># Clean up any partial files
+</span>        <span class="k">if</span> <span class="s">'file_path'</span> <span class="ow">in</span> <span class="nb">locals</span><span class="p">():</span>
+            <span class="n">os</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+        
+        <span class="c1"># Log detailed error
+</span>        <span class="n">logging</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s">"Patient extraction failed: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        <span class="k">raise</span>
+</code></pre></div></div>
+
+<h2 id="building-complex-workflows">Building Complex Workflows</h2>
+
+<p>Once I got the basics working, I started building more complex DAGs. Here’s my monthly financial report pipeline:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python_operator</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.bash_operator</span> <span class="kn">import</span> <span class="n">BashOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.sensors.s3_key_sensor</span> <span class="kn">import</span> <span class="n">S3KeySensor</span>
+
+<span class="c1"># This DAG waits for multiple data sources and processes them in parallel
+</span><span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s">'monthly_financial_report'</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="n">default_args</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">'0 2 1 * *'</span><span class="p">,</span>  <span class="c1"># 2 AM on 1st of each month
+</span>    <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Wait for external data sources
+</span><span class="n">wait_for_billing</span> <span class="o">=</span> <span class="n">S3KeySensor</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'wait_for_billing_data'</span><span class="p">,</span>
+    <span class="n">bucket_name</span><span class="o">=</span><span class="s">'hospital-data'</span><span class="p">,</span>
+    <span class="n">bucket_key</span><span class="o">=</span><span class="s">'billing//billing_data.csv'</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span>  <span class="c1"># Wait up to 1 hour
+</span>    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">wait_for_insurance</span> <span class="o">=</span> <span class="n">S3KeySensor</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'wait_for_insurance_data'</span><span class="p">,</span>
+    <span class="n">bucket_name</span><span class="o">=</span><span class="s">'hospital-data'</span><span class="p">,</span> 
+    <span class="n">bucket_key</span><span class="o">=</span><span class="s">'insurance//insurance_data.csv'</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="o">=</span><span class="mi">3600</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="c1"># Process data in parallel
+</span><span class="n">process_billing</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'process_billing_data'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">process_billing_data</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">process_insurance</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'process_insurance_data'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">process_insurance_data</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="c1"># Combine and generate report
+</span><span class="n">generate_report</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'generate_monthly_report'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">generate_financial_report</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="c1"># Send report
+</span><span class="n">email_report</span> <span class="o">=</span> <span class="n">BashOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'email_report'</span><span class="p">,</span>
+    <span class="n">bash_command</span><span class="o">=</span><span class="s">'python /scripts/send_report.py '</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="c1"># Define dependencies
+</span><span class="n">wait_for_billing</span> <span class="o">&gt;&gt;</span> <span class="n">process_billing</span>
+<span class="n">wait_for_insurance</span> <span class="o">&gt;&gt;</span> <span class="n">process_insurance</span>
+<span class="p">[</span><span class="n">process_billing</span><span class="p">,</span> <span class="n">process_insurance</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="n">generate_report</span> <span class="o">&gt;&gt;</span> <span class="n">email_report</span>
+</code></pre></div></div>
+
+<h2 id="production-deployment-challenges">Production Deployment Challenges</h2>
+
+<h3 id="1-scheduler-configuration">1. Scheduler Configuration</h3>
+
+<p>Getting the Airflow scheduler stable in production took several iterations:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># airflow.cfg adjustments</span>
+<span class="o">[</span>core]
+executor <span class="o">=</span> LocalExecutor
+sql_alchemy_conn <span class="o">=</span> postgresql://airflow:password@localhost/airflow
+load_examples <span class="o">=</span> False
+
+<span class="o">[</span>scheduler]
+job_heartbeat_sec <span class="o">=</span> 5
+scheduler_heartbeat_sec <span class="o">=</span> 5
+num_runs <span class="o">=</span> <span class="nt">-1</span>
+processor_poll_interval <span class="o">=</span> 1
+
+<span class="o">[</span>webserver]
+web_server_port <span class="o">=</span> 8080
+workers <span class="o">=</span> 4
+</code></pre></div></div>
+
+<h3 id="2-resource-management">2. Resource Management</h3>
+
+<p>Some of my tasks were memory-intensive and would crash the scheduler:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Bad: This could use 8GB+ RAM
+</span><span class="k">def</span> <span class="nf">process_large_dataset</span><span class="p">():</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'huge_file.csv'</span><span class="p">)</span>  <span class="c1"># Loads everything into memory
+</span>    <span class="k">return</span> <span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'category'</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+
+<span class="c1"># Better: Process in chunks
+</span><span class="k">def</span> <span class="nf">process_large_dataset_chunked</span><span class="p">():</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'huge_file.csv'</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">chunk</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'category'</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+        <span class="n">results</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">results</span><span class="p">).</span><span class="n">groupby</span><span class="p">(</span><span class="s">'category'</span><span class="p">).</span><span class="nb">sum</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="3-monitoring-and-alerting">3. Monitoring and Alerting</h3>
+
+<p>Setting up proper monitoring was crucial:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Custom failure callback
+</span><span class="k">def</span> <span class="nf">task_failure_alert</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">task_instance</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'task_instance'</span><span class="p">)</span>
+    <span class="n">dag_id</span> <span class="o">=</span> <span class="n">task_instance</span><span class="p">.</span><span class="n">dag_id</span>
+    <span class="n">task_id</span> <span class="o">=</span> <span class="n">task_instance</span><span class="p">.</span><span class="n">task_id</span>
+    <span class="n">execution_date</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'execution_date'</span><span class="p">)</span>
+    
+    <span class="c1"># Send Slack notification
+</span>    <span class="n">send_slack_message</span><span class="p">(</span>
+        <span class="sa">f</span><span class="s">"🚨 Task Failed: </span><span class="si">{</span><span class="n">dag_id</span><span class="si">}</span><span class="s">.</span><span class="si">{</span><span class="n">task_id</span><span class="si">}</span><span class="s"> on </span><span class="si">{</span><span class="n">execution_date</span><span class="si">}</span><span class="s">"</span>
+    <span class="p">)</span>
+
+<span class="c1"># Add to DAG default_args
+</span><span class="n">default_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">'on_failure_callback'</span><span class="p">:</span> <span class="n">task_failure_alert</span><span class="p">,</span>
+    <span class="c1"># ... other args
+</span><span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="what-i-learned">What I Learned</h2>
+
+<h3 id="1-start-simple">1. Start Simple</h3>
+<p>My first DAGs tried to do too much. Simple, single-purpose DAGs are easier to debug and maintain.</p>
+
+<h3 id="2-think-about-data-flow">2. Think About Data Flow</h3>
+<p>Airflow is great for orchestration, but it’s not a data processing engine. Keep heavy computation in your tasks, use Airflow for coordination.</p>
+
+<h3 id="3-test-everything">3. Test Everything</h3>
+<p>DAGs that work in development can fail in production due to timing, resources, or environment differences.</p>
+
+<h3 id="4-monitor-resource-usage">4. Monitor Resource Usage</h3>
+<p>Airflow can consume significant resources. Monitor CPU, memory, and database connections.</p>
+
+<h2 id="the-results">The Results</h2>
+
+<p>After 3 months with Airflow:</p>
+
+<p><strong>Before Airflow:</strong></p>
+<ul>
+  <li>15+ cron jobs with manual dependency management</li>
+  <li>Average failure recovery time: 4+ hours</li>
+  <li>No visibility into pipeline status</li>
+  <li>Manual intervention required for most failures</li>
+</ul>
+
+<p><strong>After Airflow:</strong></p>
+<ul>
+  <li>8 well-organized DAGs with clear dependencies</li>
+  <li>Average failure recovery time: 15 minutes (automatic retries)</li>
+  <li>Full visibility via web UI</li>
+  <li>80% of failures resolve automatically</li>
+</ul>
+
+<h2 id="lessons-for-others">Lessons for Others</h2>
+
+<h3 id="1-plan-your-dag-structure">1. Plan Your DAG Structure</h3>
+<p>Think about how to break your workflows into logical, reusable tasks.</p>
+
+<h3 id="2-use-airflows-features">2. Use Airflow’s Features</h3>
+<p>Connections, Variables, XCom - these exist for good reasons. Use them.</p>
+
+<h3 id="3-test-failure-scenarios">3. Test Failure Scenarios</h3>
+<p>What happens when your database is down? When a file is missing? Plan for these.</p>
+
+<h3 id="4-start-with-localexecutor">4. Start with LocalExecutor</h3>
+<p>CeleryExecutor adds complexity you probably don’t need initially.</p>
+
+<h2 id="whats-next">What’s Next</h2>
+
+<p>I’m planning to explore:</p>
+<ol>
+  <li><strong>Kubernetes Executor</strong> for better resource isolation</li>
+  <li><strong>Custom operators</strong> for common patterns</li>
+  <li><strong>Data lineage tracking</strong> with Apache Atlas</li>
+  <li><strong>Integration with dbt</strong> for transformation workflows</li>
+</ol>
+
+<p>Airflow solved my orchestration problems, but it introduced new complexity. For teams with multiple data pipelines, it’s worth the investment. For simple, single-pipeline setups, it might be overkill.</p>
+
+<hr />
+
+<p><em>Next post: I’m diving into real-time data processing with Kafka and Spark Streaming. Our business users want “real-time dashboards,” and I’m about to learn why that’s harder than it sounds.</em></p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=Building%20Production%20Data%20Pipelines%20with%20Apache%20Airflow&url=http://localhost:4009/2022/01/12/production-data-pipelines-airflow/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4009/2022/01/12/production-data-pipelines-airflow/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4009/2022/01/12/production-data-pipelines-airflow/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4009/2022/01/12/production-data-pipelines-airflow/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/08/20/ai-model-selection-strategies/">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</a></h4>
+          <div class="post-meta">August 20, 2025</div>
+          <div class="post-excerpt">After using different AI models for 8 months, I've learned when each one shines. Here's my practical guide to choosing...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/06/15/voice-ai-integration-streamlit/">Voice AI Integration: Adding Speech to My AI Applications with Streamlit</a></h4>
+          <div class="post-meta">June 15, 2025</div>
+          <div class="post-excerpt">I added voice capabilities to my AI applications. Here's how I integrated speech-to-text and text-to-speech with Streamlit for hands-free AI...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/04/10/building-multi-agent-systems-crewai/">Building Multi-Agent Systems with CrewAI: Beyond Single AI Assistants</a></h4>
+          <div class="post-meta">April 10, 2025</div>
+          <div class="post-excerpt">I built my first multi-agent system using CrewAI. Here's what I learned about orchestrating multiple AI agents to solve complex...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/02/20/chain-of-thought-prompting-business-logic/">Chain-of-Thought Prompting: Improving AI Reasoning in Business Applications</a></h4>
+          <div class="post-meta">February 20, 2025</div>
+          <div class="post-excerpt">Can we get LLMs to reason through complex business rules reliably? My experiments with chain-of-thought prompting for healthcare protocols.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/01/15/advanced-prompt-engineering-techniques/">Advanced Prompt Engineering: Techniques I've Learned from 6 Months with LLMs</a></h4>
+          <div class="post-meta">January 15, 2025</div>
+          <div class="post-excerpt">After 6 months of working with LLMs daily, I've discovered prompt engineering is both an art and a science. Here...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/10/20/getting-started-langchain-rag/">Building RAG Systems: My Journey with LangChain</a></h4>
+          <div class="post-meta">October 20, 2024</div>
+          <div class="post-excerpt">After months of hearing about RAG and LangChain, I finally built my first retrieval-augmented generation system. Here's what I learned....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/09/10/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">September 10, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/06/20/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">June 20, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/building-enterprise-ai-customer-support-system/">Building an Enterprise AI Customer Support System: From Concept to $485K Annual Savings</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">How I built a Fortune 500-grade multi-agent customer support system using 100% free technologies, achieving 85% faster response times and...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>
