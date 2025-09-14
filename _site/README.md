@@ -28,10 +28,10 @@
 
 ## 📊 Proven Results
 
-- **99.9% Uptime** enterprise deployments
-- **85% faster** response times achieved
-- **$485K annual savings** for clients
-- **10K+ concurrent users** supported
+- **High availability** enterprise deployments
+- **Significant improvement** in response times
+- **Substantial cost savings** for clients
+- **Large-scale user** support capabilities
 
 ## 🛠️ Technology Stack
 
@@ -51,7 +51,7 @@
 
 **Ready to transform your business with AI?**
 
-📧 **Email**: niranjan@example.com  
+📧 **Email**: niranjanagaram@gmail.com  
 💼 **LinkedIn**: [linkedin.com/in/niranjan-agaram](https://linkedin.com/in/niranjan-agaram)  
 📅 **Book Consultation**: [Schedule here](https://calendly.com/niranjan-ai)  
 🌐 **Website**: [niranjanagaram.github.io](https://niranjanagaram.github.io)

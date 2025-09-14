@@ -22,8 +22,8 @@ title: "About - Niranjan Agaram"
         </div>
         <div class="profile-content">
             <h1>Niranjan Agaram</h1>
-            <div class="profile-title">AI & Data Engineering Consultant</div>
-            <p class="profile-description">Full-Stack Data Professional with 10+ years spanning Data Engineering, Data Science, ML Engineering, and AI Systems. I help organizations build complete data solutions from cloud pipelines to intelligent automation across healthcare, retail, marketing, and real estate domains.</p>
+            <div class="profile-title">Data Engineer turned AI Generalist</div>
+            <p class="profile-description">Started as a SAS analyst in 2014, learned Python the hard way, and somehow ended up building AI systems. I help companies figure out what actually works (spoiler: it's usually simpler than you think).</p>
             
             <div class="profile-stats">
                 <div class="stat">
@@ -329,7 +329,7 @@ title: "About - Niranjan Agaram"
                 <div class="stat-label">Years Experience</div>
             </div>
             <div class="connect-stat">
-                <div class="stat-number">$485K+</div>
+                <div class="stat-number">$400K+</div>
                 <div class="stat-label">Client Savings</div>
             </div>
         </div>

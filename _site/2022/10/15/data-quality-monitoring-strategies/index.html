@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Data Quality and Monitoring Strategies">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4009/2022/10/15/data-quality-monitoring-strategies/">
+    <meta property="og:title" content="Data Quality and Monitoring Strategies">
+    <meta property="og:description" content="Data Quality and Monitoring Strategies">
+    <meta property="og:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4009/2022/10/15/data-quality-monitoring-strategies/">
+    <meta property="twitter:title" content="Data Quality and Monitoring Strategies">
+    <meta property="twitter:description" content="Data Quality and Monitoring Strategies">
+    <meta property="twitter:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Enhanced Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
+      "url": "http://localhost:4009",
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
+      }
+    }
+    </script>
+    
+    <title>Data Quality and Monitoring Strategies</title>
+    <link rel="canonical" href="http://localhost:4009/2022/10/15/data-quality-monitoring-strategies/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/performance.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">Data Quality and Monitoring Strategies</h1>
+    <div class="post-meta">
+      <time datetime="2022-10-15T00:00:00+05:30" itemprop="datePublished">
+        October 15, 2022
+      </time>
+      
+      <span class="reading-time">📖 17 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">data-quality</span>
+      
+        <span class="tag" itemprop="keywords">monitoring</span>
+      
+        <span class="tag" itemprop="keywords">data-governance</span>
+      
+        <span class="tag" itemprop="keywords">great-expectations</span>
+      
+        <span class="tag" itemprop="keywords">observability</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="data-quality-and-monitoring-strategies">Data Quality and Monitoring Strategies</h1>
+
+<p>Data quality is the foundation of reliable analytics and machine learning. Poor data quality can lead to incorrect insights, failed models, and costly business decisions. Let’s explore comprehensive strategies for ensuring and monitoring data quality.</p>
+
+<h2 id="the-cost-of-poor-data-quality">The Cost of Poor Data Quality</h2>
+
+<p>Poor data quality impacts organizations through:</p>
+<ul>
+  <li><strong>Incorrect business decisions</strong> based on flawed analytics</li>
+  <li><strong>Failed ML models</strong> due to training on bad data</li>
+  <li><strong>Operational inefficiencies</strong> from manual data cleaning</li>
+  <li><strong>Compliance risks</strong> from inaccurate reporting</li>
+  <li><strong>Lost customer trust</strong> from data-driven errors</li>
+</ul>
+
+<h2 id="data-quality-dimensions">Data Quality Dimensions</h2>
+
+<h3 id="1-completeness">1. Completeness</h3>
+<p>Ensuring all required data is present and no critical fields are missing.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check for completeness
+</span><span class="k">def</span> <span class="nf">check_completeness</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">required_columns</span><span class="p">):</span>
+    <span class="n">completeness_report</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">required_columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="p">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">null_count</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">].</span><span class="n">isnull</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+            <span class="n">total_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+            <span class="n">completeness_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">total_count</span> <span class="o">-</span> <span class="n">null_count</span><span class="p">)</span> <span class="o">/</span> <span class="n">total_count</span>
+            <span class="n">completeness_report</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">'completeness_rate'</span><span class="p">:</span> <span class="n">completeness_rate</span><span class="p">,</span>
+                <span class="s">'missing_count'</span><span class="p">:</span> <span class="n">null_count</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">completeness_report</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">'completeness_rate'</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+                <span class="s">'missing_count'</span><span class="p">:</span> <span class="s">'Column not found'</span>
+            <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">completeness_report</span>
+</code></pre></div></div>
+
+<h3 id="2-accuracy">2. Accuracy</h3>
+<p>Data should correctly represent real-world entities and relationships.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Validate email format accuracy
+</span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="k">def</span> <span class="nf">validate_email_accuracy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">email_column</span><span class="p">):</span>
+    <span class="n">email_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'</span>
+    
+    <span class="n">valid_emails</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">email_column</span><span class="p">].</span><span class="nb">apply</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">email_pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span> <span class="k">if</span> <span class="n">pd</span><span class="p">.</span><span class="n">notna</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">else</span> <span class="bp">False</span>
+    <span class="p">)</span>
+    
+    <span class="n">accuracy_rate</span> <span class="o">=</span> <span class="n">valid_emails</span><span class="p">.</span><span class="nb">sum</span><span class="p">()</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">invalid_emails</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">valid_emails</span><span class="p">][</span><span class="n">email_column</span><span class="p">].</span><span class="n">tolist</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">'accuracy_rate'</span><span class="p">:</span> <span class="n">accuracy_rate</span><span class="p">,</span>
+        <span class="s">'invalid_count'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">invalid_emails</span><span class="p">),</span>
+        <span class="s">'invalid_examples'</span><span class="p">:</span> <span class="n">invalid_emails</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>  <span class="c1"># Show first 10 examples
+</span>    <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-consistency">3. Consistency</h3>
+<p>Data should be consistent across different systems and time periods.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Check consistency across systems
+</span><span class="k">def</span> <span class="nf">check_cross_system_consistency</span><span class="p">(</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">key_column</span><span class="p">,</span> <span class="n">value_column</span><span class="p">):</span>
+    <span class="n">merged</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">key_column</span><span class="p">,</span> <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s">'_system1'</span><span class="p">,</span> <span class="s">'_system2'</span><span class="p">))</span>
+    
+    <span class="n">consistent_records</span> <span class="o">=</span> <span class="n">merged</span><span class="p">[</span>
+        <span class="n">merged</span><span class="p">[</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">value_column</span><span class="si">}</span><span class="s">_system1'</span><span class="p">]</span> <span class="o">==</span> <span class="n">merged</span><span class="p">[</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">value_column</span><span class="si">}</span><span class="s">_system2'</span><span class="p">]</span>
+    <span class="p">]</span>
+    
+    <span class="n">consistency_rate</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">consistent_records</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">merged</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">'consistency_rate'</span><span class="p">:</span> <span class="n">consistency_rate</span><span class="p">,</span>
+        <span class="s">'total_compared'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">merged</span><span class="p">),</span>
+        <span class="s">'consistent_count'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">consistent_records</span><span class="p">),</span>
+        <span class="s">'inconsistent_count'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">merged</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">consistent_records</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="4-timeliness">4. Timeliness</h3>
+<p>Data should be available when needed and reflect current state.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span> <span class="nf">check_data_freshness</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">timestamp_column</span><span class="p">,</span> <span class="n">max_age_hours</span><span class="o">=</span><span class="mi">24</span><span class="p">):</span>
+    <span class="n">current_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">timestamp_column</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">timestamp_column</span><span class="p">])</span>
+    
+    <span class="n">fresh_data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">timestamp_column</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">current_time</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">hours</span><span class="o">=</span><span class="n">max_age_hours</span><span class="p">)</span>
+    <span class="p">]</span>
+    
+    <span class="n">freshness_rate</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">fresh_data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s">'freshness_rate'</span><span class="p">:</span> <span class="n">freshness_rate</span><span class="p">,</span>
+        <span class="s">'fresh_records'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">fresh_data</span><span class="p">),</span>
+        <span class="s">'stale_records'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">fresh_data</span><span class="p">),</span>
+        <span class="s">'oldest_record'</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="n">timestamp_column</span><span class="p">].</span><span class="nb">min</span><span class="p">(),</span>
+        <span class="s">'newest_record'</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="n">timestamp_column</span><span class="p">].</span><span class="nb">max</span><span class="p">()</span>
+    <span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="implementing-data-quality-with-great-expectations">Implementing Data Quality with Great Expectations</h2>
+
+<h3 id="setting-up-great-expectations">Setting Up Great Expectations</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">great_expectations</span> <span class="k">as</span> <span class="n">ge</span>
+<span class="kn">from</span> <span class="nn">great_expectations.checkpoint</span> <span class="kn">import</span> <span class="n">SimpleCheckpoint</span>
+
+<span class="c1"># Initialize Great Expectations context
+</span><span class="n">context</span> <span class="o">=</span> <span class="n">ge</span><span class="p">.</span><span class="n">get_context</span><span class="p">()</span>
+
+<span class="c1"># Create expectation suite
+</span><span class="n">suite</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">create_expectation_suite</span><span class="p">(</span>
+    <span class="n">expectation_suite_name</span><span class="o">=</span><span class="s">"user_data_quality_suite"</span><span class="p">,</span>
+    <span class="n">overwrite_existing</span><span class="o">=</span><span class="bp">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Add expectations
+</span><span class="n">suite</span><span class="p">.</span><span class="n">expect_column_to_exist</span><span class="p">(</span><span class="s">"user_id"</span><span class="p">)</span>
+<span class="n">suite</span><span class="p">.</span><span class="n">expect_column_values_to_not_be_null</span><span class="p">(</span><span class="s">"user_id"</span><span class="p">)</span>
+<span class="n">suite</span><span class="p">.</span><span class="n">expect_column_values_to_be_unique</span><span class="p">(</span><span class="s">"user_id"</span><span class="p">)</span>
+<span class="n">suite</span><span class="p">.</span><span class="n">expect_column_values_to_be_of_type</span><span class="p">(</span><span class="s">"email"</span><span class="p">,</span> <span class="s">"str"</span><span class="p">)</span>
+<span class="n">suite</span><span class="p">.</span><span class="n">expect_column_values_to_match_regex</span><span class="p">(</span><span class="s">"email"</span><span class="p">,</span> <span class="sa">r</span><span class="s">'^[^@]+@[^@]+\.[^@]+$'</span><span class="p">)</span>
+<span class="n">suite</span><span class="p">.</span><span class="n">expect_column_values_to_be_between</span><span class="p">(</span><span class="s">"age"</span><span class="p">,</span> <span class="n">min_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="creating-custom-expectations">Creating Custom Expectations</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">great_expectations.expectations</span> <span class="kn">import</span> <span class="n">ExpectationConfiguration</span>
+
+<span class="k">class</span> <span class="nc">ExpectColumnValuesToBeValidPhoneNumber</span><span class="p">(</span><span class="n">ColumnMapExpectation</span><span class="p">):</span>
+    <span class="s">"""Expect column values to be valid phone numbers."""</span>
+    
+    <span class="n">map_metric</span> <span class="o">=</span> <span class="s">"column_values.valid_phone_number"</span>
+    <span class="n">success_keys</span> <span class="o">=</span> <span class="p">(</span><span class="s">"mostly"</span><span class="p">,)</span>
+    
+    <span class="o">@</span><span class="nb">classmethod</span>
+    <span class="k">def</span> <span class="nf">_validate_phone_number</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="kn">import</span> <span class="nn">re</span>
+        <span class="n">phone_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s">'^\+?1?[-.\s]?\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}$'</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">phone_pattern</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+    
+    <span class="k">def</span> <span class="nf">validate_configuration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">configuration</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">validate_configuration</span><span class="p">(</span><span class="n">configuration</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">True</span>
+
+<span class="c1"># Register custom expectation
+</span><span class="n">context</span><span class="p">.</span><span class="n">plugins_directory</span> <span class="o">=</span> <span class="s">"plugins/"</span>
+</code></pre></div></div>
+
+<h3 id="running-data-quality-checks">Running Data Quality Checks</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Create validator
+</span><span class="n">validator</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">get_validator</span><span class="p">(</span>
+    <span class="n">batch_request</span><span class="o">=</span><span class="n">batch_request</span><span class="p">,</span>
+    <span class="n">expectation_suite_name</span><span class="o">=</span><span class="s">"user_data_quality_suite"</span>
+<span class="p">)</span>
+
+<span class="c1"># Run validation
+</span><span class="n">results</span> <span class="o">=</span> <span class="n">validator</span><span class="p">.</span><span class="n">validate</span><span class="p">()</span>
+
+<span class="c1"># Check if validation passed
+</span><span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s">"success"</span><span class="p">]:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"All data quality checks passed!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Data quality issues found:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">[</span><span class="s">"results"</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">result</span><span class="p">[</span><span class="s">"success"</span><span class="p">]:</span>
+            <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"- </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s">'expectation_config'</span><span class="p">][</span><span class="s">'expectation_type'</span><span class="p">]</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s">'result'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="real-time-data-quality-monitoring">Real-time Data Quality Monitoring</h2>
+
+<h3 id="streaming-data-quality-with-kafka">Streaming Data Quality with Kafka</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">kafka</span> <span class="kn">import</span> <span class="n">KafkaConsumer</span><span class="p">,</span> <span class="n">KafkaProducer</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="k">class</span> <span class="nc">RealTimeDataQualityMonitor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">consumer</span> <span class="o">=</span> <span class="n">KafkaConsumer</span><span class="p">(</span>
+            <span class="s">'raw-events'</span><span class="p">,</span>
+            <span class="n">bootstrap_servers</span><span class="o">=</span><span class="p">[</span><span class="s">'localhost:9092'</span><span class="p">],</span>
+            <span class="n">value_deserializer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">x</span><span class="p">.</span><span class="n">decode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">))</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">producer</span> <span class="o">=</span> <span class="n">KafkaProducer</span><span class="p">(</span>
+            <span class="n">bootstrap_servers</span><span class="o">=</span><span class="p">[</span><span class="s">'localhost:9092'</span><span class="p">],</span>
+            <span class="n">value_serializer</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">json</span><span class="p">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">x</span><span class="p">).</span><span class="n">encode</span><span class="p">(</span><span class="s">'utf-8'</span><span class="p">)</span>
+        <span class="p">)</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">quality_rules</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">load_quality_rules</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">load_quality_rules</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">'user_id'</span><span class="p">:</span> <span class="p">{</span><span class="s">'required'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'type'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">},</span>
+            <span class="s">'email'</span><span class="p">:</span> <span class="p">{</span><span class="s">'required'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'pattern'</span><span class="p">:</span> <span class="sa">r</span><span class="s">'^[^@]+@[^@]+\.[^@]+$'</span><span class="p">},</span>
+            <span class="s">'age'</span><span class="p">:</span> <span class="p">{</span><span class="s">'required'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s">'min'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s">'max'</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span>
+            <span class="s">'timestamp'</span><span class="p">:</span> <span class="p">{</span><span class="s">'required'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s">'type'</span><span class="p">:</span> <span class="s">'datetime'</span><span class="p">}</span>
+        <span class="p">}</span>
+    
+    <span class="k">def</span> <span class="nf">validate_record</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="n">issues</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">field</span><span class="p">,</span> <span class="n">rules</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">quality_rules</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">rules</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">'required'</span><span class="p">,</span> <span class="bp">False</span><span class="p">)</span> <span class="ow">and</span> <span class="n">field</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">record</span><span class="p">:</span>
+                <span class="n">issues</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s">"Missing required field: </span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">record</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="n">field</span><span class="p">]</span>
+                
+                <span class="c1"># Type validation
+</span>                <span class="k">if</span> <span class="s">'type'</span> <span class="ow">in</span> <span class="n">rules</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="p">.</span><span class="n">validate_type</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">rules</span><span class="p">[</span><span class="s">'type'</span><span class="p">]):</span>
+                        <span class="n">issues</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s">"Invalid type for </span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s">: expected </span><span class="si">{</span><span class="n">rules</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+                
+                <span class="c1"># Pattern validation
+</span>                <span class="k">if</span> <span class="s">'pattern'</span> <span class="ow">in</span> <span class="n">rules</span><span class="p">:</span>
+                    <span class="kn">import</span> <span class="nn">re</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">re</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">rules</span><span class="p">[</span><span class="s">'pattern'</span><span class="p">],</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)):</span>
+                        <span class="n">issues</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s">"Invalid format for </span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+                
+                <span class="c1"># Range validation
+</span>                <span class="k">if</span> <span class="s">'min'</span> <span class="ow">in</span> <span class="n">rules</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">&lt;</span> <span class="n">rules</span><span class="p">[</span><span class="s">'min'</span><span class="p">]:</span>
+                    <span class="n">issues</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s"> below minimum: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s"> &lt; </span><span class="si">{</span><span class="n">rules</span><span class="p">[</span><span class="s">'min'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+                
+                <span class="k">if</span> <span class="s">'max'</span> <span class="ow">in</span> <span class="n">rules</span> <span class="ow">and</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">rules</span><span class="p">[</span><span class="s">'max'</span><span class="p">]:</span>
+                    <span class="n">issues</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">field</span><span class="si">}</span><span class="s"> above maximum: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s"> &gt; </span><span class="si">{</span><span class="n">rules</span><span class="p">[</span><span class="s">'max'</span><span class="p">]</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">issues</span>
+    
+    <span class="k">def</span> <span class="nf">validate_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">expected_type</span><span class="p">):</span>
+        <span class="n">type_validators</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">'string'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span>
+            <span class="s">'integer'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">int</span><span class="p">),</span>
+            <span class="s">'float'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)),</span>
+            <span class="s">'datetime'</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">self</span><span class="p">.</span><span class="n">is_valid_datetime</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="n">type_validators</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">expected_type</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="bp">True</span><span class="p">)(</span><span class="n">value</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">is_valid_datetime</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">pd</span><span class="p">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="k">def</span> <span class="nf">monitor_stream</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">consumer</span><span class="p">:</span>
+            <span class="n">record</span> <span class="o">=</span> <span class="n">message</span><span class="p">.</span><span class="n">value</span>
+            <span class="n">issues</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">validate_record</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+            
+            <span class="k">if</span> <span class="n">issues</span><span class="p">:</span>
+                <span class="c1"># Send to data quality alerts topic
+</span>                <span class="n">alert</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s">'record'</span><span class="p">:</span> <span class="n">record</span><span class="p">,</span>
+                    <span class="s">'issues'</span><span class="p">:</span> <span class="n">issues</span><span class="p">,</span>
+                    <span class="s">'timestamp'</span><span class="p">:</span> <span class="n">datetime</span><span class="p">.</span><span class="n">now</span><span class="p">().</span><span class="n">isoformat</span><span class="p">(),</span>
+                    <span class="s">'severity'</span><span class="p">:</span> <span class="s">'high'</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">issues</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="k">else</span> <span class="s">'medium'</span>
+                <span class="p">}</span>
+                
+                <span class="bp">self</span><span class="p">.</span><span class="n">producer</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s">'data-quality-alerts'</span><span class="p">,</span> <span class="n">alert</span><span class="p">)</span>
+                <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Data quality issues found: </span><span class="si">{</span><span class="n">issues</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Send clean record to processed topic
+</span>                <span class="bp">self</span><span class="p">.</span><span class="n">producer</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s">'clean-events'</span><span class="p">,</span> <span class="n">record</span><span class="p">)</span>
+
+<span class="c1"># Start monitoring
+</span><span class="n">monitor</span> <span class="o">=</span> <span class="n">RealTimeDataQualityMonitor</span><span class="p">()</span>
+<span class="n">monitor</span><span class="p">.</span><span class="n">monitor_stream</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h2 id="data-quality-metrics-and-kpis">Data Quality Metrics and KPIs</h2>
+
+<h3 id="key-metrics-to-track">Key Metrics to Track</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">DataQualityMetrics</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span>
+    
+    <span class="k">def</span> <span class="nf">calculate_all_metrics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s">'completeness'</span><span class="p">:</span> <span class="bp">self</span><span class="p">.</span><span class="n">calculate_completeness</span><span class="p">(),</span>
+            <span class="s">'uniqueness'</span><span class="p">:</span> <span class="bp">self</span><span class="p">.</span><span class="n">calculate_uniqueness</span><span class="p">(),</span>
+            <span class="s">'validity'</span><span class="p">:</span> <span class="bp">self</span><span class="p">.</span><span class="n">calculate_validity</span><span class="p">(),</span>
+            <span class="s">'consistency'</span><span class="p">:</span> <span class="bp">self</span><span class="p">.</span><span class="n">calculate_consistency</span><span class="p">(),</span>
+            <span class="s">'accuracy'</span><span class="p">:</span> <span class="bp">self</span><span class="p">.</span><span class="n">calculate_accuracy</span><span class="p">()</span>
+        <span class="p">}</span>
+    
+    <span class="k">def</span> <span class="nf">calculate_completeness</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">total_cells</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">.</span><span class="n">size</span>
+        <span class="n">non_null_cells</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">.</span><span class="n">count</span><span class="p">().</span><span class="nb">sum</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">non_null_cells</span> <span class="o">/</span> <span class="n">total_cells</span>
+    
+    <span class="k">def</span> <span class="nf">calculate_uniqueness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key_columns</span><span class="o">=</span><span class="p">[</span><span class="s">'id'</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">col</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">.</span><span class="n">columns</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">key_columns</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        
+        <span class="n">total_records</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">)</span>
+        <span class="n">unique_records</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="n">key_columns</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">unique_records</span> <span class="o">/</span> <span class="n">total_records</span>
+    
+    <span class="k">def</span> <span class="nf">calculate_validity</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Example: Check if numeric columns have valid ranges
+</span>        <span class="n">validity_scores</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s">'number'</span><span class="p">]).</span><span class="n">columns</span><span class="p">:</span>
+            <span class="c1"># Check for outliers using IQR method
+</span>            <span class="n">Q1</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">].</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+            <span class="n">Q3</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">].</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+            <span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+            <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+            <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+            
+            <span class="n">valid_values</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">[</span>
+                <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">&amp;</span> 
+                <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">upper_bound</span><span class="p">)</span>
+            <span class="p">][</span><span class="n">column</span><span class="p">]</span>
+            
+            <span class="n">validity_scores</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">valid_values</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">df</span><span class="p">))</span>
+        
+        <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">validity_scores</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">validity_scores</span><span class="p">)</span> <span class="k">if</span> <span class="n">validity_scores</span> <span class="k">else</span> <span class="mf">1.0</span>
+</code></pre></div></div>
+
+<h2 id="automated-data-quality-pipelines">Automated Data Quality Pipelines</h2>
+
+<h3 id="airflow-dag-for-data-quality">Airflow DAG for Data Quality</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">airflow</span> <span class="kn">import</span> <span class="n">DAG</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.python</span> <span class="kn">import</span> <span class="n">PythonOperator</span>
+<span class="kn">from</span> <span class="nn">airflow.operators.email</span> <span class="kn">import</span> <span class="n">EmailOperator</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+
+<span class="k">def</span> <span class="nf">run_data_quality_checks</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
+    <span class="c1"># Load data
+</span>    <span class="n">df</span> <span class="o">=</span> <span class="n">load_data_from_source</span><span class="p">()</span>
+    
+    <span class="c1"># Run quality checks
+</span>    <span class="n">quality_results</span> <span class="o">=</span> <span class="n">run_great_expectations_suite</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+    <span class="c1"># Store results
+</span>    <span class="n">store_quality_results</span><span class="p">(</span><span class="n">quality_results</span><span class="p">)</span>
+    
+    <span class="c1"># Check if any critical issues
+</span>    <span class="k">if</span> <span class="n">has_critical_issues</span><span class="p">(</span><span class="n">quality_results</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="nb">ValueError</span><span class="p">(</span><span class="s">"Critical data quality issues found!"</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">quality_results</span>
+
+<span class="k">def</span> <span class="nf">send_quality_report</span><span class="p">(</span><span class="o">**</span><span class="n">context</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">'task_instance'</span><span class="p">].</span><span class="n">xcom_pull</span><span class="p">(</span><span class="n">task_ids</span><span class="o">=</span><span class="s">'quality_checks'</span><span class="p">)</span>
+    
+    <span class="c1"># Generate report
+</span>    <span class="n">report</span> <span class="o">=</span> <span class="n">generate_quality_report</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    
+    <span class="c1"># Send to stakeholders
+</span>    <span class="n">send_report_to_stakeholders</span><span class="p">(</span><span class="n">report</span><span class="p">)</span>
+
+<span class="n">dag</span> <span class="o">=</span> <span class="n">DAG</span><span class="p">(</span>
+    <span class="s">'data_quality_pipeline'</span><span class="p">,</span>
+    <span class="n">default_args</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">'owner'</span><span class="p">:</span> <span class="s">'data-team'</span><span class="p">,</span>
+        <span class="s">'depends_on_past'</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span>
+        <span class="s">'start_date'</span><span class="p">:</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="s">'email_on_failure'</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+        <span class="s">'retries'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">'retry_delay'</span><span class="p">:</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">},</span>
+    <span class="n">description</span><span class="o">=</span><span class="s">'Daily data quality monitoring'</span><span class="p">,</span>
+    <span class="n">schedule_interval</span><span class="o">=</span><span class="s">'@daily'</span><span class="p">,</span>
+    <span class="n">catchup</span><span class="o">=</span><span class="bp">False</span>
+<span class="p">)</span>
+
+<span class="n">quality_checks</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'quality_checks'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">run_data_quality_checks</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">quality_report</span> <span class="o">=</span> <span class="n">PythonOperator</span><span class="p">(</span>
+    <span class="n">task_id</span><span class="o">=</span><span class="s">'quality_report'</span><span class="p">,</span>
+    <span class="n">python_callable</span><span class="o">=</span><span class="n">send_quality_report</span><span class="p">,</span>
+    <span class="n">dag</span><span class="o">=</span><span class="n">dag</span>
+<span class="p">)</span>
+
+<span class="n">quality_checks</span> <span class="o">&gt;&gt;</span> <span class="n">quality_report</span>
+</code></pre></div></div>
+
+<h2 id="data-quality-dashboard">Data Quality Dashboard</h2>
+
+<h3 id="monitoring-dashboard-with-grafana">Monitoring Dashboard with Grafana</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Prometheus metrics for data quality
+</span><span class="kn">from</span> <span class="nn">prometheus_client</span> <span class="kn">import</span> <span class="n">Gauge</span><span class="p">,</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Histogram</span>
+
+<span class="c1"># Define metrics
+</span><span class="n">data_completeness</span> <span class="o">=</span> <span class="n">Gauge</span><span class="p">(</span><span class="s">'data_completeness_ratio'</span><span class="p">,</span> <span class="s">'Data completeness ratio'</span><span class="p">,</span> <span class="p">[</span><span class="s">'dataset'</span><span class="p">])</span>
+<span class="n">data_accuracy</span> <span class="o">=</span> <span class="n">Gauge</span><span class="p">(</span><span class="s">'data_accuracy_ratio'</span><span class="p">,</span> <span class="s">'Data accuracy ratio'</span><span class="p">,</span> <span class="p">[</span><span class="s">'dataset'</span><span class="p">])</span>
+<span class="n">quality_check_duration</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="s">'quality_check_duration_seconds'</span><span class="p">,</span> <span class="s">'Quality check duration'</span><span class="p">)</span>
+<span class="n">quality_issues_total</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s">'quality_issues_total'</span><span class="p">,</span> <span class="s">'Total quality issues'</span><span class="p">,</span> <span class="p">[</span><span class="s">'dataset'</span><span class="p">,</span> <span class="s">'issue_type'</span><span class="p">])</span>
+
+<span class="c1"># Update metrics
+</span><span class="k">def</span> <span class="nf">update_quality_metrics</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">quality_results</span><span class="p">):</span>
+    <span class="n">data_completeness</span><span class="p">.</span><span class="n">labels</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">).</span><span class="nb">set</span><span class="p">(</span><span class="n">quality_results</span><span class="p">[</span><span class="s">'completeness'</span><span class="p">])</span>
+    <span class="n">data_accuracy</span><span class="p">.</span><span class="n">labels</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">).</span><span class="nb">set</span><span class="p">(</span><span class="n">quality_results</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+    
+    <span class="k">for</span> <span class="n">issue_type</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">quality_results</span><span class="p">[</span><span class="s">'issues'</span><span class="p">].</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">quality_issues_total</span><span class="p">.</span><span class="n">labels</span><span class="p">(</span><span class="n">dataset</span><span class="o">=</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">issue_type</span><span class="o">=</span><span class="n">issue_type</span><span class="p">).</span><span class="n">inc</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<h3 id="1-establish-data-quality-standards">1. Establish Data Quality Standards</h3>
+<ul>
+  <li>Define clear quality requirements for each dataset</li>
+  <li>Create data quality SLAs</li>
+  <li>Implement quality gates in data pipelines</li>
+</ul>
+
+<h3 id="2-implement-continuous-monitoring">2. Implement Continuous Monitoring</h3>
+<ul>
+  <li>Monitor data quality in real-time</li>
+  <li>Set up automated alerts for quality issues</li>
+  <li>Track quality trends over time</li>
+</ul>
+
+<h3 id="3-root-cause-analysis">3. Root Cause Analysis</h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">analyze_quality_degradation</span><span class="p">(</span><span class="n">current_metrics</span><span class="p">,</span> <span class="n">historical_metrics</span><span class="p">):</span>
+    <span class="s">"""Analyze what caused data quality to degrade."""</span>
+    
+    <span class="n">degradation_analysis</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">metric</span><span class="p">,</span> <span class="n">current_value</span> <span class="ow">in</span> <span class="n">current_metrics</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">historical_value</span> <span class="o">=</span> <span class="n">historical_metrics</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="n">current_value</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">current_value</span> <span class="o">&lt;</span> <span class="n">historical_value</span> <span class="o">*</span> <span class="mf">0.95</span><span class="p">:</span>  <span class="c1"># 5% degradation threshold
+</span>            <span class="n">degradation_analysis</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">'current'</span><span class="p">:</span> <span class="n">current_value</span><span class="p">,</span>
+                <span class="s">'historical'</span><span class="p">:</span> <span class="n">historical_value</span><span class="p">,</span>
+                <span class="s">'degradation_percent'</span><span class="p">:</span> <span class="p">((</span><span class="n">historical_value</span> <span class="o">-</span> <span class="n">current_value</span><span class="p">)</span> <span class="o">/</span> <span class="n">historical_value</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span>
+                <span class="s">'potential_causes'</span><span class="p">:</span> <span class="n">get_potential_causes</span><span class="p">(</span><span class="n">metric</span><span class="p">)</span>
+            <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">degradation_analysis</span>
+
+<span class="k">def</span> <span class="nf">get_potential_causes</span><span class="p">(</span><span class="n">metric</span><span class="p">):</span>
+    <span class="n">cause_mapping</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">'completeness'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Source system issues'</span><span class="p">,</span> <span class="s">'ETL pipeline failures'</span><span class="p">,</span> <span class="s">'Schema changes'</span><span class="p">],</span>
+        <span class="s">'accuracy'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Data entry errors'</span><span class="p">,</span> <span class="s">'System integration issues'</span><span class="p">,</span> <span class="s">'Validation rule changes'</span><span class="p">],</span>
+        <span class="s">'consistency'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Synchronization issues'</span><span class="p">,</span> <span class="s">'Different data sources'</span><span class="p">,</span> <span class="s">'Timing problems'</span><span class="p">]</span>
+    <span class="p">}</span>
+    
+    <span class="k">return</span> <span class="n">cause_mapping</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">metric</span><span class="p">,</span> <span class="p">[</span><span class="s">'Unknown causes'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="4-data-quality-remediation">4. Data Quality Remediation</h3>
+<ul>
+  <li>Implement automated data cleaning where possible</li>
+  <li>Create data quality incident response procedures</li>
+  <li>Maintain data lineage for impact analysis</li>
+</ul>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>In future posts, I’ll explore:</p>
+<ul>
+  <li>Advanced data profiling techniques</li>
+  <li>Machine learning for anomaly detection in data</li>
+  <li>Data quality in streaming environments</li>
+  <li>Building data quality into CI/CD pipelines</li>
+</ul>
+
+<p>Data quality is not a one-time effort but an ongoing process that requires continuous attention and improvement. By implementing comprehensive monitoring and quality assurance strategies, organizations can build trust in their data and make better decisions.</p>
+
+<hr />
+
+<p><em>Dealing with data quality challenges? Share your experiences and let’s discuss solutions!</em></p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=Data%20Quality%20and%20Monitoring%20Strategies&url=http://localhost:4009/2022/10/15/data-quality-monitoring-strategies/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4009/2022/10/15/data-quality-monitoring-strategies/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4009/2022/10/15/data-quality-monitoring-strategies/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4009/2022/10/15/data-quality-monitoring-strategies/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/08/20/ai-model-selection-strategies/">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</a></h4>
+          <div class="post-meta">August 20, 2025</div>
+          <div class="post-excerpt">After using different AI models for 8 months, I've learned when each one shines. Here's my practical guide to choosing...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/06/15/voice-ai-integration-streamlit/">Voice AI Integration: Adding Speech to My AI Applications with Streamlit</a></h4>
+          <div class="post-meta">June 15, 2025</div>
+          <div class="post-excerpt">I added voice capabilities to my AI applications. Here's how I integrated speech-to-text and text-to-speech with Streamlit for hands-free AI...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/04/10/building-multi-agent-systems-crewai/">Building Multi-Agent Systems with CrewAI: Beyond Single AI Assistants</a></h4>
+          <div class="post-meta">April 10, 2025</div>
+          <div class="post-excerpt">I built my first multi-agent system using CrewAI. Here's what I learned about orchestrating multiple AI agents to solve complex...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/02/20/chain-of-thought-prompting-business-logic/">Chain-of-Thought Prompting: Improving AI Reasoning in Business Applications</a></h4>
+          <div class="post-meta">February 20, 2025</div>
+          <div class="post-excerpt">Can we get LLMs to reason through complex business rules reliably? My experiments with chain-of-thought prompting for healthcare protocols.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/01/15/advanced-prompt-engineering-techniques/">Advanced Prompt Engineering: Techniques I've Learned from 6 Months with LLMs</a></h4>
+          <div class="post-meta">January 15, 2025</div>
+          <div class="post-excerpt">After 6 months of working with LLMs daily, I've discovered prompt engineering is both an art and a science. Here...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/10/20/getting-started-langchain-rag/">Building RAG Systems: My Journey with LangChain</a></h4>
+          <div class="post-meta">October 20, 2024</div>
+          <div class="post-excerpt">After months of hearing about RAG and LangChain, I finally built my first retrieval-augmented generation system. Here's what I learned....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/09/10/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">September 10, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/06/20/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">June 20, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/building-enterprise-ai-customer-support-system/">Building an Enterprise AI Customer Support System: From Concept to $485K Annual Savings</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">How I built a Fortune 500-grade multi-agent customer support system using 100% free technologies, achieving 85% faster response times and...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>

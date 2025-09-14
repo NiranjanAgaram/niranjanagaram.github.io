@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Color Trends - Live Test</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="container" style="padding: 2rem;">
+        <h1 style="text-align: center; margin-bottom: 3rem;">🎨 Blue Theme Applied!</h1>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+            
+            <!-- Primary Colors Test -->
+            <div style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Primary Colors (Blue Theme)</h3>
+                <div style="background: var(--primary); color: white; padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                    Primary: Blue (#3b82f6)
+                </div>
+                <div style="background: var(--secondary); color: white; padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                    Secondary: Cyan (#06b6d4)
+                </div>
+                <div style="background: var(--accent); color: white; padding: 1rem; border-radius: 8px; margin: 0.5rem 0;">
+                    Accent: Success Green (#10b981)
+                </div>
+            </div>
+
+            <!-- Warm Grays Test -->
+            <div style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Warm Gray Palette</h3>
+                <div style="background: var(--warm-gray-100); color: var(--warm-gray-900); padding: 0.5rem; border-radius: 4px; margin: 0.25rem 0; font-size: 0.9rem;">
+                    Gray 100: #f5f4f1
+                </div>
+                <div style="background: var(--warm-gray-400); color: white; padding: 0.5rem; border-radius: 4px; margin: 0.25rem 0; font-size: 0.9rem;">
+                    Gray 400: #a8a29e (text-muted)
+                </div>
+                <div style="background: var(--warm-gray-600); color: white; padding: 0.5rem; border-radius: 4px; margin: 0.25rem 0; font-size: 0.9rem;">
+                    Gray 600: #6b7280
+                </div>
+                <div style="background: var(--warm-gray-900); color: white; padding: 0.5rem; border-radius: 4px; margin: 0.25rem 0; font-size: 0.9rem;">
+                    Gray 900: #292524
+                </div>
+            </div>
+
+            <!-- Buttons Test -->
+            <div style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Button Styles</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <button class="cta-primary">Primary CTA (Earth Tones)</button>
+                    <button class="btn-earth">Earth Button</button>
+                    <button class="btn-sage">Sage Button</button>
+                    <a href="#" class="cta-expert">Expert CTA</a>
+                </div>
+            </div>
+
+            <!-- Text Colors Test -->
+            <div style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Text Colors</h3>
+                <p style="color: var(--text-primary); margin: 0.5rem 0;">Primary Text (White)</p>
+                <p style="color: var(--text-secondary); margin: 0.5rem 0;">Secondary Text (Light Gray)</p>
+                <p style="color: var(--text-muted); margin: 0.5rem 0;">Muted Text (Warm Gray)</p>
+                <p class="earth-accent" style="margin: 0.5rem 0;">Earth Accent Text</p>
+                <p class="sage-accent" style="margin: 0.5rem 0;">Sage Accent Text</p>
+            </div>
+
+            <!-- Gradient Test -->
+            <div style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Gradient Effects</h3>
+                <h2 class="gradient-text">Original Gradient</h2>
+                <h2 class="gradient-earth">Earth Gradient</h2>
+                <h2 class="gradient-sage">Sage Gradient</h2>
+            </div>
+
+            <!-- Stats Test -->
+            <div style="background: var(--glass-bg); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px);">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Statistics</h3>
+                <div class="hero-stats" style="justify-content: space-around;">
+                    <div class="stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Years Exp</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0;">
+            <h2 style="color: var(--primary);">✅ Blue Theme Successfully Applied!</h2>
+            <p style="color: var(--text-secondary);">Your website now features a modern blue color palette with cyan and green accents.</p>
+            <button class="theme-toggle" onclick="toggleTheme()" style="margin: 1rem;">Toggle Theme</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>

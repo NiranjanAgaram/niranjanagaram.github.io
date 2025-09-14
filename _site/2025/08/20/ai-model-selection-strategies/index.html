@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="After using different AI models for 8 months, I&#39;ve learned when each one shines. Here&#39;s my practical guide to choosing the right model for your use case.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4009/2025/08/20/ai-model-selection-strategies/">
+    <meta property="og:title" content="AI Model Selection: When to Use GPT vs Claude vs Open Source Models">
+    <meta property="og:description" content="After using different AI models for 8 months, I&#39;ve learned when each one shines. Here&#39;s my practical guide to choosing the right model for your use case.">
+    <meta property="og:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4009/2025/08/20/ai-model-selection-strategies/">
+    <meta property="twitter:title" content="AI Model Selection: When to Use GPT vs Claude vs Open Source Models">
+    <meta property="twitter:description" content="After using different AI models for 8 months, I&#39;ve learned when each one shines. Here&#39;s my practical guide to choosing the right model for your use case.">
+    <meta property="twitter:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Enhanced Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
+      "url": "http://localhost:4009",
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
+      }
+    }
+    </script>
+    
+    <title>AI Model Selection: When to Use GPT vs Claude vs Open Source Models</title>
+    <link rel="canonical" href="http://localhost:4009/2025/08/20/ai-model-selection-strategies/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/performance.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</h1>
+    <div class="post-meta">
+      <time datetime="2025-08-20T00:00:00+05:30" itemprop="datePublished">
+        August 20, 2025
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 13 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">ai-models</span>
+      
+        <span class="tag" itemprop="keywords">gpt</span>
+      
+        <span class="tag" itemprop="keywords">claude</span>
+      
+        <span class="tag" itemprop="keywords">open-source</span>
+      
+        <span class="tag" itemprop="keywords">model-selection</span>
+      
+        <span class="tag" itemprop="keywords">cost-optimization</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="ai-model-selection-when-to-use-gpt-vs-claude-vs-open-source-models">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</h1>
+
+<p>Eight months ago, I was using GPT-4 for everything. Today, I have a portfolio of 6 different models, each optimized for specific tasks. This shift happened because I learned that model selection can make or break your AI application’s success.</p>
+
+<p>Here’s my practical guide to choosing the right AI model based on real-world experience building healthcare AI systems.</p>
+
+<h2 id="the-models-i-actually-use">The Models I Actually Use</h2>
+
+<h3 id="commercial-models">Commercial Models</h3>
+<ul>
+  <li><strong>GPT-4</strong>: Complex reasoning, code generation</li>
+  <li><strong>GPT-3.5 Turbo</strong>: Fast responses, simple tasks</li>
+  <li><strong>Claude 3 (Sonnet)</strong>: Long documents, ethical reasoning</li>
+  <li><strong>Claude 3 (Haiku)</strong>: Speed-critical applications</li>
+</ul>
+
+<h3 id="open-source-models">Open Source Models</h3>
+<ul>
+  <li><strong>Llama 2 70B</strong>: On-premises deployment, privacy-critical tasks</li>
+  <li><strong>Code Llama</strong>: Code-specific tasks, local development</li>
+  <li><strong>Mistral 7B</strong>: Resource-constrained environments</li>
+  <li><strong>Zephyr 7B</strong>: Fine-tuned for specific domains</li>
+</ul>
+
+<h2 id="my-model-selection-framework">My Model Selection Framework</h2>
+
+<h3 id="1-task-complexity-assessment">1. Task Complexity Assessment</h3>
+
+<p><strong>Simple Tasks</strong> (Classification, basic Q&amp;A):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example: Categorizing patient complaints
+</span><span class="k">def</span> <span class="nf">categorize_complaint</span><span class="p">(</span><span class="n">complaint_text</span><span class="p">):</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"Categorize this patient complaint: </span><span class="si">{</span><span class="n">complaint_text</span><span class="si">}</span><span class="s">"</span>
+    <span class="c1"># Use: GPT-3.5 Turbo or Mistral 7B
+</span>    <span class="c1"># Why: Fast, cheap, sufficient accuracy
+</span></code></pre></div></div>
+
+<p><strong>Medium Tasks</strong> (Analysis, summarization):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example: Summarizing medical records
+</span><span class="k">def</span> <span class="nf">summarize_medical_record</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"Summarize key points from this medical record: </span><span class="si">{</span><span class="n">record</span><span class="si">}</span><span class="s">"</span>
+    <span class="c1"># Use: Claude 3 Sonnet or Llama 2 70B
+</span>    <span class="c1"># Why: Better context handling, more nuanced understanding
+</span></code></pre></div></div>
+
+<p><strong>Complex Tasks</strong> (Multi-step reasoning, code generation):</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example: Diagnostic reasoning
+</span><span class="k">def</span> <span class="nf">diagnostic_reasoning</span><span class="p">(</span><span class="n">symptoms</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">tests</span><span class="p">):</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
+    Perform diagnostic reasoning for:
+    Symptoms: </span><span class="si">{</span><span class="n">symptoms</span><span class="si">}</span><span class="s">
+    History: </span><span class="si">{</span><span class="n">history</span><span class="si">}</span><span class="s">
+    Test results: </span><span class="si">{</span><span class="n">tests</span><span class="si">}</span><span class="s">
+    
+    Think step by step through differential diagnosis.
+    """</span>
+    <span class="c1"># Use: GPT-4 or Claude 3 Opus
+</span>    <span class="c1"># Why: Superior reasoning capabilities
+</span></code></pre></div></div>
+
+<h3 id="2-context-length-requirements">2. Context Length Requirements</h3>
+
+<p><strong>Short Context</strong> (&lt; 4K tokens):</p>
+<ul>
+  <li><strong>Best</strong>: GPT-3.5 Turbo, Mistral 7B</li>
+  <li><strong>Cost</strong>: $0.001-0.002 per 1K tokens</li>
+  <li><strong>Speed</strong>: 1-2 seconds</li>
+</ul>
+
+<p><strong>Medium Context</strong> (4K-32K tokens):</p>
+<ul>
+  <li><strong>Best</strong>: Claude 3 Sonnet, GPT-4</li>
+  <li><strong>Cost</strong>: $0.003-0.03 per 1K tokens</li>
+  <li><strong>Speed</strong>: 3-5 seconds</li>
+</ul>
+
+<p><strong>Long Context</strong> (32K+ tokens):</p>
+<ul>
+  <li><strong>Best</strong>: Claude 3 Opus, GPT-4 Turbo</li>
+  <li><strong>Cost</strong>: $0.015-0.06 per 1K tokens</li>
+  <li><strong>Speed</strong>: 5-15 seconds</li>
+</ul>
+
+<h3 id="3-privacy-and-compliance-needs">3. Privacy and Compliance Needs</h3>
+
+<p><strong>Public Cloud OK</strong>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Non-sensitive data processing
+</span><span class="n">openai_client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">api_key</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">openai_client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s">"gpt-4"</span><span class="p">,</span>
+    <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="n">query</span><span class="p">}]</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Privacy Required</strong>:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># HIPAA-compliant, on-premises deployment
+</span><span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="c1"># Local Llama 2 deployment
+</span><span class="n">llm</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s">"text-generation"</span><span class="p">,</span> 
+               <span class="n">model</span><span class="o">=</span><span class="s">"meta-llama/Llama-2-70b-chat-hf"</span><span class="p">,</span>
+               <span class="n">device_map</span><span class="o">=</span><span class="s">"auto"</span><span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">llm</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="real-world-use-cases-and-model-choices">Real-World Use Cases and Model Choices</h2>
+
+<h3 id="healthcare-documentation">Healthcare Documentation</h3>
+
+<p><strong>Task</strong>: Convert doctor’s voice notes to structured medical records</p>
+
+<p><strong>My Choice</strong>: Claude 3 Sonnet
+<strong>Why</strong>:</p>
+<ul>
+  <li>Excellent at understanding medical context</li>
+  <li>Good with long, rambling voice transcripts</li>
+  <li>Strong structured output capabilities</li>
+  <li>Ethical guardrails for medical content</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">structure_medical_notes</span><span class="p">(</span><span class="n">voice_transcript</span><span class="p">):</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
+    Convert this voice transcript into a structured SOAP note:
+    
+    Transcript: </span><span class="si">{</span><span class="n">voice_transcript</span><span class="si">}</span><span class="s">
+    
+    Format as:
+    Subjective: [patient's reported symptoms and concerns]
+    Objective: [observable findings and measurements]
+    Assessment: [clinical impression and diagnosis]
+    Plan: [treatment plan and follow-up]
+    """</span>
+    
+    <span class="n">response</span> <span class="o">=</span> <span class="n">claude_client</span><span class="p">.</span><span class="n">messages</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="s">"claude-3-sonnet-20240229"</span><span class="p">,</span>
+        <span class="n">max_tokens</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+    <span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">content</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">text</span>
+</code></pre></div></div>
+
+<h3 id="code-generation-and-review">Code Generation and Review</h3>
+
+<p><strong>Task</strong>: Generate Python code for data processing pipelines</p>
+
+<p><strong>My Choice</strong>: GPT-4 for complex logic, Code Llama for simple tasks
+<strong>Why</strong>:</p>
+<ul>
+  <li>GPT-4: Superior reasoning for complex algorithms</li>
+  <li>Code Llama: Faster and cheaper for routine code</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CodeGenerator</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">gpt4_client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">code_llama</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s">"text-generation"</span><span class="p">,</span> 
+                                  <span class="n">model</span><span class="o">=</span><span class="s">"codellama/CodeLlama-34b-Python-hf"</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">generate_code</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task_description</span><span class="p">,</span> <span class="n">complexity</span><span class="o">=</span><span class="s">"medium"</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">complexity</span> <span class="o">==</span> <span class="s">"high"</span><span class="p">:</span>
+            <span class="c1"># Use GPT-4 for complex algorithms
+</span>            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">generate_with_gpt4</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Use Code Llama for simpler tasks
+</span>            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">generate_with_code_llama</span><span class="p">(</span><span class="n">task_description</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">generate_with_gpt4</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">task</span><span class="p">):</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
+        Write Python code for: </span><span class="si">{</span><span class="n">task</span><span class="si">}</span><span class="s">
+        
+        Requirements:
+        - Include error handling
+        - Add type hints
+        - Write docstrings
+        - Follow PEP 8
+        """</span>
+        
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">gpt4_client</span><span class="p">.</span><span class="n">chat</span><span class="p">.</span><span class="n">completions</span><span class="p">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="s">"gpt-4"</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s">"role"</span><span class="p">:</span> <span class="s">"user"</span><span class="p">,</span> <span class="s">"content"</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+        <span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">response</span><span class="p">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">message</span><span class="p">.</span><span class="n">content</span>
+</code></pre></div></div>
+
+<h3 id="real-time-chat-applications">Real-Time Chat Applications</h3>
+
+<p><strong>Task</strong>: Provide instant responses in patient support chat</p>
+
+<p><strong>My Choice</strong>: GPT-3.5 Turbo with Claude 3 Haiku fallback
+<strong>Why</strong>:</p>
+<ul>
+  <li>GPT-3.5: Fast, cost-effective for most queries</li>
+  <li>Claude Haiku: Even faster for simple questions</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ChatbotRouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">gpt35_client</span> <span class="o">=</span> <span class="n">OpenAI</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">claude_client</span> <span class="o">=</span> <span class="n">anthropic</span><span class="p">.</span><span class="n">Anthropic</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">route_query</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">urgency</span><span class="o">=</span><span class="s">"normal"</span><span class="p">):</span>
+        <span class="c1"># Classify query complexity
+</span>        <span class="n">complexity</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">classify_complexity</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">urgency</span> <span class="o">==</span> <span class="s">"high"</span> <span class="ow">and</span> <span class="n">complexity</span> <span class="o">==</span> <span class="s">"simple"</span><span class="p">:</span>
+            <span class="c1"># Use fastest model for urgent simple queries
+</span>            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">respond_with_claude_haiku</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">complexity</span> <span class="o">==</span> <span class="s">"simple"</span><span class="p">:</span>
+            <span class="c1"># Use cost-effective model for simple queries
+</span>            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">respond_with_gpt35</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Use more capable model for complex queries
+</span>            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">respond_with_claude_sonnet</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    
+    <span class="k">def</span> <span class="nf">classify_complexity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="c1"># Simple heuristics for complexity classification
+</span>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"simple"</span>
+        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">query</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s">"analyze"</span><span class="p">,</span> <span class="s">"compare"</span><span class="p">,</span> <span class="s">"explain why"</span><span class="p">]):</span>
+            <span class="k">return</span> <span class="s">"complex"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"medium"</span>
+</code></pre></div></div>
+
+<h3 id="batch-processing">Batch Processing</h3>
+
+<p><strong>Task</strong>: Process thousands of medical records for quality analysis</p>
+
+<p><strong>My Choice</strong>: Llama 2 70B on dedicated hardware
+<strong>Why</strong>:</p>
+<ul>
+  <li>No per-token costs for large volumes</li>
+  <li>Consistent performance</li>
+  <li>Full control over processing</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">BatchProcessor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">llama_model</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">load_llama_model</span><span class="p">()</span>
+        
+    <span class="k">def</span> <span class="nf">process_medical_records</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">records_batch</span><span class="p">):</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        
+        <span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">records_batch</span><span class="p">:</span>
+            <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"""
+            Analyze this medical record for quality indicators:
+            
+            Record: </span><span class="si">{</span><span class="n">record</span><span class="si">}</span><span class="s">
+            
+            Check for:
+            1. Completeness of documentation
+            2. Consistency of information
+            3. Compliance with standards
+            4. Potential quality issues
+            
+            Return structured analysis.
+            """</span>
+            
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">llama_model</span><span class="p">.</span><span class="n">generate</span><span class="p">(</span>
+                <span class="n">prompt</span><span class="p">,</span>
+                <span class="n">max_tokens</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>
+                <span class="n">temperature</span><span class="o">=</span><span class="mf">0.1</span>
+            <span class="p">)</span>
+            
+            <span class="n">results</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">results</span>
+</code></pre></div></div>
+
+<h2 id="cost-analysis-real-numbers">Cost Analysis: Real Numbers</h2>
+
+<p>Based on my actual usage over 6 months:</p>
+
+<h3 id="monthly-costs-by-model-processing-100k-queries">Monthly Costs by Model (Processing ~100K queries)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Cost/Month</th>
+      <th>Use Cases</th>
+      <th>Avg Response Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GPT-4</td>
+      <td>$450</td>
+      <td>Complex reasoning (20% of queries)</td>
+      <td>8s</td>
+    </tr>
+    <tr>
+      <td>GPT-3.5 Turbo</td>
+      <td>$85</td>
+      <td>Simple tasks (50% of queries)</td>
+      <td>2s</td>
+    </tr>
+    <tr>
+      <td>Claude 3 Sonnet</td>
+      <td>$280</td>
+      <td>Document analysis (15% of queries)</td>
+      <td>5s</td>
+    </tr>
+    <tr>
+      <td>Claude 3 Haiku</td>
+      <td>$25</td>
+      <td>Quick responses (10% of queries)</td>
+      <td>1s</td>
+    </tr>
+    <tr>
+      <td>Llama 2 70B</td>
+      <td>$200/month (hardware)</td>
+      <td>Batch processing (5% of queries)</td>
+      <td>3s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Total Monthly Cost</strong>: ~$1,040
+<strong>Cost per Query</strong>: ~$0.01 average</p>
+
+<h3 id="cost-optimization-strategies">Cost Optimization Strategies</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">CostOptimizedAI</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">model_costs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"gpt-4"</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">,</span>  <span class="c1"># per 1K tokens
+</span>            <span class="s">"gpt-3.5-turbo"</span><span class="p">:</span> <span class="mf">0.002</span><span class="p">,</span>
+            <span class="s">"claude-3-sonnet"</span><span class="p">:</span> <span class="mf">0.015</span><span class="p">,</span>
+            <span class="s">"claude-3-haiku"</span><span class="p">:</span> <span class="mf">0.0025</span>
+        <span class="p">}</span>
+        
+    <span class="k">def</span> <span class="nf">select_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">budget_constraint</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="c1"># Estimate token count
+</span>        <span class="n">estimated_tokens</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">.</span><span class="n">split</span><span class="p">())</span> <span class="o">*</span> <span class="mf">1.3</span>
+        
+        <span class="c1"># Calculate costs for each model
+</span>        <span class="n">costs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">model</span><span class="p">,</span> <span class="n">cost_per_1k</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">model_costs</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">costs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">estimated_tokens</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">*</span> <span class="n">cost_per_1k</span>
+        
+        <span class="c1"># Select based on budget and capability needs
+</span>        <span class="k">if</span> <span class="n">budget_constraint</span> <span class="ow">and</span> <span class="n">budget_constraint</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"gpt-3.5-turbo"</span>  <span class="c1"># Cheapest option
+</span>        <span class="k">elif</span> <span class="bp">self</span><span class="p">.</span><span class="n">requires_complex_reasoning</span><span class="p">(</span><span class="n">query</span><span class="p">):</span>
+            <span class="k">return</span> <span class="s">"gpt-4"</span>  <span class="c1"># Best capability
+</span>        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"claude-3-haiku"</span>  <span class="c1"># Good balance
+</span>    
+    <span class="k">def</span> <span class="nf">requires_complex_reasoning</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+        <span class="n">complex_indicators</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s">"analyze"</span><span class="p">,</span> <span class="s">"compare"</span><span class="p">,</span> <span class="s">"explain why"</span><span class="p">,</span> <span class="s">"step by step"</span><span class="p">,</span>
+            <span class="s">"reasoning"</span><span class="p">,</span> <span class="s">"logic"</span><span class="p">,</span> <span class="s">"cause and effect"</span>
+        <span class="p">]</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="n">indicator</span> <span class="ow">in</span> <span class="n">query</span><span class="p">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">indicator</span> <span class="ow">in</span> <span class="n">complex_indicators</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="performance-benchmarking">Performance Benchmarking</h2>
+
+<p>I regularly benchmark models on my specific use cases:</p>
+
+<h3 id="medical-qa-accuracy-100-test-questions">Medical Q&amp;A Accuracy (100 test questions)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Accuracy</th>
+      <th>Avg Response Time</th>
+      <th>Cost per Query</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GPT-4</td>
+      <td>94%</td>
+      <td>8.2s</td>
+      <td>$0.045</td>
+    </tr>
+    <tr>
+      <td>Claude 3 Sonnet</td>
+      <td>91%</td>
+      <td>5.1s</td>
+      <td>$0.028</td>
+    </tr>
+    <tr>
+      <td>GPT-3.5 Turbo</td>
+      <td>87%</td>
+      <td>2.3s</td>
+      <td>$0.008</td>
+    </tr>
+    <tr>
+      <td>Llama 2 70B</td>
+      <td>85%</td>
+      <td>3.7s</td>
+      <td>$0.002*</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>*Amortized hardware cost</p>
+
+<h3 id="code-generation-quality-50-coding-tasks">Code Generation Quality (50 coding tasks)</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Functional Code %</th>
+      <th>Best Practices %</th>
+      <th>Documentation %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GPT-4</td>
+      <td>96%</td>
+      <td>89%</td>
+      <td>94%</td>
+    </tr>
+    <tr>
+      <td>Code Llama 34B</td>
+      <td>91%</td>
+      <td>76%</td>
+      <td>82%</td>
+    </tr>
+    <tr>
+      <td>GPT-3.5 Turbo</td>
+      <td>88%</td>
+      <td>71%</td>
+      <td>85%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="model-selection-decision-tree">Model Selection Decision Tree</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">select_optimal_model</span><span class="p">(</span><span class="n">task_type</span><span class="p">,</span> <span class="n">context_length</span><span class="p">,</span> <span class="n">privacy_required</span><span class="p">,</span> 
+                        <span class="n">budget_per_query</span><span class="p">,</span> <span class="n">response_time_requirement</span><span class="p">):</span>
+    
+    <span class="c1"># Privacy first
+</span>    <span class="k">if</span> <span class="n">privacy_required</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">context_length</span> <span class="o">&gt;</span> <span class="mi">32000</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"llama-2-70b-local"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"mistral-7b-local"</span>
+    
+    <span class="c1"># Speed requirements
+</span>    <span class="k">if</span> <span class="n">response_time_requirement</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"claude-3-haiku"</span>
+    
+    <span class="c1"># Budget constraints
+</span>    <span class="k">if</span> <span class="n">budget_per_query</span> <span class="o">&lt;</span> <span class="mf">0.005</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"gpt-3.5-turbo"</span>
+    
+    <span class="c1"># Task complexity
+</span>    <span class="k">if</span> <span class="n">task_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s">"reasoning"</span><span class="p">,</span> <span class="s">"analysis"</span><span class="p">,</span> <span class="s">"code-generation"</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">budget_per_query</span> <span class="o">&gt;</span> <span class="mf">0.03</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"gpt-4"</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">"claude-3-sonnet"</span>
+    
+    <span class="c1"># Long context
+</span>    <span class="k">if</span> <span class="n">context_length</span> <span class="o">&gt;</span> <span class="mi">32000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s">"claude-3-opus"</span>
+    
+    <span class="c1"># Default balanced choice
+</span>    <span class="k">return</span> <span class="s">"claude-3-sonnet"</span>
+</code></pre></div></div>
+
+<h2 id="lessons-learned">Lessons Learned</h2>
+
+<h3 id="1-no-single-model-rules-all">1. No Single Model Rules All</h3>
+<p>Each model has strengths and weaknesses. The key is matching the model to the specific use case.</p>
+
+<h3 id="2-cost-optimization-requires-strategy">2. Cost Optimization Requires Strategy</h3>
+<p>Using the most expensive model for everything will blow your budget. Smart routing can reduce costs by 60-70%.</p>
+
+<h3 id="3-context-length-matters-more-than-you-think">3. Context Length Matters More Than You Think</h3>
+<p>Many tasks fail not because of model capability, but because of context length limitations.</p>
+
+<h3 id="4-local-models-are-viable-for-many-use-cases">4. Local Models Are Viable for Many Use Cases</h3>
+<p>Open source models have improved dramatically. For privacy-sensitive applications, they’re often the only option.</p>
+
+<h3 id="5-benchmarking-on-your-data-is-essential">5. Benchmarking on Your Data Is Essential</h3>
+<p>Generic benchmarks don’t predict performance on your specific use cases. Create your own test sets.</p>
+
+<h2 id="current-production-setup">Current Production Setup</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">ProductionModelRouter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">"gpt-4"</span><span class="p">:</span> <span class="n">OpenAI</span><span class="p">(),</span>
+            <span class="s">"gpt-3.5-turbo"</span><span class="p">:</span> <span class="n">OpenAI</span><span class="p">(),</span>
+            <span class="s">"claude-3-sonnet"</span><span class="p">:</span> <span class="n">anthropic</span><span class="p">.</span><span class="n">Anthropic</span><span class="p">(),</span>
+            <span class="s">"claude-3-haiku"</span><span class="p">:</span> <span class="n">anthropic</span><span class="p">.</span><span class="n">Anthropic</span><span class="p">(),</span>
+            <span class="s">"llama-2-70b"</span><span class="p">:</span> <span class="bp">self</span><span class="p">.</span><span class="n">load_local_model</span><span class="p">()</span>
+        <span class="p">}</span>
+        
+        <span class="bp">self</span><span class="p">.</span><span class="n">routing_rules</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">load_routing_config</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">cost_tracker</span> <span class="o">=</span> <span class="n">CostTracker</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">performance_monitor</span> <span class="o">=</span> <span class="n">PerformanceMonitor</span><span class="p">()</span>
+    
+    <span class="k">def</span> <span class="nf">route_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">user_preferences</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="c1"># Analyze request characteristics
+</span>        <span class="n">characteristics</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">analyze_request</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        
+        <span class="c1"># Apply routing rules
+</span>        <span class="n">selected_model</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">apply_routing_rules</span><span class="p">(</span><span class="n">characteristics</span><span class="p">,</span> <span class="n">user_preferences</span><span class="p">)</span>
+        
+        <span class="c1"># Execute request
+</span>        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">models</span><span class="p">[</span><span class="n">selected_model</span><span class="p">].</span><span class="n">generate</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+        
+        <span class="c1"># Track metrics
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">cost_tracker</span><span class="p">.</span><span class="n">record_usage</span><span class="p">(</span><span class="n">selected_model</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">performance_monitor</span><span class="p">.</span><span class="n">record_latency</span><span class="p">(</span><span class="n">selected_model</span><span class="p">,</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">response</span><span class="p">,</span> <span class="n">selected_model</span>
+</code></pre></div></div>
+
+<h2 id="whats-next">What’s Next</h2>
+
+<p>I’m exploring:</p>
+<ol>
+  <li><strong>Dynamic model switching</strong>: Changing models mid-conversation based on needs</li>
+  <li><strong>Model ensembles</strong>: Combining outputs from multiple models</li>
+  <li><strong>Custom fine-tuning</strong>: Training specialized models for specific domains</li>
+  <li><strong>Edge deployment</strong>: Running smaller models on mobile devices</li>
+</ol>
+
+<p>Model selection is becoming as important as prompt engineering. The right model for the right task can make the difference between a successful AI application and an expensive failure.</p>
+
+<hr />
+
+<p><em>Next post: I’m diving into building scalable AI systems with proper architecture patterns. How do you design AI applications that can handle enterprise-scale workloads?</em></p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=AI%20Model%20Selection:%20When%20to%20Use%20GPT%20vs%20Claude%20vs%20Open%20Source%20Models&url=http://localhost:4009/2025/08/20/ai-model-selection-strategies/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4009/2025/08/20/ai-model-selection-strategies/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4009/2025/08/20/ai-model-selection-strategies/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4009/2025/08/20/ai-model-selection-strategies/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/06/15/voice-ai-integration-streamlit/">Voice AI Integration: Adding Speech to My AI Applications with Streamlit</a></h4>
+          <div class="post-meta">June 15, 2025</div>
+          <div class="post-excerpt">I added voice capabilities to my AI applications. Here's how I integrated speech-to-text and text-to-speech with Streamlit for hands-free AI...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/04/10/building-multi-agent-systems-crewai/">Building Multi-Agent Systems with CrewAI: Beyond Single AI Assistants</a></h4>
+          <div class="post-meta">April 10, 2025</div>
+          <div class="post-excerpt">I built my first multi-agent system using CrewAI. Here's what I learned about orchestrating multiple AI agents to solve complex...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/02/20/chain-of-thought-prompting-business-logic/">Chain-of-Thought Prompting: Improving AI Reasoning in Business Applications</a></h4>
+          <div class="post-meta">February 20, 2025</div>
+          <div class="post-excerpt">Can we get LLMs to reason through complex business rules reliably? My experiments with chain-of-thought prompting for healthcare protocols.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/01/15/advanced-prompt-engineering-techniques/">Advanced Prompt Engineering: Techniques I've Learned from 6 Months with LLMs</a></h4>
+          <div class="post-meta">January 15, 2025</div>
+          <div class="post-excerpt">After 6 months of working with LLMs daily, I've discovered prompt engineering is both an art and a science. Here...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/10/20/getting-started-langchain-rag/">Building RAG Systems: My Journey with LangChain</a></h4>
+          <div class="post-meta">October 20, 2024</div>
+          <div class="post-excerpt">After months of hearing about RAG and LangChain, I finally built my first retrieval-augmented generation system. Here's what I learned....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/09/10/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">September 10, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/06/20/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">June 20, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/building-enterprise-ai-customer-support-system/">Building an Enterprise AI Customer Support System: From Concept to $485K Annual Savings</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">How I built a Fortune 500-grade multi-agent customer support system using 100% free technologies, achieving 85% faster response times and...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2023/04/20/mlops-deployment-strategies/">MLOps: Machine Learning Deployment Strategies</a></h4>
+          <div class="post-meta">April 20, 2023</div>
+          <div class="post-excerpt">MLOps: Machine Learning Deployment Strategies
+
+</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>

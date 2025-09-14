@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="One month into my Python journey. Here&#39;s what I&#39;ve learned, what I&#39;ve struggled with, and why I almost gave up twice.">
+    <meta name="author" content="Niranjan Agaram">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="post">
+    <meta property="og:url" content="http://localhost:4009/2020/03/22/learning-pandas-first-month/">
+    <meta property="og:title" content="Learning Pandas: My First Month with Python for Data Analysis">
+    <meta property="og:description" content="One month into my Python journey. Here&#39;s what I&#39;ve learned, what I&#39;ve struggled with, and why I almost gave up twice.">
+    <meta property="og:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="http://localhost:4009/2020/03/22/learning-pandas-first-month/">
+    <meta property="twitter:title" content="Learning Pandas: My First Month with Python for Data Analysis">
+    <meta property="twitter:description" content="One month into my Python journey. Here&#39;s what I&#39;ve learned, what I&#39;ve struggled with, and why I almost gave up twice.">
+    <meta property="twitter:image" content="http://localhost:4009/assets/images/og-image.svg">
+    
+    <!-- Enhanced Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Niranjan Agaram",
+      "jobTitle": "AI & Data Engineering Consultant",
+      "description": "10+ years evolving from data engineering to agentic AI systems across healthcare, retail, marketing, and real estate",
+      "url": "http://localhost:4009",
+      "sameAs": [
+        "https://linkedin.com/in/niranjan-agaram",
+        "https://github.com/niranjanagaram"
+      ],
+      "knowsAbout": [
+        "Artificial Intelligence",
+        "Data Engineering", 
+        "Machine Learning",
+        "LangChain",
+        "CrewAI",
+        "FastAPI",
+        "Python",
+        "SAS",
+        "Multi-Agent Systems"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "AI Consultant",
+        "occupationLocation": {
+          "@type": "Country",
+          "name": "India"
+        }
+      }
+    }
+    </script>
+    
+    <title>Learning Pandas: My First Month with Python for Data Analysis</title>
+    <link rel="canonical" href="http://localhost:4009/2020/03/22/learning-pandas-first-month/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Niranjan AI">
+    <script src="/assets/js/main.js" defer></script>
+    <script src="/assets/js/search.js" defer></script>
+    <script src="/assets/js/performance.js" defer></script>
+    
+    <!-- Analytics -->
+    
+</head>
+<body>
+
+    <div class="bg-orb orb-1" aria-hidden="true"></div>
+    <div class="bg-orb orb-2" aria-hidden="true"></div>
+    
+    <!-- Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true"></div>
+    
+    <header role="banner">
+        <div class="container">
+            <h1><a href="/" aria-label="Home - Niranjan's AI Insights">Niranjan's AI Insights</a></h1>
+            <p>Enterprise AI solutions, agentic systems, and intelligent automation insights from a senior data engineer</p>
+            
+            <!-- Search -->
+            <div class="search-container">
+                <input type="search" id="search-input" placeholder="Search posts..." aria-label="Search blog posts">
+                <div id="search-results" class="search-results" aria-live="polite"></div>
+            </div>
+            
+            <nav role="navigation" aria-label="Main navigation">
+                <div class="nav-links">
+                    <a href="/" >Home</a>
+                    <a href="/posts" >Posts</a>
+                    <a href="/services" >Services</a>
+                    <a href="/about" >About</a>
+                    <a href="/contact" >Contact</a>
+                    <a href="/archive" >Archive</a>
+                </div>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode"></button>
+            </nav>
+        </div>
+    </header>
+    
+    <main id="main-content" class="container" role="main">
+        <article itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    <h1 itemprop="headline">Learning Pandas: My First Month with Python for Data Analysis</h1>
+    <div class="post-meta">
+      <time datetime="2020-03-22T00:00:00+05:30" itemprop="datePublished">
+        March 22, 2020
+      </time>
+      
+        <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+          by <span itemprop="name">Niranjan Agaram</span>
+        </span>
+      
+      <span class="reading-time">📖 6 min read</span>
+    </div>
+    
+    <div class="tags">
+      
+        <span class="tag" itemprop="keywords">python</span>
+      
+        <span class="tag" itemprop="keywords">pandas</span>
+      
+        <span class="tag" itemprop="keywords">learning</span>
+      
+        <span class="tag" itemprop="keywords">data-analysis</span>
+      
+    </div>
+    
+  </header>
+
+  <div itemprop="articleBody">
+    <h1 id="learning-pandas-my-first-month-with-python-for-data-analysis">Learning Pandas: My First Month with Python for Data Analysis</h1>
+
+<p>It’s been exactly one month since I decided to learn Python, and wow… this has been a rollercoaster. I almost quit twice, had three “aha!” moments, and I’m pretty sure I’ve googled “pandas vs SAS” about 50 times.</p>
+
+<h2 id="the-good-news-first">The Good News First</h2>
+
+<p>I successfully recreated our monthly patient demographics report in Python! It took me 3 days (compared to 30 minutes in SAS), but it works. And honestly, the final code looks cleaner than my SAS version.</p>
+
+<h2 id="the-struggles-were-real">The Struggles Were Real</h2>
+
+<h3 id="week-1-everything-is-broken">Week 1: Everything is Broken</h3>
+
+<p>My first week was basically:</p>
+<ul>
+  <li>Install Python ✓</li>
+  <li>Install pandas ✓</li>
+  <li>Try to read a CSV ✗</li>
+  <li>Spend 4 hours figuring out why ✗</li>
+  <li>Question life choices ✗</li>
+</ul>
+
+<p>The encoding issues were killing me. In SAS, you just point to a file and it works. In pandas:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This didn't work
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data.csv'</span><span class="p">)</span>  <span class="c1"># UnicodeDecodeError
+</span>
+<span class="c1"># Neither did this
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span><span class="p">)</span>  <span class="c1"># Still broken
+</span>
+<span class="c1"># Finally this worked (after Stack Overflow)
+</span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'data.csv'</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">'latin-1'</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Why is this so complicated?</p>
+
+<h3 id="week-2-index-hell">Week 2: Index Hell</h3>
+
+<p>SAS doesn’t really have this concept of “index” that pandas obsesses over. I spent an entire day trying to figure out why my merge wasn’t working, only to discover it was because of mismatched indices.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># This looked right to me
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">'patient_id'</span><span class="p">)</span>
+
+<span class="c1"># But I needed this
+</span><span class="n">result</span> <span class="o">=</span> <span class="n">df1</span><span class="p">.</span><span class="n">reset_index</span><span class="p">().</span><span class="n">merge</span><span class="p">(</span><span class="n">df2</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(),</span> <span class="n">on</span><span class="o">=</span><span class="s">'patient_id'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Coming from SAS PROC SQL, this felt unnecessarily complex.</p>
+
+<h3 id="week-3-the-breakthrough">Week 3: The Breakthrough</h3>
+
+<p>Something clicked in week 3. I was working on a data cleaning task that would have been painful in SAS, and pandas just… made sense.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Cleaning messy age data
+</span><span class="n">df</span><span class="p">[</span><span class="s">'age_clean'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'age'</span><span class="p">]</span>
+                   <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'years'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+                   <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'yrs'</span><span class="p">,</span> <span class="s">''</span><span class="p">)</span>
+                   <span class="p">.</span><span class="nb">str</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span>
+                   <span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
+
+<span class="c1"># Multiple conditions - so much cleaner than nested IF-THEN-ELSE
+</span><span class="n">df</span><span class="p">[</span><span class="s">'age_group'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'age_clean'</span><span class="p">],</span> 
+                        <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> 
+                        <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s">'Child'</span><span class="p">,</span> <span class="s">'Young Adult'</span><span class="p">,</span> <span class="s">'Adult'</span><span class="p">,</span> <span class="s">'Middle Age'</span><span class="p">,</span> <span class="s">'Senior'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>This would have been a nightmare in SAS. In pandas, it’s actually readable.</p>
+
+<h2 id="what-ive-learned">What I’ve Learned</h2>
+
+<h3 id="1-the-documentation-is-different">1. The Documentation is… Different</h3>
+
+<p>SAS documentation tells you exactly what each PROC does. Pandas documentation assumes you already know what you want to do. I’ve bookmarked about 20 different tutorial sites.</p>
+
+<h3 id="2-error-messages-are-cryptic">2. Error Messages Are Cryptic</h3>
+
+<p>SAS: “ERROR: Variable AGE not found in dataset PATIENTS”
+Pandas: “KeyError: ‘age’” (after a 50-line traceback)</p>
+
+<p>I miss SAS error messages.</p>
+
+<h3 id="3-but-the-flexibility-is-amazing">3. But the Flexibility is Amazing</h3>
+
+<p>Want to apply a custom function to every row? Easy.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">'custom_score'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">some_complex_logic</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Try doing that in SAS without writing a macro.</p>
+
+<h3 id="4-performance-is-complicated">4. Performance is… Complicated</h3>
+
+<p>Small datasets (&lt; 100K rows): Pandas is faster
+Large datasets (&gt; 1M rows): SAS still wins
+But pandas has tricks (chunking, dtypes optimization) that help.</p>
+
+<h2 id="my-current-workflow">My Current Workflow</h2>
+
+<p>I’m now using both tools:</p>
+<ul>
+  <li><strong>SAS</strong>: For the heavy lifting on large datasets</li>
+  <li><strong>Python</strong>: For data cleaning, visualization, and anything involving APIs</li>
+</ul>
+
+<p>This hybrid approach is working well, though my manager keeps asking when I’ll “pick one.”</p>
+
+<h2 id="the-mistakes-i-made">The Mistakes I Made</h2>
+
+<ol>
+  <li><strong>Trying to write SAS in Python</strong>: Pandas isn’t SAS. Stop fighting it.</li>
+  <li><strong>Not learning the basics first</strong>: I jumped straight to complex operations</li>
+  <li><strong>Ignoring data types</strong>: Everything defaulting to object type caused so many issues</li>
+  <li><strong>Not using .copy()</strong>: Spent hours debugging why my original dataframe kept changing</li>
+</ol>
+
+<h2 id="whats-next">What’s Next</h2>
+
+<p>I’m getting comfortable with basic pandas operations, but I know I’m still thinking like a SAS programmer. My next goals:</p>
+
+<ol>
+  <li><strong>Learn proper Python patterns</strong>: Stop writing everything in one giant function</li>
+  <li><strong>Master groupby operations</strong>: They’re powerful but confusing</li>
+  <li><strong>Get serious about visualization</strong>: matplotlib basics</li>
+  <li><strong>Try some real machine learning</strong>: scikit-learn looks interesting</li>
+</ol>
+
+<h2 id="for-other-sas-users-considering-the-switch">For Other SAS Users Considering the Switch</h2>
+
+<p><strong>The honest truth</strong>: It’s harder than the tutorials make it seem. Python assumes you know programming concepts that SAS abstracts away. But the flexibility and community support make it worth the struggle.</p>
+
+<p><strong>My advice</strong>:</p>
+<ul>
+  <li>Don’t try to replicate SAS exactly</li>
+  <li>Embrace the different way of thinking</li>
+  <li>Use Stack Overflow liberally (no shame)</li>
+  <li>Keep SAS around for now - hybrid approach works</li>
+</ul>
+
+<h2 id="code-that-actually-helped-me">Code That Actually Helped Me</h2>
+
+<p>Here’s the pandas equivalent of common SAS operations that took me forever to figure out:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># SAS: PROC FREQ
+</span><span class="n">df</span><span class="p">[</span><span class="s">'category'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">()</span>
+
+<span class="c1"># SAS: PROC MEANS by group
+</span><span class="n">df</span><span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'department'</span><span class="p">)[</span><span class="s">'salary'</span><span class="p">].</span><span class="n">agg</span><span class="p">([</span><span class="s">'mean'</span><span class="p">,</span> <span class="s">'std'</span><span class="p">,</span> <span class="s">'count'</span><span class="p">])</span>
+
+<span class="c1"># SAS: WHERE statement
+</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s">'age'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">]</span>
+
+<span class="c1"># SAS: IF-THEN-ELSE
+</span><span class="n">df</span><span class="p">[</span><span class="s">'status'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'score'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">,</span> <span class="s">'Pass'</span><span class="p">,</span> <span class="s">'Fail'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Next month, I’m planning to tackle matplotlib. Wish me luck - I have a feeling I’ll need it.</p>
+
+<hr />
+
+<p><em>P.S. - I finally understand why people love Jupyter notebooks. Being able to see your data at each step is game-changing compared to SAS Enterprise Guide.</em></p>
+
+  </div>
+
+  <!-- Social Share Buttons -->
+  <div class="share-buttons">
+    <h4>Share this post:</h4>
+    <a href="https://twitter.com/intent/tweet?text=Learning%20Pandas:%20My%20First%20Month%20with%20Python%20for%20Data%20Analysis&url=http://localhost:4009/2020/03/22/learning-pandas-first-month/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Twitter">
+      🐦 Twitter
+    </a>
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://localhost:4009/2020/03/22/learning-pandas-first-month/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+      💼 LinkedIn
+    </a>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4009/2020/03/22/learning-pandas-first-month/" 
+       class="share-button" target="_blank" rel="noopener" aria-label="Share on Facebook">
+      📘 Facebook
+    </a>
+    <button class="share-button" onclick="copyToClipboard('http://localhost:4009/2020/03/22/learning-pandas-first-month/')" aria-label="Copy link">
+      🔗 Copy Link
+    </button>
+  </div>
+
+  <!-- AI-Powered Recommendations -->
+  <div class="recommendations">
+    <h3>Recommended for you</h3>
+    <div class="recommended-posts">
+      
+      
+      
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/08/20/ai-model-selection-strategies/">AI Model Selection: When to Use GPT vs Claude vs Open Source Models</a></h4>
+          <div class="post-meta">August 20, 2025</div>
+          <div class="post-excerpt">After using different AI models for 8 months, I've learned when each one shines. Here's my practical guide to choosing...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/06/15/voice-ai-integration-streamlit/">Voice AI Integration: Adding Speech to My AI Applications with Streamlit</a></h4>
+          <div class="post-meta">June 15, 2025</div>
+          <div class="post-excerpt">I added voice capabilities to my AI applications. Here's how I integrated speech-to-text and text-to-speech with Streamlit for hands-free AI...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/04/10/building-multi-agent-systems-crewai/">Building Multi-Agent Systems with CrewAI: Beyond Single AI Assistants</a></h4>
+          <div class="post-meta">April 10, 2025</div>
+          <div class="post-excerpt">I built my first multi-agent system using CrewAI. Here's what I learned about orchestrating multiple AI agents to solve complex...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/02/20/chain-of-thought-prompting-business-logic/">Chain-of-Thought Prompting: Improving AI Reasoning in Business Applications</a></h4>
+          <div class="post-meta">February 20, 2025</div>
+          <div class="post-excerpt">Can we get LLMs to reason through complex business rules reliably? My experiments with chain-of-thought prompting for healthcare protocols.</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2025/01/15/advanced-prompt-engineering-techniques/">Advanced Prompt Engineering: Techniques I've Learned from 6 Months with LLMs</a></h4>
+          <div class="post-meta">January 15, 2025</div>
+          <div class="post-excerpt">After 6 months of working with LLMs daily, I've discovered prompt engineering is both an art and a science. Here...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/12/15/agentic-ai-customer-service-automation/">Building an Agentic AI Customer Service System: A Complete Case Study</a></h4>
+          <div class="post-meta">December 15, 2024</div>
+          <div class="post-excerpt">How I built a multi-agent customer service system that reduced response time by 85% and improved satisfaction scores by 40%...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/10/20/getting-started-langchain-rag/">Building RAG Systems: My Journey with LangChain</a></h4>
+          <div class="post-meta">October 20, 2024</div>
+          <div class="post-excerpt">After months of hearing about RAG and LangChain, I finally built my first retrieval-augmented generation system. Here's what I learned....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/09/10/ai-powered-data-quality-monitoring/">AI-Powered Data Quality Monitoring: The Future of Data Reliability</a></h4>
+          <div class="post-meta">September 10, 2024</div>
+          <div class="post-excerpt">Discover how artificial intelligence is revolutionizing data quality monitoring with automated anomaly detection, intelligent alerting, and predictive data health insights....</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/06/20/advanced-kafka-streaming-patterns/">Advanced Kafka Streaming Patterns for Real-Time Analytics</a></h4>
+          <div class="post-meta">June 20, 2024</div>
+          <div class="post-excerpt">Explore advanced Apache Kafka streaming patterns including exactly-once processing, windowing operations, and complex event processing for building robust real-time analytics...</div>
+        </div>
+      
+        <div class="post-card">
+          <div class="post-image">💡</div>
+          <h4><a href="/2024/03/15/building-enterprise-ai-customer-support-system/">Building an Enterprise AI Customer Support System: From Concept to $485K Annual Savings</a></h4>
+          <div class="post-meta">March 15, 2024</div>
+          <div class="post-excerpt">How I built a Fortune 500-grade multi-agent customer support system using 100% free technologies, achieving 85% faster response times and...</div>
+        </div>
+      
+    </div>
+  </div>
+
+  <!-- Comments Section -->
+  
+</article>
+
+<script>
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert('Link copied to clipboard!');
+    });
+  }
+</script>
+    </main>
+    
+    <!-- WhatsApp Chat Widget -->
+    <div class="whatsapp-chat" id="whatsapp-chat">
+        <div class="chat-bubble">
+            <svg viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+            </svg>
+        </div>
+        <div class="chat-tooltip">Chat with me on WhatsApp!</div>
+    </div>
+
+    <footer role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/niranjanagaram" aria-label="GitHub Profile">GitHub</a>
+                        <a href="https://linkedin.com/in/niranjan-agaram" aria-label="LinkedIn Profile">LinkedIn</a>
+                        <a href="mailto:niranjan@example.com" aria-label="Email Contact">Email</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Subscribe</h4>
+                    <a href="/feed.xml" aria-label="RSS Feed">RSS Feed</a>
+                </div>
+            </div>
+            <p>&copy; 2025 Niranjan's AI Insights. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+        
+        // Modern Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        });
+        
+        // Reading Progress
+        window.addEventListener('scroll', () => {
+            const progress = document.getElementById('reading-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            progress.style.width = scrolled + '%';
+        });
+        
+
+    </script>
+</body>
+</html>

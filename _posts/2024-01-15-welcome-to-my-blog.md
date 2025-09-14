@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Welcome to My Data Engineering Blog"
-date: 2024-01-15
+date: 2020-01-15
 tags: [introduction, data-engineering, blog]
 excerpt: "Hello and welcome to my blog! I'm excited to share my experiences and insights in the world of data engineering, machine learning, and analytics."
 image: "/assets/images/posts/data-engineering-hero.svg"

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Theme Test - Niranjan Agaram</title>
+    <link rel="stylesheet" href="assets/css/style.scss">
+    <style>
+        /* Additional test styles */
+        .test-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+        }
+        
+        .color-swatch {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            margin: 0.5rem;
+            border: 2px solid var(--border);
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .color-swatch:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .color-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        
+        .transition-test {
+            padding: 1rem 2rem;
+            margin: 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blue Theme Test Page</h1>
+            <p>Testing blue color palette, cyan accents, and transition effects</p>
+            <nav>
+                <div class="nav-links">
+                    <a href="#colors">Colors</a>
+                    <a href="#buttons">Buttons</a>
+                    <a href="#transitions">Transitions</a>
+                    <a href="#components">Components</a>
+                </div>
+                <button class="theme-toggle" onclick="toggleTheme()"></button>
+            </nav>
+        </header>
+
+        <!-- Warm Gray Palette Test -->
+        <section id="colors" class="test-section">
+            <h2>Blue Theme Color Palette</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <div class="color-swatch" style="background: var(--warm-gray-50);">
+                    <span class="color-label">Gray 50</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-100);">
+                    <span class="color-label">Gray 100</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-200);">
+                    <span class="color-label">Gray 200</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-300);">
+                    <span class="color-label">Gray 300</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-400);">
+                    <span class="color-label">Gray 400</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-500);">
+                    <span class="color-label">Gray 500</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-600);">
+                    <span class="color-label">Gray 600</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-700);">
+                    <span class="color-label">Gray 700</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-800);">
+                    <span class="color-label">Gray 800</span>
+                </div>
+                <div class="color-swatch" style="background: var(--warm-gray-900);">
+                    <span class="color-label">Gray 900</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Earthy Accents Test -->
+        <section class="test-section">
+            <h2>Blue Theme Accent Colors</h2>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+                <div class="color-swatch" style="background: var(--earth-amber);">
+                    <span class="color-label">Earth Amber</span>
+                </div>
+                <div class="color-swatch" style="background: var(--earth-sage);">
+                    <span class="color-label">Earth Sage</span>
+                </div>
+                <div class="color-swatch" style="background: var(--earth-clay);">
+                    <span class="color-label">Earth Clay</span>
+                </div>
+                <div class="color-swatch" style="background: var(--earth-terracotta);">
+                    <span class="color-label">Terracotta</span>
+                </div>
+                <div class="color-swatch" style="background: var(--earth-forest);">
+                    <span class="color-label">Earth Forest</span>
+                </div>
+                <div class="color-swatch" style="background: var(--earth-stone);">
+                    <span class="color-label">Earth Stone</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gradient Text Test -->
+        <section class="test-section">
+            <h2>Gradient Text Effects</h2>
+            <div style="text-align: center;">
+                <h3 class="gradient-text">Blue Gradient (Primary + Secondary)</h3>
+                <h3 style="background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Blue-Cyan Gradient</h3>
+                <h3 style="background: linear-gradient(135deg, var(--secondary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Cyan-Green Gradient</h3>
+            </div>
+        </section>
+
+        <!-- Button Tests -->
+        <section id="buttons" class="test-section">
+            <h2>Button Variations with Blue Theme</h2>
+            <div style="text-align: center;">
+                <a href="#" class="cta-primary">Primary CTA (Blue Theme)</a>
+                <a href="#" class="cta-secondary">Secondary CTA</a>
+                <br><br>
+                <a href="#" class="btn-earth">Earth Button</a>
+                <a href="#" class="btn-sage">Sage Button</a>
+                <br><br>
+                <a href="#" class="cta-expert">Expert CTA (Updated)</a>
+            </div>
+        </section>
+
+        <!-- Transition Effects Test -->
+        <section id="transitions" class="test-section">
+            <h2>Transition Effects Test</h2>
+            <div style="text-align: center;">
+                <div class="transition-test hover-lift" style="background: var(--glass-bg); border: 1px solid var(--border);">
+                    Hover Lift Effect
+                </div>
+                <div class="transition-test" style="background: var(--earth-amber); color: white;" 
+                     onmouseover="this.style.transform='translateY(-4px) scale(1.02)'"
+                     onmouseout="this.style.transform='translateY(0) scale(1)'">
+                    Custom Hover Transform
+                </div>
+                <div class="transition-test pulse-glow" style="background: var(--earth-sage); color: white;">
+                    Pulse Glow Animation
+                </div>
+            </div>
+        </section>
+
+        <!-- Component Tests -->
+        <section id="components" class="test-section">
+            <h2>Component Integration Test</h2>
+            
+            <!-- Stats with new colors -->
+            <div class="hero-stats" style="justify-content: center; margin: 2rem 0;">
+                <div class="stat">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Projects Delivered</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Support Available</span>
+                </div>
+            </div>
+
+            <!-- Cards with warm styling -->
+            <div class="grid-demo">
+                <div class="warm-card">
+                    <h3 class="earth-accent">Warm Card Design</h3>
+                    <p class="warm-gray-text">This card uses the new warm gray borders and earthy accent colors.</p>
+                </div>
+                <div class="service-card">
+                    <h3 class="sage-accent">Service Card</h3>
+                    <p>Updated with sage accent color for headings.</p>
+                </div>
+                <div class="portfolio-card">
+                    <h3 class="clay-accent">Portfolio Card</h3>
+                    <p>Featuring clay accent color variation.</p>
+                </div>
+            </div>
+
+            <!-- Tags with new colors -->
+            <div style="text-align: center; margin: 2rem 0;">
+                <span class="tag">Original Tag</span>
+                <span class="tech-tag">Tech Tag</span>
+                <span class="tag" style="background: var(--earth-amber);">Earth Tag</span>
+                <span class="tag" style="background: var(--earth-sage);">Sage Tag</span>
+            </div>
+        </section>
+
+        <!-- Social Share Test -->
+        <section class="test-section">
+            <h2>Social Share Components</h2>
+            <div class="social-share">
+                <span>Share:</span>
+                <a href="#" class="share-btn linkedin">LinkedIn</a>
+                <a href="#" class="share-btn twitter">Twitter</a>
+                <a href="#" class="share-btn">General</a>
+            </div>
+        </section>
+
+        <!-- Theme Toggle Test -->
+        <section class="test-section">
+            <h2>Theme Toggle Test</h2>
+            <p>Click the theme toggle button in the navigation to test light/dark mode with warm grays.</p>
+            <div style="padding: 1rem; background: var(--bg-card); border-radius: 12px; margin: 1rem 0;">
+                <p><strong>Current theme colors:</strong></p>
+                <p>Text Primary: <span style="color: var(--text-primary);">Sample Text</span></p>
+                <p>Text Muted: <span style="color: var(--text-muted);">Muted Text (Warm Gray)</span></p>
+                <p>Background: <span style="background: var(--bg-primary); padding: 0.25rem 0.5rem; border-radius: 4px;">Background Color</span></p>
+            </div>
+        </section>
+
+        <!-- Performance Test -->
+        <section class="test-section">
+            <h2>Animation Performance Test</h2>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+                <div class="color-swatch fade-in" style="background: var(--earth-amber); animation-delay: 0.1s;"></div>
+                <div class="color-swatch fade-in" style="background: var(--earth-sage); animation-delay: 0.2s;"></div>
+                <div class="color-swatch fade-in" style="background: var(--earth-clay); animation-delay: 0.3s;"></div>
+                <div class="color-swatch fade-in" style="background: var(--earth-terracotta); animation-delay: 0.4s;"></div>
+                <div class="color-swatch fade-in" style="background: var(--earth-forest); animation-delay: 0.5s;"></div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Test color accessibility
+        function testColorContrast() {
+            const elements = document.querySelectorAll('.color-swatch');
+            elements.forEach(el => {
+                el.addEventListener('click', () => {
+                    const bgColor = window.getComputedStyle(el).backgroundColor;
+                    console.log('Background Color:', bgColor);
+                    
+                    // Simple contrast test
+                    const rgb = bgColor.match(/\d+/g);
+                    if (rgb) {
+                        const brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+                        console.log('Brightness:', brightness, brightness > 128 ? '(Light)' : '(Dark)');
+                    }
+                });
+            });
+        }
+
+        // Initialize tests
+        document.addEventListener('DOMContentLoaded', () => {
+            testColorContrast();
+            
+            // Test animation performance
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.fade-in').forEach(el => {
+                observer.observe(el);
+            });
+
+            console.log('2025 Color Trends Test Page Loaded');
+            console.log('Warm Gray Variables:', {
+                'warm-gray-400': getComputedStyle(document.documentElement).getPropertyValue('--warm-gray-400'),
+                'warm-gray-600': getComputedStyle(document.documentElement).getPropertyValue('--warm-gray-600'),
+                'text-muted': getComputedStyle(document.documentElement).getPropertyValue('--text-muted')
+            });
+            console.log('Earthy Accent Variables:', {
+                'earth-amber': getComputedStyle(document.documentElement).getPropertyValue('--earth-amber'),
+                'earth-sage': getComputedStyle(document.documentElement).getPropertyValue('--earth-sage'),
+                'earth-clay': getComputedStyle(document.documentElement).getPropertyValue('--earth-clay')
+            });
+        });
+    </script>
+</body>
+</html>
